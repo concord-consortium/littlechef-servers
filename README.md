@@ -1,6 +1,6 @@
 To use this repository you need two tools: littlechef and librarian-chef
 
-### Get Started
+### Setup environment to work with an existing Server
 
 Install littlechef
 
@@ -26,3 +26,28 @@ To add a new recipe or attribute to one of the servers, you edit the `nodes/SERV
 If you need to use an additional cookbook, edit the file `Cheffile` then run
 
     librarian-chef install
+
+### Setup a new server
+
+Spin up server in Cloud
+
+Install ChefSolo on the new server
+
+    fix node:$HOSTNAME_OF_SERVER deploy_chef
+
+Install apache on the server to get started
+
+    fix node:$HOSTNAME_OF_SERVER recipe:apache2
+
+This will then put a new json file in the nodes folder to record the recipies
+
+Alternatively you can copy an an existing json file in the nodes folder, and give it the hostname then run
+
+    fix node:$HOSTNAME_OF_SERVER
+
+### TODO
+
+Fix the way nodejs is installing the apt repository so we don't need to run apt-get update ourselves
+
+Separate out the couchdb from package installation code into its own recipe, look around for other couch
+cookbooks to see if anyone wants this as an option.

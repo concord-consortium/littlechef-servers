@@ -1,0 +1,22 @@
+{
+    "ipaddress": "10.215.26.192",
+    "authorization": {
+        "sudo": {
+            "passwordless": true,
+            "users": [
+                "ubuntu"
+            ],
+            "groups": [
+                "sysadmin",
+                "admin"
+            ]
+        }
+    },
+    "run_list": [
+        "recipe[users::sysadmins]",
+        "recipe[sudo]",
+        "recipe[git]",
+        "recipe[node-couch-webapp]"
+    ],
+    "name": "ec2-23-22-100-85.compute-1.amazonaws.com"
+}
