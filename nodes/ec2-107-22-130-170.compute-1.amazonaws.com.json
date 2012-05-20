@@ -1,5 +1,6 @@
 {
-    "ipaddress": "10.215.26.192",
+    "name": "ec2-107-22-130-170.compute-1.amazonaws.com",
+    "ipaddress": "10.214.14.255",
     "authorization": {
         "sudo": {
             "passwordless": true,
@@ -16,7 +17,10 @@
         "recipe[users::sysadmins]",
         "recipe[sudo]",
         "recipe[git]",
-        "recipe[node-couch-webapp]"
+        "recipe[node-couch-webapp]",
+        "recipe[lab-server]"
     ],
-    "name": "ec2-23-22-100-85.compute-1.amazonaws.com"
+    "nodejs": {
+        "install_method": "package"
+    }
 }
