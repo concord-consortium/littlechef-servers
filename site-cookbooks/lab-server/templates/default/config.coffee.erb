@@ -1,0 +1,8 @@
+module.exports =
+  database:
+    # password for admin account on CouchDB install
+    username: ''
+    password: ''
+    prefix:   'ec2-test' # choose a prefix that will uniquely identify the local CouchDB install
+  session:
+    secret: '<%= (0...20).map{ ('a'..'z').to_a[rand(26)] }.join %>'

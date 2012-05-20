@@ -1,0 +1,9 @@
+{
+  "name": "lab-server",
+  "platforms": {
+    "ubuntu": ">= 10.0.0"
+  },
+  "recipes": {
+    "lab-server": "Checkout lab-server into node-couch-webapp"
+  }
+}
