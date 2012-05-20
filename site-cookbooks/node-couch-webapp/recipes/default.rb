@@ -39,6 +39,14 @@ include_recipe "authbind"
 # also might need to setup the couchdb service
 package "couchdb"
 
+# the couchdb service script creates this folder but does so as root
+# instead of the couchdb user
+directory "/var/run/couchdb" do
+  owner "couchdb"
+  group "root"
+  mode "755"
+end
+
 directory "/var/www" do
   owner "deploy"
   group "root"
