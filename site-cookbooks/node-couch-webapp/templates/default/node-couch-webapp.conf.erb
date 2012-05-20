@@ -10,5 +10,5 @@ respawn                # restart when job dies
 respawn limit 5 60     # give up restart after 5 respawns in 60 seconds
 
 script
-  exec sudo -u www-data sh -c "NODE_PORT=80 NODE_ENV=production authbind --deep /usr/bin/coffee /var/www/app.coffee >> /var/www/log/app.log 2>> /var/www/log/error.log"
+  exec sudo -u www-data sh -c "NODE_PORT=80 NODE_ENV=production authbind --deep /usr/bin/coffee /var/www/app/app.coffee >> /var/www/log/app.log 2>> /var/www/log/error.log"
 end script
