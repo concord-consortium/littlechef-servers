@@ -1,0 +1,30 @@
+{
+    "name": "lab-server",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[users::sysadmins]",
+        "recipe[sudo]",
+        "recipe[git]",
+        "recipe[node-couch-webapp]",
+        "recipe[lab-server]"
+    ],
+    "default_attributes": {
+        "authorization": {
+            "sudo": {
+                "passwordless": true,
+                "users": [
+                    "ubuntu"
+                ],
+                "groups": [
+                    "sysadmin",
+                    "admin"
+                ]
+            }
+        },
+        "nodejs": {
+            "install_method": "package"
+        }
+    },
+    "override_attributes": {}
+}

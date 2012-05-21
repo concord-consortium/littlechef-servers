@@ -27,23 +27,19 @@ If you need to use an additional cookbook, edit the file `Cheffile` then run
 
     librarian-chef install
 
-### Setup a new server
+### Setup a new lab.server
 
-Spin up server in Cloud
+1. Spin up an ubuntu lucid server (could be AWS or could be elsewhere)
+   
+    If you are using AWS then use `ami-8e40e7e7` so step 2 can be skipped 
 
-Install ChefSolo on the new server
+2. Install ChefSolo
 
-    fix node:$HOSTNAME_OF_SERVER deploy_chef
+        fix node:$HOSTNAME_OF_SERVER deploy_chef
 
-Install apache on the server to get started
-
-    fix node:$HOSTNAME_OF_SERVER recipe:apache2
-
-This will then put a new json file in the nodes folder to record the recipies
-
-Alternatively you can copy an an existing json file in the nodes folder, and give it the hostname then run
-
-    fix node:$HOSTNAME_OF_SERVER
+3. Install node.server
+        
+        fix node:$HOSTNAME_OF_SERVER role:node-server
 
 ### TODO
 

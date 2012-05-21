@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.240.93.191",
+    "run_list": [
+        "role[lab-server]"
+    ]
+}
