@@ -1,6 +1,6 @@
 To use this repository you need two tools: littlechef and librarian-chef
 
-### Setup environment to work with an existing Server
+### Setup your environment
 
 Install littlechef
 
@@ -8,7 +8,7 @@ Install littlechef
     
 Install librarian-chef
 
-    rvm --rvmrc --create use 1.9.3@genigames-servers
+    rvm --rvmrc --create use 1.9.3@littlechef-servers
     gem install librarian
     
 Run initial librarian install
@@ -16,16 +16,6 @@ Run initial librarian install
     librarian-chef install
 
 Setup the `auth.cfg` file to know about your genigames.pem file.
-
-### Updating the Server
-
-To add a new recipe or attribute to one of the servers, you edit the `nodes/SERVER_NAME.json` file, then run
-
-    fix node:SERVER_NAME
-
-If you need to use an additional cookbook, edit the file `Cheffile` then run
-
-    librarian-chef install
 
 ### Setup a new lab.server
 
@@ -62,6 +52,21 @@ If you need to use an additional cookbook, edit the file `Cheffile` then run
     -   update the public version (Note: it isn't part of this system yet so this command won't work yet)
 
             fix node:lab.dev.concord.org
+
+### Adding a New Cookbook
+
+There are 2 types of cookbooks supported: cookbooks and site-cookbooks.
+
+*Cookbooks* are managed by librarian-chef. These are pulled from remote source. The source can be a github
+repository, or a chef repository
+
+You add a new one by modifying the Chefile so librarian-chef knows about the new cookbook. Then 
+you run
+
+    librarian-chef install
+
+*Site-cookbooks* are local to this repository. In littlechef terms this "repository" is called a kitchen. 
+Add a folder to the site-cookbooks folder. The folder needs the standard Chef cookbook format.
 
 
 ### TODO
