@@ -15,7 +15,12 @@ Run initial librarian install
 
     librarian-chef install
 
-Setup the `auth.cfg` file to know about your genigames.pem file.
+Setup your .ssh/config file. It needs to know the correct identify file (pem) to use with the servers. 
+Mine looks like this
+
+	Host *.compute-1.amazonaws.com
+	  User ubuntu
+	  IdentityFile /Users/scytacki/Development/ec2/genigames.pem
 
 ### Setup a new lab.server
 
@@ -70,6 +75,9 @@ Add a folder to the site-cookbooks folder. The folder needs the standard Chef co
 
 
 ### TODO
+
+Improve the Indentify file managment. If we are going to use a single kitchen for all of our servers then we'll probably
+want to have several pem files, and then all the developers would need to manage the mapping of all of those files.
 
 Fix the way nodejs is installing the apt repository so we don't need to run apt-get update ourselves
 
