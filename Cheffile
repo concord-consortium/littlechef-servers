@@ -1,34 +1,32 @@
 #!/usr/bin/env ruby
 #^syntax detection
 
-# site 'http://community.opscode.com/api/v1'
-git 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
+site 'http://community.opscode.com/api/v1'
+# this is how to set a default source for git
+# git 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
 
 cookbook 'apache2'
-cookbook 'users',
-    :git => 'https://github.com/opscode/cookbooks'
-cookbook 'sudo',
-    :git => 'https://github.com/opscode-cookbooks/sudo'	
+cookbook 'users'
 cookbook 'git'
-cookbook 'apt',
-    :git => 'https://github.com/opscode/cookbooks'
+cookbook 'apt'
+cookbook 'couchdb'
+cookbook 'sudo'
+
+
 cookbook 'nodejs',
     :git => 'https://github.com/mdxp/nodejs-cookbook'
 cookbook 'npm',
     :git => 'https://github.com/balbeko/chef-npm/'
-cookbook 'couchdb',
-    :git => 'https://github.com/opscode/cookbooks'
 cookbook 'authbind', 
     :git => 'https://github.com/realityforge-cookbooks/authbind'
 
 
-# cookbook 'chef-client'
-
+# example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'
-
+#
 # cookbook 'rvm',
 #   :git => 'https://github.com/fnichol/chef-rvm'
-
+#
 # cookbook 'postgresql',
 #   :git => 'https://github.com/findsyou/cookbooks',
 #   :ref => 'postgresql-improvements'

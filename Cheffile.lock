@@ -1,3 +1,20 @@
+SITE
+  remote: http://community.opscode.com/api/v1
+  specs:
+    apache2 (1.1.8)
+    apt (1.4.2)
+    couchdb (1.0.0)
+      erlang (>= 0.0.0)
+    erlang (1.0.0)
+      yum (>= 0.5.0)
+    git (0.10.0)
+      runit (>= 0.0.0)
+      yum (>= 0.0.0)
+    runit (0.15.0)
+    sudo (1.1.0)
+    users (1.1.2)
+    yum (0.5.2)
+
 GIT
   remote: https://github.com/balbeko/chef-npm/
   ref: master
@@ -12,12 +29,7 @@ GIT
   ref: master
   sha: 1e26989f62129ff4c1fefe2187182087c3e6c4fb
   specs:
-    apache2 (0.99.2)
     build-essential (0.7.0)
-    erlang (0.8.2)
-    git (0.9.0)
-      runit (>= 0)
-    runit (0.14.2)
 
 GIT
   remote: https://github.com/mdxp/nodejs-cookbook
@@ -26,23 +38,6 @@ GIT
   specs:
     nodejs (1.0.0)
       build-essential (>= 0.0.0)
-
-GIT
-  remote: https://github.com/opscode-cookbooks/sudo
-  ref: master
-  sha: e08de50f3d9327edb55676b1b6adb113ddc819dc
-  specs:
-    sudo (1.1.1)
-
-GIT
-  remote: https://github.com/opscode/cookbooks
-  ref: master
-  sha: 9948e1d00148766b7f2cc5d8690bd0b40382a314
-  specs:
-    apt (1.4.0)
-    couchdb (1.0.0)
-      erlang (>= 0.0.0)
-    users (1.1.2)
 
 GIT
   remote: https://github.com/realityforge-cookbooks/authbind
