@@ -32,9 +32,9 @@ Mine looks like this
 
         fix node:$HOSTNAME_OF_SERVER deploy_chef
 
-3.  Install node.server
+3.  Install lab.server
         
-        fix node:$HOSTNAME_OF_SERVER role:node-server
+        fix node:$HOSTNAME_OF_SERVER role:lab-server
 
 ### Adding new features to the lab.server configuration
 
