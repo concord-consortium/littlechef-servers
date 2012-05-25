@@ -6,7 +6,7 @@
         "recipe[users::sysadmins]",
         "recipe[sudo]",
         "recipe[git]",
-        "recipe[node-couch-webapp]",
+        "recipe[rvm::system]",
         "recipe[lab-server]"
     ],
     "default_attributes": {

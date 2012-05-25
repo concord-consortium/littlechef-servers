@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 #^syntax detection
+#
+# after adding cookbooks
+#   librarian-chef install
 
 site 'http://community.opscode.com/api/v1'
 # this is how to set a default source for git
@@ -19,7 +22,8 @@ cookbook 'npm',
     :git => 'https://github.com/balbeko/chef-npm/'
 cookbook 'authbind', 
     :git => 'https://github.com/realityforge-cookbooks/authbind'
-
+cookbook 'rvm',
+  :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
 
 # example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'

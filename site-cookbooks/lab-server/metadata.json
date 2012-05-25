@@ -4,6 +4,6 @@
     "ubuntu": ">= 10.0.0"
   },
   "recipes": {
-    "lab-server": "Checkout lab-server into node-couch-webapp"
+    "lab-server": "Create apache2-passenger-ruby-node-couchdb server and install and build lab"
   }
 }

@@ -16,6 +16,13 @@ SITE
     yum (0.5.2)
 
 GIT
+  remote: git://github.com/fnichol/chef-rvm.git
+  ref: v0.9.0
+  sha: 4a408e5d6c5a52c37388a799c516430263339849
+  specs:
+    rvm (0.9.0)
+
+GIT
   remote: https://github.com/balbeko/chef-npm/
   ref: master
   sha: 12957919d37bcd4b9704dc59508f1b6959c208b0
@@ -54,6 +61,7 @@ DEPENDENCIES
   git (>= 0)
   nodejs (>= 0)
   npm (>= 0)
+  rvm (>= 0)
   sudo (>= 0)
   users (>= 0)
 
