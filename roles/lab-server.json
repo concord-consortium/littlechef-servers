@@ -6,6 +6,7 @@
         "recipe[users::sysadmins]",
         "recipe[sudo]",
         "recipe[git]",
+        "recipe[emacs]",
         "recipe[apache2]",
         "recipe[rvm::system]",
         "recipe[rvm_passenger::apache2]",
