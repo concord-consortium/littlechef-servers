@@ -24,6 +24,8 @@ cookbook 'authbind',
     :git => 'https://github.com/realityforge-cookbooks/authbind'
 cookbook 'rvm',
   :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
+cookbook 'rvm_passenger',
+  :git => 'git://github.com/fnichol/chef-rvm_passenger.git', :ref => 'v0.8.0'
 
 # example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'

@@ -3,6 +3,7 @@ SITE
   specs:
     apache2 (1.1.8)
     apt (1.4.2)
+    bluepill (1.0.4)
     couchdb (1.0.0)
       erlang (>= 0.0.0)
     erlang (1.0.0)
@@ -10,6 +11,12 @@ SITE
     git (0.10.0)
       runit (>= 0.0.0)
       yum (>= 0.0.0)
+    nginx (0.101.2)
+      bluepill (>= 0.0.0)
+      build-essential (>= 0.0.0)
+      ohai (~> 1.0.2)
+      runit (>= 0.0.0)
+    ohai (1.0.2)
     runit (0.15.0)
     sudo (1.1.0)
     users (1.1.2)
@@ -21,6 +28,16 @@ GIT
   sha: 4a408e5d6c5a52c37388a799c516430263339849
   specs:
     rvm (0.9.0)
+
+GIT
+  remote: git://github.com/fnichol/chef-rvm_passenger.git
+  ref: v0.8.0
+  sha: 0ccb3c4313b84889968b4e528ca38babfc03a1e5
+  specs:
+    rvm_passenger (0.8.0)
+      apache2 (>= 0.0.0)
+      nginx (>= 0.0.0)
+      rvm (>= 0.0.0)
 
 GIT
   remote: https://github.com/balbeko/chef-npm/
@@ -62,6 +79,7 @@ DEPENDENCIES
   nodejs (>= 0)
   npm (>= 0)
   rvm (>= 0)
+  rvm_passenger (>= 0)
   sudo (>= 0)
   users (>= 0)
 
