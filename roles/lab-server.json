@@ -6,7 +6,7 @@
         "recipe[users::sysadmins]",
         "recipe[sudo]",
         "recipe[git]",
-        "recipe[rvm::system]",
+        "recipe[rvm_passenger::apache2]",
         "recipe[lab-server]"
     ],
     "default_attributes": {
@@ -24,6 +24,10 @@
         },
         "nodejs": {
             "install_method": "package"
+        },
+        "rvm_passenger::apache2": {
+          "rvm_passenger/version": "3.0.12",
+          "rvm_passenger/rvm_ruby": "1.9.3-p194"
         }
     },
     "override_attributes": {}
