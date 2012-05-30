@@ -3,9 +3,11 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
+        "recipe[apt]",
         "recipe[users::sysadmins]",
         "recipe[sudo]",
         "recipe[git]",
+        "recipe[java]",
         "recipe[emacs]",
         "recipe[apache2]",
         "recipe[rvm::system]",
@@ -25,17 +27,29 @@
                 ]
             }
         },
+        "java": {
+          "install_flavor": "openjdk"
+        },
         "nodejs": {
-            "install_method": "package"
+            "install_method": "package",
+            "version": "0.6.18"
         },
         "rvm": {
           "default_ruby": "ruby-1.9.3-p194",
           "rvmc": {
-            "rvm_project_rvmrc":             "1",
-            "rvm_gemset_create_on_use_flag": "1",
-            "rvm_trust_rvmrcs_flag":         "1",
+            "rvm_project_rvmrc":             1,
+            "rvm_gemset_create_on_use_flag": 1,
+            "rvm_trust_rvmrcs_flag":         1,
             "group_users": [ "deploy" ]
-          }
+          },
+          "user_installs": [
+            {
+              "user": "deploy",
+              "rvm_project_rvmrc":             1,
+              "rvm_gemset_create_on_use_flag": 1,
+              "rvm_trust_rvmrcs_flag":         1
+            }
+          ]
         },
         "rvm_passenger": {
           "version":     "3.0.12",
