@@ -16,6 +16,7 @@ cookbook 'couchdb'
 cookbook 'sudo'
 cookbook 'emacs'
 cookbook 'java'
+cookbook 'maven'
 
 cookbook 'nodejs',
     :git => 'https://github.com/mdxp/nodejs-cookbook'
