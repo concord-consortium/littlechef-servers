@@ -173,9 +173,15 @@ end
 
 include_recipe "apache2"
 
-web_app "lab-apache2-passenger-webapp" do
+# execute "disable-default-apache2-site" do
+#   command "sudo a2dissite default"
+#   notifies :reload, resources(:service => "apache2"), :delayed
+# end
+
+web_app "lab" do
   cookbook "apache2"
-  server_name "lab.dev.concord.org"
-  server_aliases ["lab.dev.concord.org"]
-  docroot "/var/www/app/public"
+  server_name node['lab-hostname']
+  server_aliases [node['lab-hostname']]
+  docroot "/var/www/app/server/public"
+  enable true
 end
