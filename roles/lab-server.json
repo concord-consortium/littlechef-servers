@@ -8,6 +8,7 @@
         "recipe[sudo]",
         "recipe[git]",
         "recipe[java]",
+        "recipe[maven]",
         "recipe[emacs]",
         "recipe[apache2]",
         "recipe[rvm::system]",
@@ -29,6 +30,9 @@
         },
         "java": {
           "install_flavor": "openjdk"
+        },
+        "maven": {
+          "version": "3"
         },
         "nodejs": {
             "install_method": "package",
