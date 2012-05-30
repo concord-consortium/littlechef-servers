@@ -131,27 +131,27 @@ execute "fix-permissions" do
   COMMAND
 end
 
-cookbook_file "/home/deploy/setup-lab.sh" do
-  source "setup-lab.sh"
-  owner "deploy"
-  group "root"
-  mode "775"
-end
-
-execute "setup-and-build-app" do
-  user "deploy"
-  command <<-COMMAND
-  export HOME=/home/deploy
-  export TERM=vt100
-  export SHELL=/bin/bash
-  export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-  export LANG=en_US.UTF-8
-  export LC_TYPE=en_US.UTF-8
-  cd $HOME
-  source .bash_login
-  ./setup-lab.sh
-  COMMAND
-end
+# cookbook_file "/home/deploy/setup-lab.sh" do
+#   source "setup-lab.sh"
+#   owner "deploy"
+#   group "root"
+#   mode "775"
+# end
+#
+# execute "setup-and-build-app" do
+#   user "deploy"
+#   command <<-COMMAND
+#   export HOME=/home/deploy
+#   export TERM=vt100
+#   export SHELL=/bin/bash
+#   export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
+#   export LANG=en_US.UTF-8
+#   export LC_TYPE=en_US.UTF-8
+#   cd $HOME
+#   source .bash_login
+#   ./setup-lab.sh
+#   COMMAND
+# end
 
 # script "setup-and-build-app" do
 #   user "deploy"
