@@ -1,6 +1,8 @@
 
 # perhaps these should just be put in the runlist instead??
 
+package "python-software-properties"
+
 include_recipe "java"
 
 # java_ark "maven2" do
@@ -11,7 +13,10 @@ include_recipe "java"
 #     action :install
 # end
 
-package "python-software-properties"
+# maven needs this to work if JAVA_HOME isn't defined
+link "/usr/lib/jvm/default-java" do
+  to "/usr/lib/jvm/java-6-openjdk/jre"
+end
 
 # add the node repository here so we can make sure that apt-get update
 # runs correctly
@@ -109,7 +114,7 @@ end
 #   group "root"
 #   mode "644"
 # end
-# 
+#
 # script "update_rvm_settings" do
 #   user "deploy"
 #   interpreter "bash"
@@ -131,13 +136,13 @@ execute "fix-permissions" do
   COMMAND
 end
 
-# cookbook_file "/home/deploy/setup-lab.sh" do
-#   source "setup-lab.sh"
-#   owner "deploy"
-#   group "root"
-#   mode "775"
-# end
-#
+cookbook_file "/home/deploy/.m2/settings.xml" do
+  source "settings.xml"
+  owner "deploy"
+  group "root"
+  mode "775"
+end
+
 # execute "setup-and-build-app" do
 #   user "deploy"
 #   command <<-COMMAND
@@ -184,4 +189,5 @@ web_app "lab" do
   server_aliases [node['lab-hostname']]
   docroot "/var/www/app/server/public"
   enable true
+  notifies :reload, resources(:service => "apache2"), :delayed
 end

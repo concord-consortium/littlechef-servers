@@ -8,7 +8,7 @@
         "recipe[sudo]",
         "recipe[git]",
         "recipe[java]",
-        "recipe[maven]",
+        "recipe[maven::maven3]",
         "recipe[emacs]",
         "recipe[apache2]",
         "recipe[rvm::system]",
