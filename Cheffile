@@ -5,14 +5,13 @@ site 'http://community.opscode.com/api/v1'
 # this is how to set a default source for git
 # git 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
 
-cookbook 'apache2'
 cookbook 'users'
 cookbook 'git'
 cookbook 'apt'
 cookbook 'couchdb'
 cookbook 'sudo'
 
-
+# Thirdparty cookbooks
 cookbook 'nodejs',
     :git => 'https://github.com/mdxp/nodejs-cookbook'
 cookbook 'npm',
@@ -21,6 +20,10 @@ cookbook 'authbind',
     :git => 'https://github.com/realityforge-cookbooks/authbind'
 cookbook 'chef-ruby',
     :git => 'https://github.com/karlfreeman/chef-ruby'
+
+# Concord cookbooks
+cookbook 'apache2', :git => 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
+cookbook 'passenger_apache2', :git => 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
 
 # example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'
