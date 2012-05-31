@@ -19,6 +19,15 @@ link "/usr/lib/jvm/default-java" do
   to "/usr/lib/jvm/java-6-openjdk/jre"
 end
 
+# we need this concord maven provider to resolve
+# some legacy artifacts used by otrunk
+cookbook_file "/home/deploy/.m2/settings.xml" do
+  source "settings.xml"
+  owner "deploy"
+  group "root"
+  mode "664"
+end
+
 # add the node repository here so we can make sure that apt-get update
 # runs correctly
 apt_repository 'node.js' do
@@ -55,7 +64,7 @@ package "npm"
 # include_recipe "authbind"
 
 # I might need to setup a user and group here
-# also this should be pulled out into its own cookbook with a switch 
+# also this should be pulled out into its own cookbook with a switch
 # for source versus package mode just like node.js
 # and of course there might be a chef cookbook that does this already
 # also might need to setup the couchdb service
@@ -97,31 +106,17 @@ service "couchdb" do
   action :start
 end
 
-directory "/usr/local/rvm" do
-  owner "root"
-  group "rvm"
-  mode "0775"
-  action :create
-end
-
 group "rvm" do
   append true
-  members ["deploy"]
+  members ["deploy", "ubuntu"]
 end
 
-# template "/home/deploy/rvm-settings.sh" do
-#   source "rvm-settings.sh"
-#   owner "deploy"
-#   group "root"
-#   mode "644"
-# end
-#
-# script "update_rvm_settings" do
-#   user "deploy"
-#   interpreter "bash"
-#   flags "-l"
-#   code "echo 'source rvm-settings.sh' >> /home/deploy/.bash_login"
-# end
+cookbook_file "/home/deploy/.rvmrc" do
+  source "rvmrc"
+  owner "deploy"
+  group "root"
+  mode "664"
+end
 
 git "/var/www/app" do
   user "deploy"
@@ -133,49 +128,11 @@ execute "fix-permissions" do
   user "deploy"
   command <<-COMMAND
   sudo chown -R deploy:root /var/www/app/*
-  sudo chmod -R og+rw /var/www/app/*
+  sudo chmod -R ug+rw /var/www/app/*
+  sudo chgrp -R deploy /usr/local/rvm/*
+  sudo chmod -R g+w /usr/local/rvm/*
   COMMAND
 end
-
-cookbook_file "/home/deploy/.m2/settings.xml" do
-  source "settings.xml"
-  owner "deploy"
-  group "root"
-  mode "775"
-end
-
-# execute "setup-and-build-app" do
-#   user "deploy"
-#   command <<-COMMAND
-#   export HOME=/home/deploy
-#   export TERM=vt100
-#   export SHELL=/bin/bash
-#   export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games
-#   export LANG=en_US.UTF-8
-#   export LC_TYPE=en_US.UTF-8
-#   cd $HOME
-#   source .bash_login
-#   ./setup-lab.sh
-#   COMMAND
-# end
-
-# script "setup-and-build-app" do
-#   user "deploy"
-#   interpreter "bash"
-#   flags "-l"
-#   environment ({'HOME' => '/var/www/app'})
-#   cwd "/var/www/app"
-#   code <<-EOH
-#   bundle install
-#   cd server
-#   bundle install
-#   cp config/couchdb.sample.yml config/couchdb.ym
-#   cd ..
-#   make clean
-#   make
-#   EOH
-# end
-
 
 include_recipe "apache2"
 

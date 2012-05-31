@@ -1,3 +1,0 @@
-export rvm_project_rvmrc=1
-export rvm_gemset_create_on_use_flag=1
-export rvm_trust_rvmrcs_flag=1

@@ -40,20 +40,7 @@
         },
         "rvm": {
           "default_ruby": "ruby-1.9.3-p194",
-          "rvmc": {
-            "rvm_project_rvmrc":             1,
-            "rvm_gemset_create_on_use_flag": 1,
-            "rvm_trust_rvmrcs_flag":         1,
-            "group_users": [ "deploy" ]
-          },
-          "user_installs": [
-            {
-              "user": "deploy",
-              "rvm_project_rvmrc":             1,
-              "rvm_gemset_create_on_use_flag": 1,
-              "rvm_trust_rvmrcs_flag":         1
-            }
-          ]
+          "group_users": [ "deploy" ]
         },
         "rvm_passenger": {
           "version":     "3.0.12",
