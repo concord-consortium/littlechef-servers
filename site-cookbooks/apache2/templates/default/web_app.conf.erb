@@ -9,6 +9,7 @@
     Order allow,deny
     Allow from all
     AddType application/json .json
+    AddOutputFilterByType DEFLATE text/html text/css application/x-javascript application/javascript text/xml application/json
   </Directory>
 
   LogLevel info
