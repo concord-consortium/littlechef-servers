@@ -2,6 +2,7 @@
 # perhaps these should just be put in the runlist instead??
 
 package "python-software-properties"
+package "tree"
 
 include_recipe "java"
 
