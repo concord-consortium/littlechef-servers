@@ -1,0 +1,14 @@
+{
+    "name": "base-ruby-1_9_3",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[base-ruby-box]"
+    ],
+    "default_attributes": {
+        "ruby": {
+            "version": "1.9.3-p194"
+        }
+    },
+    "override_attributes": {}
+}

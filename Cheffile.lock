@@ -32,6 +32,15 @@ GIT
     build-essential (0.7.0)
 
 GIT
+  remote: https://github.com/karlfreeman/chef-ruby
+  ref: master
+  sha: c6840ded6a4a033264555fc78dffb81dee066852
+  specs:
+    chef-ruby (1.0.0)
+      apt (>= 0.0.0)
+      build-essential (>= 0.0.0)
+
+GIT
   remote: https://github.com/mdxp/nodejs-cookbook
   ref: master
   sha: af27e223295869cde9de7c2840dd5abea2127ece
@@ -50,6 +59,7 @@ DEPENDENCIES
   apache2 (>= 0)
   apt (>= 0)
   authbind (>= 0)
+  chef-ruby (>= 0)
   couchdb (>= 0)
   git (>= 0)
   nodejs (>= 0)

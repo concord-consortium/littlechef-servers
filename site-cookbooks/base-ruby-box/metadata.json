@@ -1,0 +1,9 @@
+{
+  "name": "base-ruby-box",
+  "platforms": {
+    "ubuntu": ">= 10.0.0"
+  },
+  "recipes": {
+    "base-ruby-box": "setup initial ruby box"
+  }
+}
