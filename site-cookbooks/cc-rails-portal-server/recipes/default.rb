@@ -32,6 +32,11 @@ directory "/web/portal" do
   recursive true
 end
 
+execute "restart webapp" do
+  command "touch /web/portal/current/tmp/restart.txt"
+  action :nothing
+end
+
 # it isn't clear if this is really needed given the deploy step below
 cap_setup "/web/portal"
 
@@ -58,8 +63,10 @@ deploy "/web/portal" do
     "rinet_data" => "rinet_data",
     "system" => "public/system"
   })
+  # only deploy once after that capistrano should be used this might need to be 
+  # revisited handle cases where this resource definition changes itself
   not_if do
-    File.exists?(File.join("/web/portal", "skip-provisioning"))
+    File.exists?("/web/portal/current/Gemfile")
   end
 end
 
@@ -81,7 +88,9 @@ end
 execute "setup-portal-settings" do
   user "deploy"
   cwd "/web/portal/current"
-  # note the username and password here don't mater because we are pre-creating the database.yml file
+  # note the username and password here don't mater because we are changing the database.yml file
+  # however this could be improved since we do want the settings file to be updated but this
+  # really shouldn't change the database file. currently the -f option tells it to change both
   command "bundle exec ruby config/setup.rb -n 'Cross Project Portal' -D xproject " +
           "-u 'awsuser' -p 'password' -t xproject -y -q -f --states=none"
   not_if do
@@ -93,24 +102,37 @@ end
 template "/web/portal/shared/config/database.yml" do
   source "database.yml.erb"
   owner "deploy"
+  notifies :run, "execute[restart webapp]"
 end
 
+# override the mailer settings
+template "/web/portal/shared/config/mailer.yml" do
+  source "mailer.yml.erb"
+  owner "deploy"
+  notifies :run, "execute[restart webapp]"
+end
+
+# this also should be only be done once to and after that capistrano should
+# handle it, however it isn't easy to tell if this has been run before
 execute "initialize-cc-rails-app-database" do
   user "deploy"
   cwd "/web/portal/current"
   environment ({'RAILS_ENV' => node[:rails][:environment]})
-  command "bundle exec rake db:migrate:reset"
+  command "bundle exec rake db:migrate"
+  notifies :run, "execute[restart webapp]"
   not_if do
     File.exists?(File.join("/web/portal", "skip-provisioning"))
   end
 end
 
 # run rake setup task
+# it isn't clear what the best way to decide to run or not run this task is
 execute "portal-setup" do
   user "deploy"
   cwd "/web/portal/current"
   environment ({'RAILS_ENV' => node[:rails][:environment]})
   command "yes | bundle exec rake app:setup:new_app"
+  notifies :run, "execute[restart webapp]"
   not_if do
     File.exists?(File.join("/web/portal/current", "skip-provisioning"))
   end

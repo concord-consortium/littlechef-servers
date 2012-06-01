@@ -1,0 +1,9 @@
+= Notes about setting a cc-rails-portal-server
+
+Currently the cc-rails-portal-server uses an AWS RDS database
+This is hardcoded in the templates of this cookbook.
+
+It also uses an AWS SES smtp setup. The credentials for this are
+pulled from variables somewhere...
+talk to Scott to get them if you need them.
+We currently only have the ability to send to concord.org email addresses through AWS SES.
