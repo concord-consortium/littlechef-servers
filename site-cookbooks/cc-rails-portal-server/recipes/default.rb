@@ -98,6 +98,33 @@ execute "setup-portal-settings" do
   end
 end
 
+template "/web/portal/shared/config/initializers/site_keys.rb" do
+  source "site_keys.rb.erb"
+  owner "deploy"
+
+  # we are going to be doing this bit a lot so it should be pulled out
+  site_names = data_bag('sites')
+  if ( node[:cc_rails_portal] && site_name = node[:cc_rails_portal][:site_name] &&
+    site_names.include?(site_name) )
+    site_item = data_bag_item('sites', site_name) 
+  end
+
+  if site_item.nil? && site_names.include?('default')
+    site_item = data_bag_item('sites', 'default')
+  end
+
+  if site_item
+    site_key = site_item["site_key"]
+  else
+    site_key = "couldnt find a secret site_key"
+  end
+    
+  variables(
+    :site_key => site_key
+  )
+  notifies :run, "execute[restart webapp]"
+end
+
 # override the database settings
 template "/web/portal/shared/config/database.yml" do
   source "database.yml.erb"
