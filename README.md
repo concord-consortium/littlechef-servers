@@ -22,6 +22,10 @@ Mine looks like this
 	  User ubuntu
 	  IdentityFile /Users/scytacki/Development/ec2/genigames.pem
 
+This repository uses a submodule for the data_bags folder. It is a private repository named: chef-databags. If you are permitted to access this repository run this command
+
+    git submodule update --init
+
 ### Setup a new lab.server
 
 1.  Spin up an ubuntu lucid server (could be AWS or could be elsewhere)
