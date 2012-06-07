@@ -19,7 +19,7 @@ cookbook 'npm',
 cookbook 'authbind', 
     :git => 'https://github.com/realityforge-cookbooks/authbind'
 cookbook 'chef-ruby',
-    :git => 'https://github.com/karlfreeman/chef-ruby'
+    :git => 'https://github.com/concord-consortium/chef-ruby', :ref => 'libreadline'
 
 # Concord cookbooks
 cookbook 'apache2', :git => 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
