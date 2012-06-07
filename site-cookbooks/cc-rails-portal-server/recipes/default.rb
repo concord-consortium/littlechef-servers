@@ -109,6 +109,9 @@ end
 template "/web/portal/shared/config/mailer.yml" do
   source "mailer.yml.erb"
   owner "deploy"
+  variables(
+    :credentials => data_bag_item('credentials', 'smtp')
+  )
   notifies :run, "execute[restart webapp]"
 end
 
