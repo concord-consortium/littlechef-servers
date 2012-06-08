@@ -104,7 +104,7 @@ template "/web/portal/shared/config/initializers/site_keys.rb" do
 
   # we are going to be doing this bit a lot so it should be pulled out
   site_names = data_bag('sites')
-  if ( node[:cc_rails_portal] && site_name = node[:cc_rails_portal][:site_name] &&
+  if ( node[:cc_rails_portal] && (site_name = node[:cc_rails_portal][:site_name]) &&
     site_names.include?(site_name) )
     site_item = data_bag_item('sites', site_name) 
   end
