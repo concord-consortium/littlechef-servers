@@ -76,7 +76,7 @@ end
 # a user can be set on the deploy resource above, so then this might not be necessary
 execute "chown -R deploy /web/portal"
 
-# this is really slow and happens every time because the deploy happens everytime
+# this is slow and happens every time because the deploy happens everytime
 script 'Bundling the gems' do
   interpreter 'bash'
   user "deploy"
@@ -88,17 +88,10 @@ script 'Bundling the gems' do
   EOS
 end
 
-execute "setup-portal-settings" do
-  user "deploy"
-  cwd "/web/portal/current"
-  # note the username and password here don't mater because we are changing the database.yml file
-  # however this could be improved since we do want the settings file to be updated but this
-  # really shouldn't change the database file. currently the -f option tells it to change both
-  command "bundle exec ruby config/setup.rb -n 'Cross Project Portal' -D xproject " +
-          "-u 'awsuser' -p 'password' -t xproject -y -q -f --states=none"
-  not_if do
-    File.exists?(File.join("/web/portal", "skip-provisioning"))
-  end
+template "/web/portal/shared/config/settings.yml" do
+  source "settings.yml.erb"
+  owner "deploy"
+  notifies :run, "execute[restart webapp]"
 end
 
 template "/web/portal/shared/config/initializers/site_keys.rb" do
