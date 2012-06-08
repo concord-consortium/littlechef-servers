@@ -1,0 +1,15 @@
+{
+    "name": "xproject32-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails_portal": {
+            "site_name": "xproject32"
+        }        
+    }
+}
