@@ -32,6 +32,9 @@ directory "/web/portal" do
   recursive true
 end
 
+# make a place to store files indicating a step was completed
+directory "/web/portal/completed"
+
 execute "restart webapp" do
   command "touch /web/portal/current/tmp/restart.txt"
   action :nothing
@@ -148,10 +151,10 @@ execute "initialize-cc-rails-app-database" do
   user "deploy"
   cwd "/web/portal/current"
   environment ({'RAILS_ENV' => node[:rails][:environment]})
-  command "bundle exec rake db:migrate"
+  command "bundle exec rake db:migrate && touch /web/portal/completed/initial-db-migrate"
   notifies :run, "execute[restart webapp]"
   not_if do
-    File.exists?(File.join("/web/portal", "skip-provisioning"))
+    File.exists?("/web/portal/completed/initial-db-migrate")
   end
 end
 
@@ -161,9 +164,9 @@ execute "portal-setup" do
   user "deploy"
   cwd "/web/portal/current"
   environment ({'RAILS_ENV' => node[:rails][:environment]})
-  command "yes | bundle exec rake app:setup:new_app"
+  command "yes | bundle exec rake app:setup:new_app && touch /web/portal/completed/portal-setup"
   notifies :run, "execute[restart webapp]"
   not_if do
-    File.exists?(File.join("/web/portal/current", "skip-provisioning"))
+    File.exists?("/web/portal/completed/portal-setup")
   end
 end
