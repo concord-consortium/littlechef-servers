@@ -125,6 +125,10 @@ cookbook_file "/home/deploy/.bash_login" do
   mode "664"
 end
 
+execute "enable the locate database" do
+  command "sudo updatedb"
+end
+
 git "/var/www/app" do
   user "deploy"
   group "root"
