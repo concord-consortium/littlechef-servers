@@ -6,17 +6,9 @@ package "tree"
 
 include_recipe "java"
 
-# java_ark "maven2" do
-#     url "http://www.apache.org/dist/maven/binaries/apache-maven-2.2.1-bin.tar.gz"
-#     checksum  "b9a36559486a862abfc7fb2064fd1429f20333caae95ac51215d06d72c02d376"
-#     app_home "/usr/local/maven/default"
-#     bin_cmds ["mvn"]
-#     action :install
-# end
-
 # maven needs this to work if JAVA_HOME isn't defined
 link "/usr/lib/jvm/default-java" do
-  to "/usr/lib/jvm/java-6-openjdk/jre"
+  to "/usr/lib/jvm/java-6-openjdk-amd64/jre"
 end
 
 # we need this concord maven provider to resolve
