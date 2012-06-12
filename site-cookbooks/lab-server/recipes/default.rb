@@ -114,7 +114,14 @@ end
 cookbook_file "/home/deploy/.rvmrc" do
   source "rvmrc"
   owner "deploy"
-  group "root"
+  group "deploy"
+  mode "664"
+end
+
+cookbook_file "/home/deploy/.bash_login" do
+  source "dot_bash_login"
+  owner "deploy"
+  group "deploy"
   mode "664"
 end
 
