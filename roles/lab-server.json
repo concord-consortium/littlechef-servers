@@ -20,7 +20,8 @@
             "sudo": {
                 "passwordless": true,
                 "users": [
-                    "ubuntu"
+                    "ubuntu",
+                    "deploy"
                 ],
                 "groups": [
                     "sysadmin",
