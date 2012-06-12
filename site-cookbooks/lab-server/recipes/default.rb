@@ -21,6 +21,14 @@ end
 
 # we need this concord maven provider to resolve
 # some legacy artifacts used by otrunk
+
+directory "/home/deploy/.m2" do
+  owner "deploy"
+  group "root"
+  mode "0755"
+  action :create
+end
+
 cookbook_file "/home/deploy/.m2/settings.xml" do
   source "settings.xml"
   owner "deploy"
