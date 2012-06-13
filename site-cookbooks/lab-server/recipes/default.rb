@@ -6,11 +6,6 @@ package "tree"
 
 include_recipe "java"
 
-# maven needs this to work if JAVA_HOME isn't defined
-link "/usr/lib/jvm/default-java" do
-  to "/usr/lib/jvm/java-6-openjdk-amd64/jre"
-end
-
 # we need this concord maven provider to resolve
 # some legacy artifacts used by otrunk
 
@@ -146,6 +141,12 @@ execute "fix-permissions" do
 end
 
 include_recipe "apache2"
+
+# # maven needs this to work if JAVA_HOME isn't defined
+# link "/usr/lib/jvm/default-java" do
+#   to "/usr/lib/jvm/java-6-openjdk-amd64/jre"
+# end
+# 
 
 # execute "disable-default-apache2-site" do
 #   command "sudo a2dissite default"
