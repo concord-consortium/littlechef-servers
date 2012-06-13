@@ -12,7 +12,6 @@ SITE
     git (0.10.0)
       runit (>= 0.0.0)
       yum (>= 0.0.0)
-    java (1.5.0)
     maven (0.2.0)
       java (>= 0.0.0)
     nginx (0.101.2)
@@ -66,6 +65,13 @@ GIT
   specs:
     nodejs (1.0.0)
       build-essential (>= 0.0.0)
+
+GIT
+  remote: https://github.com/opscode-cookbooks/java
+  ref: master
+  sha: 4817ba148e0e9adba7920764aa0b43628ea3573e
+  specs:
+    java (1.5.1)
 
 GIT
   remote: https://github.com/realityforge-cookbooks/authbind
