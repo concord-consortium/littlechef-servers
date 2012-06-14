@@ -1,7 +1,0 @@
-{
-  "ipaddress": "107.20.151.18",
-  "lab-hostname": "lab2.dev.concord.org",
-  "run_list": [
-    "role[lab-server]"
-  ]
-}
