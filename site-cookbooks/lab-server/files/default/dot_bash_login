@@ -1,0 +1,18 @@
+#!/bin/bash
+
+PS1="[\W \$(/usr/local/rvm/bin/rvm-prompt)\$(__git_ps1 ' (%s)')]\$ "
+
+# grep for a process
+function psg {
+  FIRST=`echo $1 | sed -e 's/^\(.\).*/\1/'`
+  REST=`echo $1 | sed -e 's/^.\(.*\)/\1/'`
+  ps aux | grep "[$FIRST]$REST"
+}
+
+export EDITOR=/usr/bin/emacs
+export MAVEN_OPTS=-Xmx1024m
+
+source /etc/bash_completion.d/git
+
+cd /var/www/app
+
