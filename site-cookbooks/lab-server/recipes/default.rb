@@ -128,6 +128,7 @@ git "/var/www/app" do
   user "deploy"
   group "root"
   repository "git://github.com/concord-consortium/lab.git"
+  action :sync
 end
 
 execute "fix-permissions" do
