@@ -29,27 +29,51 @@ web_app "portal" do
 end
 
 directory "/web/portal" do
+  owner "deploy"
   recursive true
 end
 
 # make a place to store files indicating a step was completed
-directory "/web/portal/completed"
+directory "/web/portal/completed" do
+  owner "deploy"
+end
 
 execute "restart webapp" do
   command "touch /web/portal/current/tmp/restart.txt"
   action :nothing
 end
 
-# it isn't clear if this is really needed given the deploy step below
-cap_setup "/web/portal"
-
 deploy "/web/portal" do
+  user "deploy"
   repo "git://github.com/concord-consortium/rigse.git"
   branch "rails3.2"
   enable_submodules true
   migrate false
   action :deploy
   restart_command "touch tmp/restart.txt"
+  before_migrate do
+    my_shared_path = new_resource.shared_path
+
+    %w{ config
+       config/nces_data
+       config/initializers
+       log
+       pids
+       public
+       public/otrunk-examples
+       public/sparks-content
+       public/installers
+       rinet_data
+       system
+       system/attachments
+    }.each do |dir|
+      directory "#{my_shared_path}/#{dir}" do
+        owner "deploy"
+        mode 0775
+      end
+    end
+  end
+
   symlink_before_migrate({
     "config/database.yml" => "config/database.yml",
     "config/settings.yml" => "config/settings.yml",
@@ -58,7 +82,6 @@ deploy "/web/portal" do
     "config/rinet_data.yml" => "config/rinet_data.yml",
     "config/newrelic.yml" => "config/newrelic.yml",
     "config/initializers/site_keys.rb" => "config/initializers/site_keys.rb",
-    "config/initializers/subdirectory.rb" => "config/initializers/subdirectory.rb",
     "public/otrunk-examples" => "public/otrunk-examples",
     "public/sparks-content" => "public/sparks-content",
     "public/installers" => "public/installers",
@@ -72,9 +95,6 @@ deploy "/web/portal" do
     File.exists?("/web/portal/current/Gemfile")
   end
 end
-
-# a user can be set on the deploy resource above, so then this might not be necessary
-execute "chown -R deploy /web/portal"
 
 # this is slow and happens every time because the deploy happens everytime
 script 'Bundling the gems' do
