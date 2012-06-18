@@ -23,6 +23,7 @@ docroot = "/web/portal/current/public"
 
 directory "/web/portal" do
   recursive true
+  owner "deploy"
 end
 
 if node[:cc_rails_portal][:base_uri] != "/"

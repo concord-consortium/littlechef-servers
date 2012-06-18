@@ -1,1 +1,2 @@
-default[:cc_rails_portal][:db] = "seymour.concord.org"
+default[:cc_rails_portal][:db] = "xproject"
+default[:cc_rails_portal][:base_uri] = "/"
