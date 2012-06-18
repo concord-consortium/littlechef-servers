@@ -1,0 +1,45 @@
+{
+    "name": "genigames-ungamed-server",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[base-ruby-box]",
+        "recipe[geniverse::static]",
+        "recipe[geniverse::database]",
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {
+        "ruby": {
+            "version": "1.9.3-p194"
+        }
+    },
+    "override_attributes": {
+      "cc_rails_portal": {
+        "site_name": "GeniGames",
+        "server_name": "ungamed-portal.genigames.concord.org",
+        "base_uri": "/portal",
+        "db": "genigames-ungamed-portal"
+      },
+      "passenger": {
+          "version": "3.0.12",
+          "root_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12",
+          "module_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12/ext/apache2/mod_passenger.so"
+      },
+      "geniverse": {
+        "proxy": {
+          "resources_host": "resources.genigames.concord.org",
+          "gwt_host": "gwt.genigames.concord.org",
+          "database_host": "ungamed-rails.genigames.concord.org",
+          "portal_host": "ungamed-portal.genigames.concord.org"
+        },
+        "static": {
+          "server_name": "ungamed.genigames.concord.org"
+        },
+        "database": {
+          "server_name": "ungamed-rails.genigames.concord.org",
+          "branch": "ungamed",
+          "db": "genigames-ungamed-rails"
+        }
+      }
+    }
+}

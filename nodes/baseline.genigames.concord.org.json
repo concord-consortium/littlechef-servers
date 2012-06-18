@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.122.233.34",
+    "run_list": [
+        "role[genigames-baseline-server]"
+    ]
+}

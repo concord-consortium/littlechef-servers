@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.122.118.59",
+    "run_list": [
+        "role[genigames-ungamed-server]"
+    ]
+}
