@@ -10,6 +10,7 @@ cookbook 'git'
 cookbook 'apt'
 cookbook 'couchdb'
 cookbook 'sudo'
+cookbook 'tomcat'
 
 # Thirdparty cookbooks
 cookbook 'nodejs',

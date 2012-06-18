@@ -19,17 +19,36 @@ include_recipe "apache2::disable_default_site"
 #   comment "rails apps user"
 # end
 
-web_app "portal" do
-  cookbook "cc-rails-portal-server"
-  template "rails_app.conf.erb"
-  docroot "/web/portal/current/public"
-  rails_env node[:rails][:environment]
-  rails_base_uri "/"
-  notifies :reload, resources(:service => "apache2"), :delayed
-end
+docroot = "/web/portal/current/public"
 
 directory "/web/portal" do
   recursive true
+end
+
+if node[:cc_rails_portal][:base_uri] != "/"
+  docroot = "/web/portal/static"
+
+  # trim the final "/foo" from the path, so we get the parent path
+  base_parent = node[:cc_rails_portal][:base_uri].sub(/\/$/, '').sub(/\/[^\/]*$/,'')
+
+  directory "/web/portal/static#{base_parent}" do
+    recursive true
+  end
+
+  link "/web/portal/static#{node[:cc_rails_portal][:base_uri]}" do
+    to "/web/portal/current/public"
+  end
+end
+
+web_app "portal" do
+  cookbook "cc-rails-portal-server"
+  template "rails_app.conf.erb"
+  server_name node[:cc_rails_portal][:server_name]
+  server_aliases node[:cc_rails_portal][:server_aliases]
+  docroot docroot
+  rails_env node[:rails][:environment]
+  rails_base_uri node[:cc_rails_portal][:base_uri]
+  notifies :reload, resources(:service => "apache2"), :delayed
 end
 
 # make a place to store files indicating a step was completed
@@ -125,6 +144,9 @@ end
 template "/web/portal/shared/config/database.yml" do
   source "database.yml.erb"
   owner "deploy"
+  variables(
+    :db => data_bag_item('databases', node[:cc_rails_portal][:db])
+  )
   notifies :run, "execute[restart webapp]"
 end
 

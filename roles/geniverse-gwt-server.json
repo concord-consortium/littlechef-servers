@@ -1,0 +1,29 @@
+{
+    "name": "geniverse-gwt-server",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[users::sysadmins]",
+        "recipe[sudo]",
+        "recipe[git]",
+        "recipe[geniverse::gwt]"
+    ],
+    "default_attributes": {
+        "ruby": {
+            "version": "1.9.3-p194"
+        },
+        "authorization": {
+            "sudo": {
+                "passwordless": true,
+                "users": [
+                    "ubuntu"
+                ],
+                "groups": [
+                    "sysadmin",
+                    "admin"
+                ]
+            }
+        }
+    },
+    "override_attributes": {}
+}
