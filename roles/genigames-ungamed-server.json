@@ -28,7 +28,7 @@
       "geniverse": {
         "proxy": {
           "resources_host": "resources.genigames.concord.org",
-          "gwt_host": "gwt.genigames.concord.org",
+          "gwt_host": "gwt.genigames.concord.org:8080",
           "database_host": "ungamed-rails.genigames.concord.org",
           "portal_host": "ungamed-portal.genigames.concord.org"
         },
