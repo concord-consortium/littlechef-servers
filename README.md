@@ -80,6 +80,11 @@ Add a folder to the site-cookbooks folder. The folder needs the standard Chef co
 
 ### TODO
 
+When starting without ruby installed passenger doesn't install correctly because it is using the an ohai 
+key for the location of ruby: :languages/ruby/ruby_bin, and that won't be configured correctly unless chef
+is restarted. A couple of options are to make that be more dynamic, switch to rvm_passenger setup, or change the 
+bootstrap scripts to build ruby from source
+
 Improve the Indentify file managment. If we are going to use a single kitchen for all of our servers then we'll probably
 want to have several pem files, and then all the developers would need to manage the mapping of all of those files.
 
