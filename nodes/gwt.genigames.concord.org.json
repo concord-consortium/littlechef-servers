@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.122.195.55",
+    "run_list": [
+        "role[geniverse-gwt-server]"
+    ]
+}
