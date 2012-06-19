@@ -20,5 +20,6 @@ to. I think there is a bug in littlechefs precedence implementation.
 - rinet-data? I think this is synced so without a backup the sync could be slow, there might be more dragons here
 - sparks-content? I think this a checkout from github so it doesn't need to be backedup
 - system? I think this mostly the rails cache files
+- otrunk-examples? think there is a task to populate this
 
 
