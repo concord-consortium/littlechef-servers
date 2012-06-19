@@ -23,6 +23,7 @@ docroot = "/web/portal/current/public"
 
 directory "/web/portal" do
   recursive true
+  owner "deploy"
 end
 
 if node[:cc_rails_portal][:base_uri] != "/"
@@ -52,48 +53,72 @@ web_app "portal" do
 end
 
 # make a place to store files indicating a step was completed
-directory "/web/portal/completed"
+directory "/web/portal/completed" do
+  owner "deploy"
+end
 
 execute "restart webapp" do
   command "touch /web/portal/current/tmp/restart.txt"
   action :nothing
 end
 
-# it isn't clear if this is really needed given the deploy step below
-cap_setup "/web/portal"
+# directories in the shared folder which are not linked but have links inside of them
+base_shared_folders = %w{
+  config
+  config/initializers
+  public
+}
+
+# folders in the shared folder and the links to them in the current release
+shared_folders = {
+  "config/nces_data" => "config/nces_data",
+  "log" => "log",
+  "public/otrunk-examples" => "public/otrunk-examples",
+  "public/sparks-content" => "public/sparks-content",
+  "public/installers" => "public/installers",
+  "rinet_data" => "rinet_data",
+  "system" => "public/system",
+  "pids" => "tmp/pids"
+}
+
+# files in the shared folder that are linked in the current release
+shared_files = {
+  "config/database.yml" => "config/database.yml",
+  "config/installer.yml" => "config/installer.yml",
+  "config/mailer.yml" => "config/mailer.yml",
+  "config/newrelic.yml" => "config/newrelic.yml",
+  "config/settings.yml" => "config/settings.yml",
+  "config/rinet_data.yml" => "config/rinet_data.yml",
+  "config/initializers/site_keys.rb" => "config/initializers/site_keys.rb"
+}
 
 deploy "/web/portal" do
+  user "deploy"
   repo "git://github.com/concord-consortium/rigse.git"
   branch node[:cc_rails_portal][:branch]
   enable_submodules true
   migrate false
   action :deploy
   restart_command "touch tmp/restart.txt"
-  symlink_before_migrate({
-    "config/database.yml" => "config/database.yml",
-    "config/settings.yml" => "config/settings.yml",
-    "config/installer.yml" => "config/installer.yml",
-    "config/mailer.yml" => "config/mailer.yml",
-    "config/rinet_data.yml" => "config/rinet_data.yml",
-    "config/newrelic.yml" => "config/newrelic.yml",
-    "config/initializers/site_keys.rb" => "config/initializers/site_keys.rb",
-    "config/initializers/subdirectory.rb" => "config/initializers/subdirectory.rb",
-    "public/otrunk-examples" => "public/otrunk-examples",
-    "public/sparks-content" => "public/sparks-content",
-    "public/installers" => "public/installers",
-    "config/nces_data" => "config/nces_data",
-    "rinet_data" => "rinet_data",
-    "system" => "public/system"
-  })
+  before_symlink do
+    my_shared_path = new_resource.shared_path
+
+    (base_shared_folders + shared_folders.keys).each do |dir|
+      directory "#{my_shared_path}/#{dir}" do
+        owner "deploy"
+        mode 0775
+      end
+    end
+  end
+
+  symlinks shared_folders.merge(shared_files)
+
   # only deploy once after that capistrano should be used this might need to be 
   # revisited handle cases where this resource definition changes itself
   not_if do
     File.exists?("/web/portal/current/Gemfile")
   end
 end
-
-# a user can be set on the deploy resource above, so then this might not be necessary
-execute "chown -R deploy /web/portal"
 
 # this is slow and happens every time because the deploy happens everytime
 script 'Bundling the gems' do

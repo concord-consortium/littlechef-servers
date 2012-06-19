@@ -10,3 +10,16 @@ We currently only have the ability to send to concord.org email addresses throug
 
 It currently is using override_attributes in rails-portal-server role but it seems like it shouldn't need
 to. I think there is a bug in littlechefs precedence implementation.
+
+= Things to backup
+
+- built installers
+- uploaded resources
+- log? if we don't back this up it could be hard to track down problems after a crash
+- nces_data? I think this is downloaded and used once so it probably doesn't need to be backed up
+- rinet-data? I think this is synced so without a backup the sync could be slow, there might be more dragons here
+- sparks-content? I think this a checkout from github so it doesn't need to be backedup
+- system? I think this mostly the rails cache files
+- otrunk-examples? think there is a task to populate this
+
+
