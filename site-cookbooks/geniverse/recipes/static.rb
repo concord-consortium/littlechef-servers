@@ -1,3 +1,7 @@
+include_recipe "php"
+include_recipe "php::module_mysql"
+include_recipe "php::module_gd"
+include_recipe "apache2::mod_php5"
 include_recipe "apache2::mod_proxy"
 include_recipe "apache2::mod_proxy_http"
 
@@ -20,8 +24,10 @@ end
 
 web_app "geniverse-static" do
   server_name node[:geniverse][:static][:server_name]
-  cookbook "apache2"
+  cookbook "geniverse"
+  template "web_app.conf.erb"
   docroot node[:geniverse][:static][:docroot]
+  docroot_allow_override "All"
   is_default true
   proxies proxy_list
 end

@@ -1,0 +1,67 @@
+<VirtualHost *:80>
+  <% if @params[:server_name] %>
+  ServerName <%= @params[:server_name] %>
+  <% end %>
+
+  <% if @params[:server_aliases] && @params[:server_aliases].size > 0 %>
+  ServerAlias <% @params[:server_aliases].each do |a| %><%= "#{a}" %> <% end %>
+  <% end %>
+  DocumentRoot <%= @params[:docroot] %>
+  
+  <Directory <%= @params[:docroot] %>>
+    Options FollowSymLinks
+    AllowOverride <%= @params[:docroot_allow_override] || "None" %>
+    Order allow,deny
+    Allow from all
+  </Directory>
+  
+  <Directory />
+    Options FollowSymLinks
+    AllowOverride None
+  </Directory>
+
+  <Location /server-status>
+    SetHandler server-status
+
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+  </Location>
+
+  LogLevel info
+  ErrorLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
+  CustomLog <%= node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
+
+  RewriteEngine On
+  RewriteLog <%= node[:apache][:log_dir] %>/<%= @application_name %>-rewrite.log
+  RewriteLogLevel 0
+
+  <% if @params[:server_name] %>
+  # Canonical host, <%= @params[:server_name] %>
+  RewriteCond %{HTTP_HOST}   !^<%= @params[:server_name] %> [NC]
+  RewriteCond %{HTTP_HOST}   !^$
+  RewriteRule ^/(.*)$        http://<%= @params[:server_name] %>/$1 [L,R=301]
+  <% end %>
+
+  RewriteCond %{DOCUMENT_ROOT}/system/maintenance.html -f
+  RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+  RewriteRule ^.*$ /system/maintenance.html [L]
+
+  <% if @params[:proxies] %>
+    <% @params[:proxies].each do |proxy| %>
+  <Proxy <%= proxy[:remote] %>*>
+    Order allow,deny
+    Allow from all
+    Deny from none
+  </Proxy>
+
+  ProxyPass        <%= proxy[:path] %>  <%= proxy[:remote] %>
+  ProxyPassReverse <%= proxy[:path] %>  <%= proxy[:remote] %>
+
+    <% end %>
+  <% end %>
+
+  <% if @params[:extra_config] %>
+    <%= @params[:extra_config] %>
+  <% end %>
+</VirtualHost>

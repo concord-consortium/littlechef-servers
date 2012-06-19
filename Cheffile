@@ -11,6 +11,7 @@ cookbook 'apt'
 cookbook 'couchdb'
 cookbook 'sudo'
 cookbook 'tomcat'
+cookbook 'php'
 
 # Thirdparty cookbooks
 cookbook 'nodejs',
