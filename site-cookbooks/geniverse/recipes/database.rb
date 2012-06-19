@@ -44,6 +44,10 @@ link "/web/database/static/rails" do
   to "/web/database/current/public"
 end
 
+directory "/web/database/current/tmp" do
+  owner "deploy"
+end
+
 execute "restart webapp" do
   command "touch /web/database/current/tmp/restart.txt"
   action :nothing
