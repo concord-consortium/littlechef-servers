@@ -64,7 +64,7 @@ cap_setup "/web/portal"
 
 deploy "/web/portal" do
   repo "git://github.com/concord-consortium/rigse.git"
-  branch "rails3.2"
+  branch node[:cc_rails_portal][:branch]
   enable_submodules true
   migrate false
   action :deploy
