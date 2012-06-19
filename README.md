@@ -87,3 +87,12 @@ Fix the way nodejs is installing the apt repository so we don't need to run apt-
 
 Separate out the couchdb from package installation code into its own recipe, look around for other couch
 cookbooks to see if anyone wants this as an option.
+
+Make base image that contains the parts that are common when spinning up a new instance or testing code. This ought to 
+contain:
+
+- chef-solo
+- ruby 1.9.3
+- apache
+- passenger
+- git
