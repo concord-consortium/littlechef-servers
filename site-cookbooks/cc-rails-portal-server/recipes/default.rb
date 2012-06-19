@@ -19,25 +19,27 @@ include_recipe "apache2::disable_default_site"
 #   comment "rails apps user"
 # end
 
-docroot = "/web/portal/current/public"
+approot = "/web/portal"
+appshared = "#{approot}/shared"
+docroot = "#{approot}/current/public"
 
-directory "/web/portal" do
+directory "#{approot}" do
   recursive true
   owner "deploy"
 end
 
 if node[:cc_rails_portal][:base_uri] != "/"
-  docroot = "/web/portal/static"
+  docroot = "#{approot}/static"
 
   # trim the final "/foo" from the path, so we get the parent path
   base_parent = node[:cc_rails_portal][:base_uri].sub(/\/$/, '').sub(/\/[^\/]*$/,'')
 
-  directory "/web/portal/static#{base_parent}" do
+  directory "#{approot}/static#{base_parent}" do
     recursive true
   end
 
-  link "/web/portal/static#{node[:cc_rails_portal][:base_uri]}" do
-    to "/web/portal/current/public"
+  link "#{approot}/static#{node[:cc_rails_portal][:base_uri]}" do
+    to "#{approot}/current/public"
   end
 end
 
@@ -53,11 +55,11 @@ web_app "portal" do
 end
 
 execute "restart webapp" do
-  command "touch /web/portal/current/tmp/restart.txt"
+  command "touch #{approot}/current/tmp/restart.txt"
   action :nothing
 end
 
-directory "/web/portal/shared" do
+directory "#{appshared}" do
   owner "deploy"
 end
 
@@ -67,19 +69,19 @@ end
   config/initializers
   public
 }.each do |dir|
-  directory "/web/portal/shared/#{dir}" do
+  directory "#{appshared}/#{dir}" do
     owner "deploy"
     mode 0775
   end
 end
 
-template "/web/portal/shared/config/settings.yml" do
+template "#{appshared}/config/settings.yml" do
   source "settings.yml.erb"
   owner "deploy"
   notifies :run, "execute[restart webapp]"
 end
 
-template "/web/portal/shared/config/initializers/site_keys.rb" do
+template "#{appshared}/config/initializers/site_keys.rb" do
   source "site_keys.rb.erb"
   owner "deploy"
 
@@ -107,7 +109,7 @@ template "/web/portal/shared/config/initializers/site_keys.rb" do
 end
 
 # override the database settings
-template "/web/portal/shared/config/database.yml" do
+template "#{appshared}/config/database.yml" do
   source "database.yml.erb"
   owner "deploy"
   variables(
@@ -117,7 +119,7 @@ template "/web/portal/shared/config/database.yml" do
 end
 
 # override the mailer settings
-template "/web/portal/shared/config/mailer.yml" do
+template "#{appshared}/config/mailer.yml" do
   source "mailer.yml.erb"
   owner "deploy"
   variables(
@@ -156,7 +158,7 @@ shared_files = {
   "config/initializers/site_keys.rb" => "config/initializers/site_keys.rb"
 }
 
-deploy "/web/portal" do
+deploy "#{approot}" do
   user "deploy"
   repo "git://github.com/concord-consortium/rigse.git"
   branch "rails3.2"
@@ -180,7 +182,7 @@ deploy "/web/portal" do
   # only deploy once after that capistrano should be used this might need to be 
   # revisited handle cases where this resource definition changes itself
   not_if do
-    File.exists?("/web/portal/current/Gemfile")
+    File.exists?("#{approot}/current/Gemfile")
   end
 end
 
@@ -188,7 +190,7 @@ end
 script 'Bundling the gems' do
   interpreter 'bash'
   user "deploy"
-  cwd "/web/portal/current"
+  cwd "#{approot}/current"
   path ['/usr/local/bin','/usr/bin']
   code <<-EOS
     bundle install --quiet --deployment --path config/bundle \
@@ -197,7 +199,7 @@ script 'Bundling the gems' do
 end
 
 # make a place to store files indicating a step was completed
-directory "/web/portal/completed" do
+directory "#{approot}/completed" do
   owner "deploy"
 end
 
@@ -205,12 +207,12 @@ end
 # handle it, however it isn't easy to tell if this has been run before
 execute "initialize-cc-rails-app-database" do
   user "deploy"
-  cwd "/web/portal/current"
+  cwd "#{approot}/current"
   environment ({'RAILS_ENV' => node[:rails][:environment]})
-  command "bundle exec rake db:migrate && touch /web/portal/completed/initial-db-migrate"
+  command "bundle exec rake db:migrate && touch #{approot}/completed/initial-db-migrate"
   notifies :run, "execute[restart webapp]"
   not_if do
-    File.exists?("/web/portal/completed/initial-db-migrate")
+    File.exists?("#{approot}/completed/initial-db-migrate")
   end
 end
 
@@ -218,11 +220,11 @@ end
 # it isn't clear what the best way to decide to run or not run this task is
 execute "portal-setup" do
   user "deploy"
-  cwd "/web/portal/current"
+  cwd "#{approot}/current"
   environment ({'RAILS_ENV' => node[:rails][:environment]})
-  command "yes | bundle exec rake app:setup:new_app && touch /web/portal/completed/portal-setup"
+  command "yes | bundle exec rake app:setup:new_app && touch #{approot}/completed/portal-setup"
   notifies :run, "execute[restart webapp]"
   not_if do
-    File.exists?("/web/portal/completed/portal-setup")
+    File.exists?("#{approot}/completed/portal-setup")
   end
 end
