@@ -74,6 +74,13 @@ GIT
     java (1.5.1)
 
 GIT
+  remote: https://github.com/phlipper/chef-zip
+  ref: master
+  sha: 59f244cfc3f6c5e9d90c86d5d6575e2b9401cc47
+  specs:
+    zip (1.0.0)
+
+GIT
   remote: https://github.com/realityforge-cookbooks/authbind
   ref: master
   sha: 82be7eb34aa720ee6fc76d39df2fb6fab0bcfbf9
@@ -95,4 +102,5 @@ DEPENDENCIES
   rvm_passenger (>= 0)
   sudo (>= 0)
   users (>= 0)
+  zip (>= 0)
 

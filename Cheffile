@@ -19,6 +19,7 @@ cookbook 'java',          :git => 'https://github.com/opscode-cookbooks/java'
 cookbook 'nodejs',        :git => 'https://github.com/mdxp/nodejs-cookbook'
 cookbook 'npm',           :git => 'https://github.com/balbeko/chef-npm/'
 cookbook 'authbind',      :git => 'https://github.com/realityforge-cookbooks/authbind'
+cookbook 'zip',           :git => 'https://github.com/phlipper/chef-zip'
 
 # http://fnichol.github.com/chef-rvm/
 cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
