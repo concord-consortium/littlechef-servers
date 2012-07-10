@@ -234,7 +234,7 @@ template "#{appshared}/config/paperclip.yml" do
   source "paperclip.yml.erb"
   owner "deploy"
   notifies :run, "execute[restart webapp]"
-  only_if node[:cc_rails_portal][:s3]
+  only_if { node[:cc_rails_portal][:s3] }
 end
 
 # installer settings TODO: handle non-s3 case?
@@ -242,7 +242,7 @@ template "#{appshared}/config/installer.yml" do
   source "installer.yml.erb"
   owner "deploy"
   notifies :run, "execute[restart webapp]"
-  only_if node[:cc_rails_portal][:s3]
+  only_if { node[:cc_rails_portal][:s3] }
 end
 
 # installer settings
@@ -253,7 +253,7 @@ template "#{appshared}/config/aws_s3.yml" do
     :s3 => data_bag_item('s3', node[:cc_rails_portal][:s3])
   )
   notifies :run, "execute[restart webapp]"
-  only_if node[:cc_rails_portal][:s3]
+  only_if { node[:cc_rails_portal][:s3] }
 end
 
 
