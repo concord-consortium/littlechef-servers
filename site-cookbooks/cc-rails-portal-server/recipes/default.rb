@@ -161,7 +161,7 @@ shared_files = {
 deploy "#{approot}" do
   user "deploy"
   repo "git://github.com/concord-consortium/rigse.git"
-  branch "rails3.2"
+  branch "master"
   enable_submodules true
   migrate false
   action :deploy
