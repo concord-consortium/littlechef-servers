@@ -30,7 +30,7 @@ production:
     :login: aunger
     :last_name: Unger
     :email: aunger@concord.org
-  :states_and_provinces: []
+  :states_and_provinces: <%= node[:cc_rails_portal][:states_and_provinces] %>
   :maven_jnlp_servers:
   - :name: concord
     :host: http://jnlp.concord.org
