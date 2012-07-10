@@ -1,10 +1,30 @@
+<% portal = node[:cc_rails_portal] %>
 ---
 production:
-  :active_school_levels:
+  site_name: <%= portal[:site_name] %>
+  site_url: <%= portal[:site_url] %>
+  theme: <%= portal[:theme] %>
+  admin_email: <%= portal[:email] %>
+  help_email: <%= portal[:email] %>
+  default_maven_jnlp:
+    server: concord
+    family: <%= portal[:jnlp_family] %>
+    version: <%= portal[:jnlp_version] %>
+  maven_jnlp_families:
+  - <%= portal[:jnlp_family] %>
+  maven_jnlp_servers:
+  - name: concord
+    host: http://jnlp.concord.org
+    path: /dev3/org/concord/maven-jnlp/
+  use_adhoc_workgroups: <%= portal[:use_adhoc_workgroups] %>
+  site_school: <%= portal[:site_name] %>-school
+  site_district: <%= portal[:site_name] %>-district
+  use_gse: <%= portal[:use_gse] %>
+  active_school_levels:
   - '2'
   - '3'
   - '4'
-  :active_grades:
+  active_grades:
   - '6'
   - '7'
   - '8'
@@ -12,32 +32,21 @@ production:
   - '10'
   - '11'
   - '12'
-  :theme: xproject
-  :site_name: Cross Project Portal
-  :site_url: http://xproject32.dev.concord.org
-  :runnables_use: otrunk_jnlp
-  :runnable_mime_type: 
-  :top_level_container_name: investigation
-  :site_school: Cross Project Portal-school
-  :description: ''
-  :site_district: Cross Project Portal-district
-  :help_email: xproject@concord.org
-  :use_gse: false
-  :enable_default_users: true
-  :admin_email: aunger@concord.org
-  :default_admin_user:
-    :first_name: Aaron
-    :login: aunger
-    :last_name: Unger
-    :email: aunger@concord.org
-  :states_and_provinces: <%= node[:cc_rails_portal][:states_and_provinces] %>
-  :maven_jnlp_servers:
-  - :name: concord
-    :host: http://jnlp.concord.org
-    :path: /dev3/org/concord/maven-jnlp/
-  :maven_jnlp_families:
-  - all-otrunk-snapshot
-  :default_maven_jnlp:
-    :version: snapshot
-    :server: concord
-    :family: all-otrunk-snapshot
+  net_logo_package_name: otrunknl41
+  <% if portal[:tiny_mce] && portal[:tiny_mce][:buttons1] %>
+  tiny_mce:
+    buttons1:
+    <% portal[:tiny_mce][:buttons1].each do |buttons| %>
+    - <%= buttons %>
+    <% end %>
+  <% end %>
+  <% admin_user = portal[:admin_user] %>
+  default_admin_user: 
+    first_name: <%= admin_user[:first_name] %>
+    login: <%= admin_user[:login] %>
+    last_name: <%= admin_user[:last_name] %>
+    email: <%= admin_user[:email] %>
+  states_and_provinces: <%= node[:cc_rails_portal][:states_and_provinces] %>
+  runnables_use: otrunk_jnlp
+  runnable_mime_type: 
+  top_level_container_name: investigation

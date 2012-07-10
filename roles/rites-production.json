@@ -3,13 +3,12 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[rails-portal-server]"
+        "role[rites-portal]"
     ],
     "default_attributes": {
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "site_name": "rites",
             "db": "rites-production",
             "s3": "rites-production"
         }        
