@@ -11,7 +11,8 @@
         "cc_rails_portal": {
             "site_name": "rites",
             "db": "rites-staging",
-            "s3": "rites-staging"
+            "s3": "rites-staging",
+            "rpm_name": "RITES staging (aws)"
         }        
     }
 }

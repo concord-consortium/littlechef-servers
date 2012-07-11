@@ -245,7 +245,7 @@ template "#{appshared}/config/installer.yml" do
   only_if { node[:cc_rails_portal][:s3] }
 end
 
-# installer settings
+# aws settings:
 template "#{appshared}/config/aws_s3.yml" do
   source "aws_s3.yml.erb"
   owner "deploy"
@@ -256,4 +256,16 @@ template "#{appshared}/config/aws_s3.yml" do
   only_if { node[:cc_rails_portal][:s3] }
 end
 
+# newrelic rpm settings
+template "#{appshared}/config/newrelic.yml" do
+  source "newrelic.yml.erb"
+  owner "deploy"
+  variables(
+    :license_key  => data_bag_item('credentials', 'newrelic')["license_key"],
+    #:license_key => data_bag_item('credentials', "newrelic"),
+    :app_name    => node[:cc_rails_portal][:rpm_name]
+  )
+  notifies :run, "execute[restart webapp]"
+  only_if { node[:cc_rails_portal][:rpm_name] }
+end
 
