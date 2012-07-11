@@ -92,7 +92,7 @@ template "#{appshared}/config/initializers/site_keys.rb" do
     site_item = data_bag_item('sites', site_id) 
   end
 
-  if site_item.nil? && site_names.include?('default')
+  if site_item.nil? && site_ids.include?('default')
     site_item = data_bag_item('sites', 'default')
   end
 
