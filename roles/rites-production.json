@@ -3,7 +3,7 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[xproject32-portal]"
+        "role[rites-portal]"
     ],
     "default_attributes": {
     },
