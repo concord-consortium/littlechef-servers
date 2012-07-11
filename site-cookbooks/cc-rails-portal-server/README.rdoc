@@ -7,7 +7,7 @@
 5. give the IAM user permissions to access the S3 bucket specific for their resources
 6. add this RDS instance to the databags/databases
 7. add a new role for the server instance that has the correct settings for s3 and db
-8. spin up a new ec2 instance in aws
+8. spin up a new ec2 instance in aws make sure it is in the same AZ as the RDS for example: if RDS is in us-east-1e then the ec2 instance should also be in us-east-1e
 9. allocate a elastic ip for it
 10. add a new entry to your .ssh/config for the host or ip address that you'll use to connect to this server
 11. use littlechef to provision the new role to it
