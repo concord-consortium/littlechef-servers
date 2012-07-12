@@ -35,9 +35,12 @@
                     "pastext, pasteword,selectall",
                     "code"
             	]
+            },
+            "installer": {
+                "shortname": "Rites",
+                "version": "'201108.02'",
+                "jnlp_config": "http://jnlp.concord.org/dev3/org/concord/maven-jnlp/all-otrunk-snapshot/all-otrunk-snapshot-0.1.0-20110816.192854.jnlp"
             }
-
-
         }
     }
 }

@@ -237,12 +237,15 @@ template "#{appshared}/config/paperclip.yml" do
   only_if { node[:cc_rails_portal][:s3] }
 end
 
-# installer settings TODO: handle non-s3 case?
+
 template "#{appshared}/config/installer.yml" do
   source "installer.yml.erb"
   owner "deploy"
   notifies :run, "execute[restart webapp]"
-  only_if { node[:cc_rails_portal][:s3] }
+  variables(
+    :installer => node[:cc_rails_portal][:installer]
+  )
+  # only_if { node[:cc_rails_portal][:s3] }
 end
 
 # aws settings:
