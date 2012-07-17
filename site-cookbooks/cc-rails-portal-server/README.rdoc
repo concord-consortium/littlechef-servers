@@ -6,13 +6,15 @@
 4. put the IAM user in the railsportal group (so they have access to the installer bucket)
 5. give the IAM user permissions to access the S3 bucket specific for their resources
 6. add this RDS instance to the databags/databases
-7. add a new role for the server instance that has the correct settings for s3 and db
-8. spin up a new ec2 instance in aws make sure it is in the same AZ as the RDS for example: if RDS is in us-east-1e then the ec2 instance should also be in us-east-1e
-9. allocate a elastic ip for it
-10. add a new entry to your .ssh/config for the host or ip address that you'll use to connect to this server
-11. use littlechef to provision the new role to it
-12. setup a dns entry for this particular machine to make testing easier
-13. add a capistrano entry for this instance so its code and db can be updated
+7. add the S3 credentials to database/s3
+8. add a new role for the server instance that has the correct settings for s3 and db
+9. spin up a new ec2 instance in aws make sure it is in the same AZ as the RDS for example: if RDS is in us-east-1e then the ec2 instance should also be in us-east-1e
+10. allocate a elastic ip for it
+11. make sure that your RDS instance allows access from servers in your EC2 instance's security group
+12. add a new entry to your .ssh/config for the host or ip address that you'll use to connect to this server
+13. use littlechef to provision the new role to it
+14. setup a dns entry for this particular machine to make testing easier
+15. add a capistrano entry for this instance so its code and db can be updated
 
 = Notes about setting a cc-rails-portal-server
 

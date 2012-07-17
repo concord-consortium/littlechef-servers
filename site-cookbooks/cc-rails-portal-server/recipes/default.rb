@@ -245,7 +245,7 @@ template "#{appshared}/config/installer.yml" do
   variables(
     :installer => node[:cc_rails_portal][:installer]
   )
-  # only_if { node[:cc_rails_portal][:s3] }
+  only_if { node[:cc_rails_portal][:installer] }
 end
 
 # aws settings:

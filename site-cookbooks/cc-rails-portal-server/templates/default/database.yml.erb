@@ -6,6 +6,6 @@ production:
   host: <%= @db["host"] %>
   database: <%= @db["database"] %>
   username: <%= @db["username"] %>
-  password: <%= @db["password"] %>
+  password: "<%= @db["password"] %>"
   pool: 5
   reconnect: true
