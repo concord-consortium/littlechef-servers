@@ -1,0 +1,31 @@
+{
+    "name": "sparks-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+       "role[rails-portal-server]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+       "cc_rails_portal": {
+       	    "site_id": "sparks",
+		    "site_name": "SPARKS",
+            "site_url": "http://sparks.portal.concord.org",
+            "theme": "sparks",
+            "email": "scytacki@concord.org",
+            "jnlp_family": "all-otrunk-snapshot",
+            "jnlp_version": "0.1.0-20110816.192854",
+			"states_and_provinces": "all",
+			"admin_user": {
+				"first_name": "Noah",				
+                "last_name": "Paessel",
+                "login": "npaessel",
+                "email": "npaessel@concord.org"
+            }
+        }
+    }
+}
+
+
+
+

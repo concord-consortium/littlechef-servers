@@ -1,0 +1,27 @@
+{
+    "name": "sparks-staging",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[sparks-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails_portal": {
+            "db": "sparks-staging",
+            "rpm_name": "SPARKS staging (aws)"
+        },
+        "http_proxies": [
+            { "path": "/couchdb/learnerdata/", 
+              "remote": "http://couchdb.cosmos.concord.org/sparks_data_staging/",
+              "options": "nocanon" },
+            { "path": "/couchdb/activities/", 
+              "remote": "http://couchdb.cosmos.concord.org/sparks/",
+              "options": "nocanon"},
+            { "path": "/sparks/qucsator/solve", 
+              "remote": "http://otto.concord.org/qucs/" }
+        ]
+
+    }
+}
