@@ -250,14 +250,16 @@ template "#{appshared}/config/installer.yml" do
 end
 
 # aws settings:
-template "#{appshared}/config/aws_s3.yml" do
-  source "aws_s3.yml.erb"
-  owner "deploy"
-  variables(
-    :s3 => data_bag_item('s3', node[:cc_rails_portal][:s3])
-  )
-  notifies :run, "execute[restart webapp]"
-  only_if { node[:cc_rails_portal][:s3] }
+if node[:cc_rails_portal][:s3]
+  template "#{appshared}/config/aws_s3.yml" do
+    source "aws_s3.yml.erb"
+    owner "deploy"
+    variables(
+      :s3 => data_bag_item('s3', node[:cc_rails_portal][:s3])
+    )
+    notifies :run, "execute[restart webapp]"
+    only_if { node[:cc_rails_portal][:s3] }
+  end
 end
 
 # newrelic rpm settings
