@@ -14,7 +14,7 @@
         },
         "http_proxies": [
             { "path": "/couchdb/learnerdata/", 
-              "remote": "http://couchdb.cosmos.concord.org/sparks_data_staging/",
+              "remote": "http://couchdb.cosmos.concord.org/sparks_data_staging_aws/",
               "options": "nocanon" },
             { "path": "/couchdb/activities/", 
               "remote": "http://couchdb.cosmos.concord.org/sparks/",
