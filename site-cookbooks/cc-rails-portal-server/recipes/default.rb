@@ -51,6 +51,7 @@ web_app "portal" do
   docroot docroot
   rails_env node[:rails][:environment]
   rails_base_uri node[:cc_rails_portal][:base_uri]
+  proxies node[:http_proxies]
   notifies :reload, resources(:service => "apache2"), :delayed
 end
 
