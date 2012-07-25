@@ -46,7 +46,7 @@ production:
     login: <%= admin_user[:login] %>
     last_name: <%= admin_user[:last_name] %>
     email: <%= admin_user[:email] %>
-  states_and_provinces: <%= node[:cc_rails_portal][:states_and_provinces] %>
+  states_and_provinces: <%= portal[:states_and_provinces] %>
   runnables_use: otrunk_jnlp
-  runnable_mime_type: 
-  top_level_container_name: investigation
+  runnable_mime_type: <%= portal[:runnable_mime_type] %>
+  top_level_container_name: <%= portal[:top_level_container_name] %>

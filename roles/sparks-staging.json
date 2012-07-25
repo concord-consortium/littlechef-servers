@@ -10,7 +10,10 @@
     "override_attributes": {
         "cc_rails_portal": {
             "db": "sparks-staging",
-            "rpm_name": "SPARKS staging (aws)"
+            "site_url": "http://aws1.sparks.concord.org",
+            "rpm_name": "SPARKS staging (aws)",
+            "runnable_mime_type": "run_sparks_html",
+            "top_level_container_name": "page"
         },
         "http_proxies": [
             { "path": "/couchdb/learnerdata/", 
