@@ -3,7 +3,9 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[sparks-portal]"
+        "role[sparks-portal]",
+        "recipe[apache2::mod_php5]",
+        "recipe[qucs]"
     ],
     "default_attributes": {
     },
@@ -23,9 +25,7 @@
               "remote": "http://couchdb.cosmos.concord.org/sparks/",
               "options": "nocanon"},
             { "path": "/sparks/qucsator/solve", 
-              "remote": "http://otto.concord.org/qucs/" },
-            { "path": "/sparks-content/", 
-              "remote": "http://sparks.portal.concord.org/sparks-content/" }
+              "remote": "http://otto.concord.org/qucs/" }
         ]
 
     }

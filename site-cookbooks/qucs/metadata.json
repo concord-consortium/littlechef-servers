@@ -1,0 +1,9 @@
+{
+  "name": "qucs",
+  "platforms": {
+    "ubuntu": ">= 10.0.0"
+  },
+  "recipes": {
+    "qucs": "Quite Universal Circuit Simulator"
+  }
+}
