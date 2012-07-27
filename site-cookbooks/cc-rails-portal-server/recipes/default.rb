@@ -86,25 +86,11 @@ template "#{appshared}/config/initializers/site_keys.rb" do
   source "site_keys.rb.erb"
   owner "deploy"
 
-  # we are going to be doing this bit a lot so it should be pulled out
-  site_ids = data_bag('sites')
-  if ( node[:cc_rails_portal] && (site_id = node[:cc_rails_portal][:site_id]) &&
-    site_ids.include?(site_id) )
-    site_item = data_bag_item('sites', site_id) 
-  end
-
-  if site_item.nil? && site_ids.include?('default')
-    site_item = data_bag_item('sites', 'default')
-  end
-
-  if site_item
-    site_key = site_item["site_key"]
-  else
-    site_key = "couldnt find a secret site_key"
-  end
+  site_id = node[:cc_rails_portal][:site_id]
+  site_item = data_bag_item('sites', site_id)  
     
   variables(
-    :site_key => site_key
+    :site_key => site_item["site_key"]
   )
   notifies :run, "execute[restart webapp]"
 end
