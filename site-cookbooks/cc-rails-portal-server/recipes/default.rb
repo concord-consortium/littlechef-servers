@@ -52,6 +52,7 @@ web_app "portal" do
   rails_env node[:rails][:environment]
   rails_base_uri node[:cc_rails_portal][:base_uri]
   proxies node[:http_proxies]
+  extra_config node[:http_extra]
   notifies :reload, resources(:service => "apache2"), :delayed
 end
 
