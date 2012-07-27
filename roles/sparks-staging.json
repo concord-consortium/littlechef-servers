@@ -23,10 +23,10 @@
               "options": "nocanon" },
             { "path": "/couchdb/activities/", 
               "remote": "http://couchdb.cosmos.concord.org/sparks/",
-              "options": "nocanon"},
-            { "path": "/sparks/qucsator/solve", 
-              "remote": "http://otto.concord.org/qucs/" }
-        ]
+              "options": "nocanon"}
+        ],
+        "http_extra": "\n<Location /sparks>\n  PassengerEnabled off\n</Location>\n\n<Location /sparks-content>\n  PassengerEnabled off\n</Location>"
 
     }
 }
+
