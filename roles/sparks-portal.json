@@ -12,7 +12,7 @@
 		    "site_name": "SPARKS",
             "site_url": "http://sparks.portal.concord.org",
             "theme": "sparks",
-            "email": "scytacki@concord.org",
+            "email": "sparks-help@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
             "jnlp_version": "0.1.0-20110816.192854",
 			"states_and_provinces": "all",
