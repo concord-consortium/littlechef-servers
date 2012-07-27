@@ -1,0 +1,18 @@
+{
+  "name": "sparks-couchdb",
+  "platforms": {
+    "ubuntu": ">= 8.10",
+    "debian": ">= 5.0",
+    "openbsd": ">= 0.0.0",
+    "freebsd": ">= 0.0.0",
+    "rhel": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "fedora": ">= 0.0.0"
+  },
+  "dependencies": {
+    "couchdb": ">= 0.0.0"
+  },
+  "recipes": {
+    "sparks-couchdb": "Couchdb instance, with various dbs and views set up"
+  }
+}

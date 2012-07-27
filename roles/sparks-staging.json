@@ -3,9 +3,7 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[sparks-portal]",
-        "recipe[apache2::mod_php5]",
-        "recipe[qucs]"
+        "role[sparks-portal]"
     ],
     "default_attributes": {
     },
@@ -16,17 +14,7 @@
             "rpm_name": "SPARKS staging (aws)",
             "runnable_mime_type": "run_sparks_html",
             "top_level_container_name": "page"
-        },
-        "http_proxies": [
-            { "path": "/couchdb/learnerdata/", 
-              "remote": "http://couchdb.cosmos.concord.org/sparks_data_staging_aws/",
-              "options": "nocanon" },
-            { "path": "/couchdb/activities/", 
-              "remote": "http://couchdb.cosmos.concord.org/sparks/",
-              "options": "nocanon"}
-        ],
-        "http_extra": "\n<Location /sparks>\n  PassengerEnabled off\n</Location>\n\n<Location /sparks-content>\n  PassengerEnabled off\n</Location>"
-
+        }
     }
 }
 
