@@ -174,6 +174,19 @@ rds_server = @aws_rds.servers.create(rds_opts)
 # make s3 bucket
 puts "*** creating new s3 bucket for paperclip: #{@options[:s3_bucket]}" if @options[:verbose]
 bucket = @aws_s3.get_bucket(@options[:s3_bucket]) rescue @aws_s3.put_bucket(@options[:s3_bucket], {"x-amz-acl" => "private"})
+# s3 acls are not additive -- must specify all the permissions we want, unfortunately
+webmaster = {"DisplayName" => "webmaster", "ID" => "299a240b0ebf73182d268a7b071f05431fe4c4446057ca4a79b74f10baee7e49"}
+@aws_s3.put_bucket_acl(@options[:s3_bucket], {
+  "Owner" => webmaster,
+  "AccessControlList" => [
+    {'Grantee' => webmaster, 'Permission' => 'READ'},
+    {'Grantee' => webmaster, 'Permission' => 'WRITE'},
+    {'Grantee' => webmaster, 'Permission' => 'READ_ACP'},
+    {'Grantee' => webmaster, 'Permission' => 'WRITE_ACP'},
+    {'Grantee' => {'URI' => 'http://acs.amazonaws.com/groups/global/AuthenticatedUsers'}, 'Permission' => 'WRITE' },
+    {'Grantee' => {'URI' => 'http://acs.amazonaws.com/groups/global/AuthenticatedUsers'}, 'Permission' => 'READ' }
+  ]
+})
 # make new IAM user for s3 bucket
 iam_opts = {
   :id => @options[:s3_iam_user]
