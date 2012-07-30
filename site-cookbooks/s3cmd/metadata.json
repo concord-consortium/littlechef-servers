@@ -1,5 +1,5 @@
 {
-  "name": "sparks-couchdb",
+  "name": "s3cmd",
   "platforms": {
     "ubuntu": ">= 8.10",
     "debian": ">= 5.0",
@@ -10,9 +10,9 @@
     "fedora": ">= 0.0.0"
   },
   "dependencies": {
-    "couchdb": ">= 0.0.0"
+    "python": ">= 0.0.0"
   },
   "recipes": {
-    "sparks-couchdb": "Couchdb instance, with various dbs and views set up"
+    "s3cmd": "s3cmd tool, for interacting with Amazon S3"
   }
 }

@@ -12,6 +12,10 @@ cookbook 'couchdb'
 cookbook 'sudo'
 cookbook 'tomcat'
 
+# use a modified python cookbook to fix a recent issue
+cookbook 'python',
+    :git => 'https://github.com/lastobelus/python.git'
+
 # Thirdparty cookbooks
 cookbook 'nodejs',
     :git => 'https://github.com/mdxp/nodejs-cookbook'

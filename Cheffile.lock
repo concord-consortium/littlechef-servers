@@ -56,6 +56,15 @@ GIT
       build-essential (>= 0.0.0)
 
 GIT
+  remote: https://github.com/lastobelus/python.git
+  ref: master
+  sha: 44868073eb4eaae9d5e6fd99a47b33c085e038fa
+  specs:
+    python (1.0.6)
+      build-essential (>= 0.0.0)
+      yum (>= 0.0.0)
+
+GIT
   remote: https://github.com/mdxp/nodejs-cookbook
   ref: master
   sha: af27e223295869cde9de7c2840dd5abea2127ece
@@ -80,6 +89,7 @@ DEPENDENCIES
   nodejs (>= 0)
   npm (>= 0)
   passenger_apache2 (>= 0)
+  python (>= 0)
   sudo (>= 0)
   tomcat (>= 0)
   users (>= 0)

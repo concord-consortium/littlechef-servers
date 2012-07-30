@@ -1,0 +1,19 @@
+{
+  "name": "cc-couchdb",
+  "platforms": {
+    "ubuntu": ">= 8.10",
+    "debian": ">= 5.0",
+    "openbsd": ">= 0.0.0",
+    "freebsd": ">= 0.0.0",
+    "rhel": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "fedora": ">= 0.0.0"
+  },
+  "dependencies": {
+    "couchdb": ">= 0.0.0",
+    "s3cmd": ">= 0.0.0"
+  },
+  "recipes": {
+    "cc-couchdb": "Couchdb instance, with nightly backup and recovery support."
+  }
+}

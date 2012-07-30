@@ -55,6 +55,7 @@ BANNER
   # S3 bucket options
   opt :s3_bucket, "Name of the S3 bucket",                    :type => :string, :default => nil
   opt :s3_iam_user, "Name of the IAM user for the S3 bucket", :type => :string, :default => nil
+  opt :couchdb_backups, "Enable permissions for backing up CouchDB", :type => :boolean, :default => false
 end
 Trollop::die :name, "must provide an instance name" unless @options[:name]
 Trollop::die :security_group, "must provide an instance security group" unless @options[:security_group]
@@ -171,6 +172,7 @@ rds_opts = {
 rds_server = @aws_rds.servers.create(rds_opts)
 
 # make s3 bucket
+puts "*** creating new s3 bucket for paperclip: #{@options[:s3_bucket]}" if @options[:verbose]
 bucket = @aws_s3.get_bucket(@options[:s3_bucket]) rescue @aws_s3.put_bucket(@options[:s3_bucket], {"x-amz-acl" => "private"})
 # make new IAM user for s3 bucket
 iam_opts = {
@@ -181,6 +183,7 @@ iam_access_key = iam_user.access_keys.first || iam_user.access_keys.create
 
 # add railsportal group to IAM user
 @aws_iam.add_user_to_group('railsportal', @options[:s3_iam_user]) rescue nil
+(@aws_iam.add_user_to_group('couchdbbackups', @options[:s3_iam_user]) rescue nil) if @options[:couchdb_backups]
 
 # give IAM user permissions for new s3 bucket
 iam_permissions = {

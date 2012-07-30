@@ -13,7 +13,8 @@
             "site_url": "http://aws1.sparks.concord.org",
             "rpm_name": "SPARKS staging (aws)",
             "runnable_mime_type": "run_sparks_html",
-            "top_level_container_name": "page"
+            "top_level_container_name": "page",
+            "s3": "sparks"
         }
     }
 }
