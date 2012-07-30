@@ -2,7 +2,7 @@ include_recipe "couchdb"
 include_recipe "s3cmd"
 
 if node[:cc_couchdb][:id].empty?
-  # raise "Can't assign a random id if an id was already assigned!" if File.exist?("/etc/sudoers_edited")
+  raise "Can't assign a random id if an id was already assigned!" if File.exist?("/etc/sudoers_edited")
   node.set[:cc_couchdb][:id] = "couchdb-%012d" % rand(999999999999)
 end
 
@@ -13,7 +13,6 @@ puts "Copying design docs is currently not supported and will have to be done ma
 cron "backup_couchdb" do
   hour "23"
   command "s3cmd put --recursive --preserve --force /var/lib/couchdb/ s3://couchdb-backups/#{node[:cc_couchdb][:id]}/"
-  not_if "test -f /etc/sudoers_edited"
 end
 
 # set up a restore script
