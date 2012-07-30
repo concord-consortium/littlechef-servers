@@ -1,5 +1,5 @@
 #!/bin/bash
 
 /etc/init.d/couchdb stop
-s3cmd get --recursive --preserve --force s3://couchdb-backups/<%= @couchdb_id %>/ /var/lib/couchdb/
+s3cmd -c /root/.s3cfg get --recursive --preserve --force s3://couchdb-backups/<%= @couchdb_id %>/ /var/lib/couchdb/
 /etc/init.d/couchdb start
