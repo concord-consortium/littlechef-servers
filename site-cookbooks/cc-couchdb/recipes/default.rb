@@ -11,7 +11,7 @@ puts "Copying design docs is currently not supported and will have to be done ma
 
 # set up a cron tab to backup the database nightly to S3
 cron "backup_couchdb" do
-  hour "23"
+  hour "5"
   minute "0"
   command "s3cmd put --recursive --preserve --force /var/lib/couchdb/ s3://couchdb-backups/#{node[:cc_couchdb][:id]}/"
 end
