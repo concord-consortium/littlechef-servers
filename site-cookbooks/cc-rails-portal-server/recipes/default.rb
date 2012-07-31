@@ -262,3 +262,15 @@ template "#{appshared}/config/newrelic.yml" do
   only_if { node[:cc_rails_portal][:rpm_name] }
 end
 
+template "#{appshared}/config/google_analytics.yml" do
+  source "google_analytics.yml.erb"
+  owner "deploy"
+  variables(
+    :account_id => node[:cc_rails_portal][:google_analytics_account]
+  )
+  notifies :run, "execute[restart webapp]"
+end
+
+if node[:cc_rails_portal][:google_analytics_account] == "UA-6899787-23"
+  log("Using default Google Analytics Account! You might consider setting up your own.") { level :warn }
+end
