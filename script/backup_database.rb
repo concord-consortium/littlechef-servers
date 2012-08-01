@@ -80,11 +80,14 @@ dbs.each do |db|
   rds_server.wait_for { ready? }
   rds_server.reload
 
+  # have had trouble with access not being open quite yet, so give it a few seconds
+  sleep 5
+
   # backup db to local file
   file = "#{@options[:dir]}/#{db}.sql"
   puts "Dumping to file: #{file}" if @options[:verbose]
   # TODO Perhaps we should dump each db within the instance separately?
-  cmd = "mysqldump -u #{rds_server.master_username} -ppw#{temp_pw} -h #{rds_server.endpoint["Address"]} --all-databases > #{file}"
+  cmd = "mysqldump --opt --compress --all-databases -u #{rds_server.master_username} -ppw#{temp_pw} -h #{rds_server.endpoint["Address"]} > #{file}"
   puts "cmd: #{cmd}" if @options[:debug]
   puts `#{cmd}`
 
