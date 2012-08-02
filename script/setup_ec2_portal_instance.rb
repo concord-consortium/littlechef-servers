@@ -76,7 +76,7 @@ def cleanup(name, type = :db)
   allowed = 'a-zA-Z0-9' + specials.join('')
   name = name.gsub(/[^#{allowed}]+/, '')
   specials.each do |special|
-    name = name.gsub(/[#{special}]+/, special)
+    name = name.gsub(/[#{special}]+/, special.gsub('\\', ''))
   end
   name.gsub(/^[^a-zA-Z]+/, '')
 end
@@ -287,7 +287,7 @@ DATABAG
 puts <<-S3DATABAG
 S3 User data bag:
 {
-  "id": "#{@options[:s3_iam_user]}",
+  "id": "#{cleanup(@options[:name], :s3_user)}",
   "access_key_id": "#{iam_access_key.id}",
   "secret_access_key": "#{iam_access_key.secret_access_key}",
   "bucket": "#{@options[:s3_bucket]}"
