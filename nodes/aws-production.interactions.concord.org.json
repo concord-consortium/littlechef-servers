@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.200.114.204",
+    "run_list": [
+        "role[interactions-production]"
+    ]
+}
