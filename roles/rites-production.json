@@ -11,7 +11,8 @@
         "cc_rails_portal": {
             "db": "rites-production",
             "s3": "rites-production",
-            "rpm_name": "RITES production (aws)"
+            "rpm_name": "RITES production (aws)",
+            "google_analytics_account": "UA-6899787-24"
         }
     }
 }
