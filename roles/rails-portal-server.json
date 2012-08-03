@@ -6,7 +6,8 @@
         "role[base-ruby-1_9_3]",
         "recipe[users::sysadmins]",
         "recipe[cc-rails-portal-server]",
-        "recipe[aws-cloudwatch-monitoring]"
+        "recipe[aws-cloudwatch-monitoring]",
+        "recipe[new-relic]"
     ],
     "default_attributes": {
         "ruby": {
