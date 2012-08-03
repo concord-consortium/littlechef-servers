@@ -30,22 +30,22 @@ BANNER
   opt :az,       "Server availability zone",              :default => "us-east-1e"
 
   # EC2 Options
-  opt :ami,      "AMI id to use as a base",               :default => 'ami-685bfa01'
-  opt :flavor,   "EC2 instance type",                     :default => 'c1.medium'
-  opt :pem,      "PEM file for connecting",               :default => "~/.ssh/identities/genigames.pem"
-  opt :contacts, "Contacts for EC2 instance",             :type => :string
-  opt :notes,    "Notes for EC2 instance",                :default => ""
-  opt :project,  "Project string for EC2 instance",       :default => ""
+  opt :ami,       "AMI id to use as a base",                  :default => 'ami-685bfa01'
+  opt :flavor,    "EC2 instance type",                        :default => 'c1.medium'
+  opt :pem,       "PEM file for connecting",                  :default => "~/.ssh/identities/genigames.pem"
+  opt :contacts,  "Contacts for EC2 instance",                :type => :string
+  opt :notes,     "Notes for EC2 instance",                   :default => ""
+  opt :project,   "Project string for EC2 instance",          :default => ""
   opt :server_id, "Server id to use instead of creating one", :default => ""
 
   # RDS options
-  opt :db_storage, "Amount of disk storage for RDS (in GB)",     :default => 12
-  opt :db_master_username, "Master username for DB instance",    :default => "master"
-  opt :db_master_password, "Master password for DB instance",    :default => SecureRandom.hex(12)
-  opt :db_engine, "Engine for the RDS instance",                 :default => "mysql"
-  opt :db_engine_version, "Engine version for the RDS instance", :default => "5.5"
-  opt :db_flavor, "Flavor for the RDS instance", :default => "db.t1.micro"
-  opt :db_name, "Database name",                                 :default => "portal"
+  opt :db_storage,         "Amount of disk storage for RDS (in GB)", :default => 12
+  opt :db_master_username, "Master username for DB instance",        :default => "master"
+  opt :db_master_password, "Master password for DB instance",        :default => SecureRandom.hex(12)
+  opt :db_engine,          "Engine for the RDS instance",            :default => "mysql"
+  opt :db_engine_version,  "Engine version for the RDS instance",    :default => "5.5"
+  opt :db_flavor,          "Flavor for the RDS instance",            :default => "db.t1.micro"
+  opt :db_name,            "Database name",                          :default => "portal"
 
   # Route53 options
   opt :dns_zone, "Zone domain name in which records will be created", :default => "concord.org."
