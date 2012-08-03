@@ -1,0 +1,11 @@
+{
+  "name": "aws-cloudwatch-monitoring",
+  "platforms": {
+    "ubuntu": ">= 8.10"
+  },
+  "dependencies": {
+  },
+  "recipes": {
+    "aws-cloudwatch-monitoring": "Add extra cloudwatch monitoring to a ubuntu server"
+  }
+}
