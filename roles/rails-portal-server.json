@@ -5,7 +5,8 @@
     "run_list": [
         "role[base-ruby-1_9_3]",
         "recipe[users::sysadmins]",
-        "recipe[cc-rails-portal-server]"
+        "recipe[cc-rails-portal-server]",
+        "recipe[aws-cloudwatch-monitoring]"
     ],
     "default_attributes": {
         "ruby": {
