@@ -9,6 +9,7 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
+            "site_url": "http://rites-investigations.staging.concord.org",
             "db": "rites-staging",
             "s3": "rites-staging",
             "rpm_name": "RITES staging (aws)"
