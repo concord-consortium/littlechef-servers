@@ -100,8 +100,15 @@ end
 template "#{appshared}/config/database.yml" do
   source "database.yml.erb"
   owner "deploy"
+  db_data_bag = data_bag_item('databases', node[:cc_rails_portal][:db])
+  db_attributes = {}
+  if node[:cc_rails_portal][:rds_domain] && node[:cc_rails_portal][:db_instance_name]
+    rds_data_bag = data_bag_item('rds_domains', node[:cc_rails_portal][:rds_domain])
+    db_attributes['host'] = "#{node[:cc_rails_portal][:db_instance_name]}.#{rds_data_bag['domain']}"
+  end
+
   variables(
-    :db => data_bag_item('databases', node[:cc_rails_portal][:db])
+    :db => db_data_bag.merge(db_attributes)
   )
   notifies :run, "execute[restart webapp]"
 end
