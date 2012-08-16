@@ -15,6 +15,7 @@
     },
     "override_attributes": {
       "cc_rails_portal": {
+        "site_id": "genigames",
         "site_name": "GeniGames",
         "server_name": "ungamed-portal.genigames.concord.org",
         "base_uri": "/portal",
