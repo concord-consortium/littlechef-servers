@@ -1,6 +1,0 @@
-{
-    "ipaddress": "10.28.17.105",
-    "run_list": [
-        "role[smartgraphs]"
-    ]
-}

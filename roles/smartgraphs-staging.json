@@ -1,5 +1,5 @@
 {
-    "name": "smartgraphs",
+    "name": "smartgraphs-staging",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
@@ -9,12 +9,14 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "db": "smartgraphs-portal",
+            "db": "smartgraphs-staging",
+            "rds_domain": "cc-us-east-1",
+            "db_instance_name": "smartgraphs-staging",
             "s3": "smartgraphs",
             "rpm_name": "Smartgraphs (aws)",
             "site_id": "smartgraphs",
             "site_name": "SmartGraphs",
-            "site_url": "http://sg.concord.org",
+            "site_url": "http://aws1.smartgraphs.concord.org",
             "theme": "smartgraphs",
             "email": "smartgraphs@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
