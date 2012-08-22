@@ -16,15 +16,6 @@
 14. setup a dns entry for this particular machine to make testing easier
 15. add a capistrano entry for this instance so its code and db can be updated
 
-= Here is a way to copy a database into AWS
-
-1. add the database host to the security group of the RDS instance
-2. run this on the database host: 
-
-mysqldump -u sparks_stag_user -pxxxx --lock-tables=false --add-drop-table --quick --extended-insert staging_sparks_prod | pv | mysql -C -h sparks-staging.cheea3ib6y8u.us-east-1.rds.amazonaws.com -u xxxx -pxxx portal
-
-3. If your database host doesn't have pv then can just remove it. It gives a progress view of the data going through the pipe. You can also watch the database storage size on AWS to watch progress.
-
 = Notes about setting a cc-rails-portal-server
 
 Currently the cc-rails-portal-server uses an AWS RDS database
@@ -61,6 +52,9 @@ to. I think there is a bug in littlechefs precedence implementation.
   mysqldump -u $DB_USER -p$DB_PASSWORD --lock-tables=false --add-drop-table --quick --extended-insert $DATABASE_NAME | pv | mysql -C -h $RDS_NAME.cheea3ib6y8u.us-east-1.rds.amazonaws.com -u $RDS_USER -p$RDS_PASSWORD portal
   <pre></code>
 
+  Before running this you'll need to add the database host to the security group of the RDS instance.
+
+  Also if your databsae doesn't have pv then can just remove it. It gives a progress view of the data going through the pipe. You can also watch the database storage size on AWS to watch progress.
 
 = Things to backup
 
