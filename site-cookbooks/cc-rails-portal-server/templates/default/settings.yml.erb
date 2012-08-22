@@ -50,3 +50,6 @@ production:
   runnables_use: otrunk_jnlp
   runnable_mime_type: <%= portal[:runnable_mime_type] %>
   top_level_container_name: <%= portal[:top_level_container_name] %>
+  <% if portal[:recent_activity_on_login] %>
+  recent_activity_on_login: <%= portal[:recent_activity_on_login] %>
+  <% end %>
