@@ -56,6 +56,14 @@ to. I think there is a bug in littlechefs precedence implementation.
 
   Also if your databsae doesn't have pv then can just remove it. It gives a progress view of the data going through the pipe. You can also watch the database storage size on AWS to watch progress.
 
+= Moving production resource page attachements to AWS:
+
+  <pre></code>
+  s3cmd put --recursive attachments s3://$BUCKET_NAME/
+  <pre></code>
+
+  Note: the bucket needs to be configured to allow public access. I haven't tested but I'd guess that the paperclip s3 integration takes care of these permissions one file at a time, instead of giving global access to everything in the bucket.
+
 = Things to backup
 
 * built installers
