@@ -248,8 +248,14 @@ if node[:cc_rails_portal][:s3]
   template "#{appshared}/config/aws_s3.yml" do
     source "aws_s3.yml.erb"
     owner "deploy"
+
+    s3_attributes = data_bag_item('s3', node[:cc_rails_portal][:s3])
+    if node[:cc_rails_portal][:s3_bucket]
+      s3_attributes['bucket'] = node[:cc_rails_portal][:s3_bucket]
+    end
+
     variables(
-      :s3 => data_bag_item('s3', node[:cc_rails_portal][:s3])
+      :s3 => s3_attributes
     )
     notifies :run, "execute[restart webapp]"
     only_if { node[:cc_rails_portal][:s3] }

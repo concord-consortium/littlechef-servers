@@ -11,7 +11,7 @@
     	"cc_rails_portal": {
     	    "db": "smartgraphs-staging",
             "db_instance_name": "smartgraphs-staging",
-            "s3": "smartgraphs",
+            "s3_bucket": "smartgraphs-staging",
             "rpm_name": "Smartgraphs (aws-staging)",
             "site_name": "SmartGraphs AWS Staging",
             "site_url": "http://aws1.smartgraphs.concord.org"
