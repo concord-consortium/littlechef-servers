@@ -13,7 +13,7 @@
             "s3": "smartgraphs",
             "site_id": "smartgraphs",
             "theme": "smartgraphs",
-            "email": "smartgraphs@concord.org",
+            "email": "smartgraphs-aws@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
             "jnlp_version": "0.1.0-20110816.192854",
             "use_adhoc_workgroups": "false",
