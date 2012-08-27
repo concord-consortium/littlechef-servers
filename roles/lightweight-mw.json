@@ -1,0 +1,46 @@
+{
+    "name": "lightweight-mw",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails_portal": {
+            "db": "lightweight-mw",
+            "s3": "lightweight-mw",
+            "rpm_name": "Lightweight MW (aws)",
+            "site_id": "lightweight-mw",
+            "site_name": "Lightweight MW Portal",
+            "site_url": "http://lightweight-mw.concord.org",
+            "theme": "xproject",
+            "email": "aunger@concord.org",
+            "jnlp_family": "all-otrunk-snapshot",
+            "jnlp_version": "snapshot",
+            "use_adhoc_workgroups": "true",
+            "use_gse": "false",
+            "states_and_provinces": "[ all ]",
+            "admin_user": {
+                "first_name": "Aaron",
+                "last_name": "Unger",
+                "login": "aunger",
+                "email": "aunger@concord.org"
+            },
+            "tiny_mce": {
+                "buttons1": [
+                    "bold,italic,underline",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "code"
+                ]
+            }
+        }
+    }
+}
+
+
+
+
