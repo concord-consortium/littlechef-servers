@@ -14,6 +14,7 @@
             "site_id": "lightweight-mw",
             "site_name": "Lightweight MW Portal",
             "site_url": "http://lightweight-mw.concord.org",
+            "server_name": "lightweight-mw.concord.org",
             "theme": "xproject",
             "email": "aunger@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
