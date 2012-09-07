@@ -10,6 +10,7 @@ package "unzip"
 include_recipe "apache2"
 include_recipe "apache2::mod_proxy"
 include_recipe "apache2::mod_proxy_http"
+include_recipe "apache2::mod_expires"
 include_recipe "git"
 include_recipe "passenger_apache2::mod_rails"
 include_recipe "apache2::disable_default_site"
@@ -53,6 +54,7 @@ web_app "portal" do
   rails_base_uri node[:cc_rails_portal][:base_uri]
   proxies node[:http_proxies]
   extra_config node[:http_extra]
+  static_assets node[:cc_rails_portal][:static_assets]
   notifies :reload, resources(:service => "apache2"), :delayed
 end
 
@@ -203,7 +205,7 @@ end
 execute "initialize-cc-rails-app-database" do
   user "deploy"
   cwd "#{approot}/current"
-  environment ({'RAILS_ENV' => node[:rails][:environment]})
+  environment({'RAILS_ENV' => node[:rails][:environment]})
   command "bundle exec rake db:migrate && touch #{approot}/completed/initial-db-migrate"
   notifies :run, "execute[restart webapp]"
   not_if do
@@ -216,7 +218,7 @@ end
 execute "portal-setup" do
   user "deploy"
   cwd "#{approot}/current"
-  environment ({'RAILS_ENV' => node[:rails][:environment]})
+  environment({'RAILS_ENV' => node[:rails][:environment]})
   command "yes | bundle exec rake app:setup:new_app && touch #{approot}/completed/portal-setup"
   notifies :run, "execute[restart webapp]"
   not_if do

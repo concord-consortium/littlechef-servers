@@ -35,6 +35,16 @@
     Allow from all
   </Directory>
 
+  <% if @params[:static_assets] %>
+    <LocationMatch "^/assets/.*$">
+      Header unset ETag
+      FileETag None
+      # RFC says only cache for 1 year
+      ExpiresActive On
+      ExpiresDefault "access plus 1 year"
+    </LocationMatch>
+  <% end %>
+
   <% if @params[:proxies] %>
     <% @params[:proxies].each do |proxy| %>
   <Proxy <%= proxy[:remote] %>*>

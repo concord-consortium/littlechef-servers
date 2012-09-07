@@ -10,6 +10,7 @@ default[:cc_rails_portal][:jnlp_version] = "snapshot"
 default[:cc_rails_portal][:use_adhoc_workgroups] = "false"
 default[:cc_rails_portal][:use_gse] = "false"
 default[:cc_rails_portal][:runnable_mime_type] = ""
+default[:cc_rails_portal][:static_assets] = true
 default[:cc_rails_portal][:top_level_container_name] = "investigation"
 default[:cc_rails_portal][:google_analytics_account] = "UA-6899787-23"
 default[:cc_rails_portal][:admin_user] = { 
