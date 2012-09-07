@@ -9,7 +9,8 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "site_name": "xproject32"
+            "site_name": "xproject32",
+            "site_id": "xproject32"
         }        
     }
 }
