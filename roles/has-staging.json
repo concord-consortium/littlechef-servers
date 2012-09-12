@@ -1,0 +1,18 @@
+{
+    "name": "has-staging",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[has-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails_portal": {
+            "site_url": "http://aws1.has.concord.org",
+            "db_instance_name": "has-staging",
+            "s3_bucket": "has-staging",
+            "rpm_name": "HAS staging (aws)"
+        }
+    }
+}

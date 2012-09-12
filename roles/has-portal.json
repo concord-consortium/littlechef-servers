@@ -1,0 +1,30 @@
+{
+    "name": "has-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+       "role[rails-portal-server]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails_portal": {
+            "rds_domain": "cc-us-east-1",
+            "site_id": "has",
+            "s3": "has",
+            "theme": "has",
+            "email": "has-support@concord.org",
+            "jnlp_family": "has-otrunk",
+            "jnlp_version": "0.1.0-20110816.143908",
+            "use_adhoc_workgroups": "true",
+            "use_gse": "false",
+            "states_and_provinces": "[ MA ]",
+            "admin_user": {
+              "first_name": "Aaron",
+              "last_name": "Unger",
+              "login": "aunger",
+              "email": "aunger@concord.org"
+            }
+        }
+    }
+}
