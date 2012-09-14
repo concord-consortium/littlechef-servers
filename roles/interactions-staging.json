@@ -9,9 +9,9 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "site_url": "http://aws-staging.interactions.concord.org",
-            "db": "interactions-staging",
-            "s3": "interactions-staging",
+            "site_url": "http://interactions.staging.concord.org",
+            "db_instance_name": "interactions-staging1",
+            "s3_bucket": "interactions-staging",
             "rpm_name": "Interactions staging (aws)"
         }
     }
