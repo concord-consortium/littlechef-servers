@@ -10,6 +10,8 @@
     "override_attributes": {
         "cc_rails_portal": {
             "db": "rites-production",
+            "rds_domain": "cc-us-east-1",
+            "db_instance_name": "rites-production-1",
             "s3": "rites-production",
             "rpm_name": "RITES production (aws)",
             "google_analytics_account": "UA-6899787-24"
