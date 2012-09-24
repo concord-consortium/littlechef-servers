@@ -9,8 +9,7 @@
     },
     "override_attributes": {
     	"cc_rails_portal": {
-    	    "db": "smartgraphs-staging",
-            "db_instance_name": "smartgraphs-staging",
+            "db_rds_instance_name": "smartgraphs-staging",
             "s3_bucket": "smartgraphs-staging",
             "rpm_name": "Smartgraphs (aws-staging)",
             "site_name": "SmartGraphs AWS Staging",

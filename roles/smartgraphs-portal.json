@@ -10,7 +10,7 @@
     "override_attributes": {
         "cc_rails_portal": {
             "rds_domain": "cc-us-east-1",
-            "s3": "smartgraphs",
+            "db_database": "portal",
             "site_id": "smartgraphs",
             "theme": "smartgraphs",
             "email": "smartgraphs-aws@concord.org",
