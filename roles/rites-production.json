@@ -9,8 +9,7 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "db": "rites-production",
-            "rds_domain": "cc-us-east-1",
+            "site_url": "http://rites-investigations.concord.org",
             "db_instance_name": "rites-production-6",
             "s3": "rites-production",
             "rpm_name": "RITES production (aws)",

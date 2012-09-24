@@ -10,7 +10,8 @@
        "cc_rails_portal": {
        	    "site_id": "rites",
 		    "site_name": "RITES Investigations",
-            "site_url": "http://rites-investigations.concord.org",
+            "rds_domain": "cc-us-east-1",
+            "db": "rites",
             "theme": "rites",
             "email": "rites-help@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
