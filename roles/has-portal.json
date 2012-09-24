@@ -9,10 +9,9 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "db": "has",
+            "db_database": "portal",
             "rds_domain": "cc-us-east-1",
             "site_id": "has",
-            "s3": "has",
             "theme": "has",
             "email": "has-help@concord.org",
             "jnlp_family": "has-otrunk",

@@ -11,7 +11,7 @@
         "cc_rails_portal": {
             "site_url": "http://has.staging.concord.org",
             "site_name": "HAS(staging)",
-            "db_instance_name": "has-staging",
+            "db_rds_instance_name": "has-staging",
             "s3_bucket": "has-staging",
             "rpm_name": "HAS staging (aws)"
         }
