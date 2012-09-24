@@ -102,15 +102,27 @@ end
 template "#{appshared}/config/database.yml" do
   source "database.yml.erb"
   owner "deploy"
-  db_data_bag = data_bag_item('databases', node[:cc_rails_portal][:db])
-  db_attributes = {}
-  if node[:cc_rails_portal][:rds_domain] && node[:cc_rails_portal][:db_instance_name]
+
+  site_id = node[:cc_rails_portal][:site_id]
+  site_item = data_bag_item('sites', site_id)  
+
+  db = {}
+
+  if node[:cc_rails_portal][:db_host]
+    db['host'] = node[:cc_rails_portal][:db_host]
+  elsif node[:cc_rails_portal][:db_rds_instance_name]
     rds_data_bag = data_bag_item('rds_domains', node[:cc_rails_portal][:rds_domain])
-    db_attributes['host'] = "#{node[:cc_rails_portal][:db_instance_name]}.#{rds_data_bag['domain']}"
+    db['host'] = "#{node[:cc_rails_portal][:db_rds_instance_name]}.#{rds_data_bag['domain']}"
+  else
+    raise "no host defined for the database"
   end
 
+  db['database'] = node[:cc_rails_portal][:db_database]
+  db['username'] = site_item['db_username']
+  db['password'] = site_item['db_password']
+
   variables(
-    :db => db_data_bag.merge(db_attributes)
+    :db => db
   )
   notifies :run, "execute[restart webapp]"
 end
@@ -208,16 +220,19 @@ if node[:cc_rails_portal][:s3]
     source "aws_s3.yml.erb"
     owner "deploy"
 
-    s3_attributes = data_bag_item('s3', node[:cc_rails_portal][:s3])
-    if node[:cc_rails_portal][:s3_bucket]
-      s3_attributes['bucket'] = node[:cc_rails_portal][:s3_bucket]
-    end
+    site_id = node[:cc_rails_portal][:site_id]
+    site_item = data_bag_item('sites', site_id)
+
+    s3 = {}
+    s3['access_key_id'] = site_item['aws_access_key_id']
+    s3['secret_access_key'] = site_item['aws_secret_access_key']
+    s3['bucket'] = node[:cc_rails_portal][:s3_bucket]
 
     variables(
-      :s3 => s3_attributes
+      :s3 => s3
     )
     notifies :run, "execute[restart webapp]"
-    only_if { node[:cc_rails_portal][:s3] }
+    only_if { node[:cc_rails_portal][:s3_bucket] }
   end
 end
 
