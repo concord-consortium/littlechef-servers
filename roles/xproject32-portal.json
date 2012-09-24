@@ -9,8 +9,26 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "site_name": "xproject32",
-            "site_id": "xproject32"
-        }        
+            "site_name": "Demo Portal",
+            "site_id": "xproject32",
+            "site_url": "http://xproject32.dev.concord.org",
+            "db_database": "portal",
+            "rds_domain": "cc-us-east-1",
+            "db_rds_instance_name": "test-rails-portal",
+            "rpm_name": "XProject32 (aws)",
+            "theme": "xproject",
+            "email": "aunger@concord.org",
+            "jnlp_family": "all-otrunk-snapshot",
+            "jnlp_version": "snapshot",
+            "use_adhoc_workgroups": "true",
+            "use_gse": "false",
+            "states_and_provinces": "[ all ]",
+            "admin_user": {
+                "first_name": "Aaron",
+                "last_name": "Unger",
+                "login": "aunger",
+                "email": "aunger@concord.org"
+            }
+        }
     }
 }
