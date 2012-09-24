@@ -8,8 +8,10 @@
     "default_attributes": {},
     "override_attributes": {
         "cc_rails_portal": {
-            "db": "lightweight-mw",
-            "s3": "lightweight-mw",
+            "rds_domain": "cc-us-east-1",
+            "db_rds_instance_name": "lightweight-mw",
+            "db_database": "portal",
+            "s3_bucket": "lightweight-mw",
             "rpm_name": "Lightweight MW (aws)",
             "site_id": "lightweight-mw",
             "site_name": "Lightweight MW Portal",
