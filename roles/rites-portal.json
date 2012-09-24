@@ -12,6 +12,7 @@
 		    "site_name": "RITES Investigations",
             "rds_domain": "cc-us-east-1",
             "db": "rites",
+            "s3": "rites",
             "theme": "rites",
             "email": "rites-help@concord.org",
             "jnlp_family": "all-otrunk-snapshot",

@@ -11,7 +11,7 @@
         "cc_rails_portal": {
             "site_url": "http://rites-investigations.staging.concord.org",
             "db_instance_name": "rites-staging",
-            "s3": "rites-staging",
+            "s3_bucket": "rites-staging",
             "rpm_name": "RITES staging (aws)"
         }
     }
