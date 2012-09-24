@@ -10,10 +10,8 @@
         "cc_rails_portal": {
             "site_id": "interactions",
             "site_name": "Interactions Portal",
-            "site_url": "http://interactions.concord.org",
-            "db": "interactions",
+            "db_database": "portal",
             "rds_domain": "cc-us-east-1",
-            "s3": "interactions",
             "theme": "interactions",
             "email": "interactions@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
