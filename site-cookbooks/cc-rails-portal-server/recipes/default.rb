@@ -183,49 +183,6 @@ deploy "#{approot}" do
   end
 end
 
-# this is slow and happens every time because the deploy happens everytime
-script 'Bundling the gems' do
-  interpreter 'bash'
-  user "deploy"
-  cwd "#{approot}/current"
-  path ['/usr/local/bin','/usr/bin']
-  code <<-EOS
-    bundle install --quiet --deployment --path config/bundle \
-      --without development test
-  EOS
-end
-
-# make a place to store files indicating a step was completed
-directory "#{approot}/completed" do
-  owner "deploy"
-end
-
-# this also should be only be done once to and after that capistrano should
-# handle it, however it isn't easy to tell if this has been run before
-execute "initialize-cc-rails-app-database" do
-  user "deploy"
-  cwd "#{approot}/current"
-  environment({'RAILS_ENV' => node[:rails][:environment]})
-  command "bundle exec rake db:migrate && touch #{approot}/completed/initial-db-migrate"
-  notifies :run, "execute[restart webapp]"
-  not_if do
-    File.exists?("#{approot}/completed/initial-db-migrate")
-  end
-end
-
-# run rake setup task
-# it isn't clear what the best way to decide to run or not run this task is
-execute "portal-setup" do
-  user "deploy"
-  cwd "#{approot}/current"
-  environment({'RAILS_ENV' => node[:rails][:environment]})
-  command "yes | bundle exec rake app:setup:new_app && touch #{approot}/completed/portal-setup"
-  notifies :run, "execute[restart webapp]"
-  not_if do
-    File.exists?("#{approot}/completed/portal-setup")
-  end
-end
-
 # optional paperclip settings
 template "#{appshared}/config/paperclip.yml" do
   source "paperclip.yml.erb"
