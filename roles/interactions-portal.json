@@ -10,15 +10,10 @@
         "cc_rails_portal": {
             "site_id": "interactions",
             "site_name": "Interactions Portal",
-            "db_database": "portal",
-            "rds_domain": "cc-us-east-1",
             "theme": "interactions",
             "email": "interactions@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
             "jnlp_version": "snapshot",
-            "use_adhoc_workgroups": "true",
-            "use_gse": "false",
-            "states_and_provinces": "[ all ]",
             "admin_user": {
                 "first_name": "Aaron",
                 "last_name": "Unger",

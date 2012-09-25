@@ -9,16 +9,11 @@
     },
     "override_attributes": {
         "cc_rails_portal": {
-            "db_database": "portal",
-            "rds_domain": "cc-us-east-1",
             "site_id": "has",
             "theme": "has",
             "email": "has-help@concord.org",
             "jnlp_family": "has-otrunk",
             "jnlp_version": "0.1.0-20110816.143908",
-            "use_adhoc_workgroups": "true",
-            "use_gse": "false",
-            "states_and_provinces": "all",
             "admin_user": {
               "first_name": "Aaron",
               "last_name": "Unger",

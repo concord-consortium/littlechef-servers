@@ -14,12 +14,11 @@
         "site_id": "sparks",
         "site_name": "SPARKS",
         "site_url": "http://sparks.portal.concord.org",
-        "db_database": "portal",
         "theme": "sparks",
+        "use_adhoc_workgroups": "false",
         "email": "sparks-help@concord.org",
         "jnlp_family": "all-otrunk-snapshot",
         "jnlp_version": "0.1.0-20110816.192854",
-        "states_and_provinces": "all",
         "admin_user": {
           "first_name": "Noah",
           "last_name": "Paessel",

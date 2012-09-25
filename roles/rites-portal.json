@@ -10,13 +10,10 @@
        "cc_rails_portal": {
        	    "site_id": "rites",
 		    "site_name": "RITES Investigations",
-            "rds_domain": "cc-us-east-1",
-            "db_database": "portal",
             "theme": "rites",
             "email": "rites-help@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
             "jnlp_version": "0.1.0-20110816.192854-a",
-			"use_adhoc_workgroups": "true",
 			"use_gse": "true",
 			"states_and_provinces": "[ RI, MA ]",
 			"admin_user": {
