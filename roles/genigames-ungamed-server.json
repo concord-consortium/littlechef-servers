@@ -19,7 +19,8 @@
         "site_name": "GeniGames",
         "server_name": "ungamed-portal.genigames.concord.org",
         "base_uri": "/portal",
-        "db": "genigames-ungamed-portal"
+        "db_host": "db.genigames.concord.org",
+        "db_database": "ungamed_portal"
       },
       "passenger": {
           "version": "3.0.12",

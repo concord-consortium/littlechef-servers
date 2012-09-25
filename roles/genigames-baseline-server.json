@@ -19,7 +19,8 @@
         "site_name": "GeniGames",
         "server_name": "baseline-portal.genigames.concord.org",
         "base_uri": "/portal",
-        "db": "genigames-baseline-portal"
+        "db_host": "db.genigames.concord.org",
+        "db_database": "baseline_portal"
       },
       "passenger": {
           "version": "3.0.12",
