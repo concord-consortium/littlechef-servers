@@ -44,7 +44,7 @@ BANNER
   opt :db_master_password, "Master password for DB instance",        :default => SecureRandom.hex(12)
   opt :db_engine,          "Engine for the RDS instance",            :default => "mysql"
   opt :db_engine_version,  "Engine version for the RDS instance",    :default => "5.5"
-  opt :db_flavor,          "Flavor for the RDS instance",            :default => "db.t1.micro"
+  opt :db_flavor,          "Flavor for the RDS instance",            :default => "db.m1.small"
   opt :db_name,            "Database name",                          :default => "portal"
 
   # Route53 options
@@ -273,24 +273,19 @@ rds_server.reload
 
 # create data_bags config for RDS db
 puts <<-DATABAG
-RDS Database data bag:
+Site data bag addtions for database:
 {
-  "id": "#{rds_server.id}",
-  "host": "#{rds_server.endpoint["Address"]}",
-  "database": "#{rds_server.db_name}",
-  "username": "#{rds_server.master_username}",
-  "password": "#{@options[:db_master_password]}"
+  "db_username": "#{rds_server.master_username}",
+  "db_password": "#{@options[:db_master_password]}"
 }
 DATABAG
 
 # add S3 credentials to data_bags
 puts <<-S3DATABAG
-S3 User data bag:
+Site data bag addtions for aws:
 {
-  "id": "#{cleanup(@options[:name], :s3_user)}",
-  "access_key_id": "#{iam_access_key.id}",
-  "secret_access_key": "#{iam_access_key.secret_access_key}",
-  "bucket": "#{@options[:s3_bucket]}"
+  "aws_access_key_id": "#{iam_access_key.id}",
+  "aws_secret_access_key": "#{iam_access_key.secret_access_key}"
 }
 S3DATABAG
 
