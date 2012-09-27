@@ -25,7 +25,7 @@ db_settings = db_settings['production']
 seymour_dump = "mysqldump -u #{db_settings['username']} -p\'#{db_settings['password']}\' " +
                "--lock-tables=false --add-drop-table --quick --extended-insert #{db_settings['database']}"
 
-rds_host = "#{rds_id}.#{rds_domain_data_bag['domain']}.#{rds_domain}.rds.amazonaws.com"
+rds_host = "#{rds_id}.#{rds_domain_data_bag['domain']}.#{rds_domain}"
 rds_load = "mysql -C -h #{rds_host} -u #{proj_data_bag['db_username']} -p\'#{proj_data_bag['db_password']}\' portal"
 
 cmd = seymour_dump + " | " + rds_load
