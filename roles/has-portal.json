@@ -20,6 +20,11 @@
               "login": "aunger",
               "email": "aunger@concord.org"
             }
-        }
+        },
+        "http_proxies": [
+            { "path": "/resources/",
+              "remote": "http://resources.has.concord.org/resources/",
+              "options": "nocanon" }
+        ]
     }
 }
