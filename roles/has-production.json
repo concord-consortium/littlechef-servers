@@ -1,0 +1,19 @@
+{
+    "name": "has-production",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[has-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails_portal": {
+            "site_url": "http://has.portal.concord.org",
+            "site_name": "HAS",
+            "db_rds_instance_name": "has-production",
+            "s3_bucket": "has-staging",
+            "rpm_name": "HAS (aws)"
+        }
+    }
+}
