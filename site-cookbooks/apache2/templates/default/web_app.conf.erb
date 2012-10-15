@@ -11,6 +11,12 @@
     AddType application/json .json
     AddType application/xml .mml
     AddOutputFilterByType DEFLATE text/html text/css application/x-javascript application/javascript text/xml application/json application/xml
+    AddType font/ttf ttf
+    <FilesMatch "\.(ttf|otf|eot)$">
+      <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+      </IfModule>
+    </FilesMatch>
   </Directory>
 
   LogLevel info
