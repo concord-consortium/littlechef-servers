@@ -120,6 +120,7 @@ template "#{appshared}/config/database.yml" do
   db['database'] = node[:cc_rails_portal][:db_database]
   db['username'] = site_item['db_username']
   db['password'] = site_item['db_password']
+  db['pool']     = node[:cc_rails_portal][:db_pool]
 
   variables(
     :db => db

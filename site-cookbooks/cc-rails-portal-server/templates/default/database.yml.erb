@@ -1,4 +1,4 @@
-<% @db ||= {"host" => "host", "database" => "db", "username" => "user", "password" => "password"} %>
+<% @db ||= {"host" => "host", "database" => "db", "username" => "user", "password" => "password", "pool" => 5} %>
 --- 
 production: 
   encoding: utf8
@@ -7,5 +7,5 @@ production:
   database: <%= @db["database"] %>
   username: <%= @db["username"] %>
   password: "<%= @db["password"] %>"
-  pool: 5
+  pool: <%= @db["pool"] %>
   reconnect: true

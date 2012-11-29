@@ -1,4 +1,5 @@
 default[:cc_rails_portal][:db_database] = "portal"
+default[:cc_rails_portal][:db_pool] = 5
 default[:cc_rails_portal][:rds_domain] = "cc-us-east-1"
 default[:cc_rails_portal][:base_uri] = "/"
 default[:cc_rails_portal][:states_and_provinces] = "all"
