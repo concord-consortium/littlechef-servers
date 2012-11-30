@@ -21,3 +21,4 @@ default[:cc_rails_portal][:admin_user] = {
     :last_name => 'Unger',
     :email => 'aunger@concord.org'
 }
+default[:rails][:min_instances] = 1

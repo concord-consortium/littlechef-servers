@@ -10,6 +10,7 @@
   PassengerEnabled on
   RackBaseURI <%= @params[:rails_base_uri] %>
   PassengerMaxPoolSize <%= node[:rails][:max_pool_size] %>
+  PassengerMinInstances <%= node[:rails][:min_instances] %>
   PassengerPoolIdleTime 3600
   RackEnv '<%= node[:rails][:environment] %>'
   PassengerResolveSymlinksInDocumentRoot on
