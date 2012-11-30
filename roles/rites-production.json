@@ -11,9 +11,13 @@
         "cc_rails_portal": {
             "site_url": "http://rites-investigations.concord.org",
             "db_rds_instance_name": "rites-production-6",
+            "db_pool": 10,
             "s3_bucket": "rites-production",
             "rpm_name": "RITES production (aws)",
             "google_analytics_account": "UA-6899787-24"
+        },
+        "rails": {
+            "max_pool_size": 10
         }
     }
 }
