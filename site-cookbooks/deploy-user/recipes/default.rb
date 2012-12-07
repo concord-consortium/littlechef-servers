@@ -36,10 +36,10 @@ template "/home/deploy/.ssh/authorized_keys" do
   keys_config[:users].each{|item|
     if(group_defs[item.to_sym])
       group_defs[item.to_sym].each{|guser|
-        ssh_keys << data_bag_item('ssh_keys', guser)['public_keys']
+        ssh_keys.concat(data_bag_item('ssh_keys', guser)['public_keys'])
       }
     else
-      ssh_keys << data_bag_item('ssh_keys', item)['public_keys']
+      ssh_keys.concat(data_bag_item('ssh_keys', item)['public_keys'])
     end
   }
 
