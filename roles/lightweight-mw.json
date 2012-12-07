@@ -35,7 +35,11 @@
                     "code"
                 ]
             }
+        },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "ddamelin"]
         }
+
     }
 }
 
