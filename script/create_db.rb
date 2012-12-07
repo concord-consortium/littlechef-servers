@@ -1,33 +1,43 @@
 #!/usr/bin/env ruby
-# create new production has database
+require "rubygems"
+require "bundler/setup"
+
 require 'fog'
 require 'trollop'
 require 'json'
 rds = ::Fog::AWS[:rds]
 
-proj = 'has'
-
 options = Trollop::options do
 	opt :stage, "Stage of instance(production, staging, ...)", :type => :string
+  opt :project, "Name of project, it will be used for the aws-config, security group, and rds id, and databag", :type => :string
 end
 Trollop::die :stage, "is required (ex: production, production1, staging)" unless options[:stage]
+Trollop::die :project, "is required" unless options[:project]
 
+proj = options[:project]
 proj_data_bag = JSON.load File.new("data_bags/sites/#{proj}.json")
 
+default_config = JSON.load File.new("aws-config/defaults.json")
+if File.exists? "aws-config/#{proj}.json"
+  proj_config = JSON.load File.new("aws-config/#{proj}.json")
+  config = default_config.merge(proj_config)
+else
+  config = default_config
+end
+
 rds_opts = {
-  # this should be taken from the ec2 instance that this will be connected to
-  availability_zone: 'us-east-1e',
-  backup_retention_period: 7,
+  id: "#{proj}-#{options[:stage]}",
   master_username: proj_data_bag['db_username'],
   password: proj_data_bag['db_password'],
   engine: 'mysql',
-  engine_version: '5.5',
+  engine_version: config['db_engine_version'],
+  availability_zone: config['availability_zone'],
+  flavor_id: config['db_flavor_id'],
+  allocated_storage: config['db_allocated_storage'],
+  backup_retention_period: 7,
   parameter_group_name: proj,
   security_group_names: [proj],
-  db_name: 'portal',
-  id: "#{proj}-#{options[:stage]}",
-  flavor_id: 'db.m1.small',
-  allocated_storage: 12
+  db_name: 'portal'
 }
 
 # make sure seymour can connect to the database
