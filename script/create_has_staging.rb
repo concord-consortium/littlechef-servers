@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+require "rubygems"
+require "bundler/setup"
+
 require_relative 'lib/chef'
 require_relative 'lib/portal_helpers'
 

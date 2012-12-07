@@ -1,17 +1,9 @@
 #!/usr/bin/env ruby
+require "rubygems"
+require "bundler/setup"
 
-def depend(name)
-  begin
-    require name
-  rescue LoadError
-    puts "#{name} not installed! Run 'gem install #{name}' and try again."
-    exit
-  end
-end
-
-depend 'trollop'
-depend 'fog'
-# depend 'resolv'
+require 'trollop'
+require 'fog'
 
 @options = Trollop::options do
   version "setup_ec2_portal_instance.rb 1.0"

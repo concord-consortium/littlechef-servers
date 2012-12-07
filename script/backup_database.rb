@@ -1,16 +1,8 @@
 #!/usr/bin/env ruby
-
-def depend(name)
-  begin
-    require name
-  rescue LoadError
-    puts "#{name} not installed! Run 'gem install #{name}' and try again."
-    exit
-  end
-end
-
-depend 'trollop'
-depend 'fog'
+require "rubygems"
+require "bundler/setup"
+require 'trollop'
+require 'fog'
 
 @options = Trollop::options do
   version "backup_database.rb 1.0"
