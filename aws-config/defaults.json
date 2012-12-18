@@ -2,5 +2,8 @@
   "availability_zone": "us-east-1e",
   "db_engine_version": "5.5",
   "db_flavor_id": "db.m1.small",
-  "db_allocated_storage": "12"
+  "db_allocated_storage": "12",
+  "ec2_key_name": "genigames",
+  "ec2_image_id": "ami-685bfa01",
+  "ec2_flavor_id": "c1.medium"
 }
