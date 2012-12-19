@@ -4,6 +4,6 @@
   "db_flavor_id": "db.m1.small",
   "db_allocated_storage": "12",
   "ec2_key_name": "genigames",
-  "ec2_image_id": "ami-685bfa01",
+  "ec2_image_id": "ami-0721ac6e",
   "ec2_flavor_id": "c1.medium"
 }
