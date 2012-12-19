@@ -5,6 +5,8 @@ require "bundler/setup"
 require 'fog'
 require 'trollop'
 require 'json'
+require_relative 'lib/chef'
+
 rds = ::Fog::AWS[:rds]
 
 options = Trollop::options do
@@ -16,6 +18,7 @@ Trollop::die :project, "is required" unless options[:project]
 
 proj = options[:project]
 proj_data_bag = JSON.load File.new("data_bags/sites/#{proj}.json")
+stage_role = load_chef_role "#{proj}-#{options[:stage]}"
 
 default_config = JSON.load File.new("aws-config/defaults.json")
 if File.exists? "aws-config/#{proj}.json"
@@ -26,7 +29,7 @@ else
 end
 
 rds_opts = {
-  id: "#{proj}-#{options[:stage]}",
+  id: stage_role['override_attributes']['cc_rails_portal']['db_rds_instance_name'],
   master_username: proj_data_bag['db_username'],
   password: proj_data_bag['db_password'],
   engine: 'mysql',
@@ -48,7 +51,7 @@ rds_sec_group.authorize_cidrip("63.138.119.209/32") rescue Fog::AWS::RDS::Author
 rds_param_group = rds.parameter_groups.get(proj)
 rds_param_group.modify([{:name => "max_allowed_packet", :value => "16777216", :apply_method => "immediate"}])
 
-puts "*** creating new rds server: #{rds_opts[:id]}"
+puts "*** creating new rds server: #{rds_opts[:id]} (usually takes 10 minutes)"
 start = Time.now
 rds_server = rds.servers.create(rds_opts)
 rds_server.wait_for { ready? }
