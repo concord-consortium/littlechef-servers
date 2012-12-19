@@ -201,7 +201,7 @@ template "#{appshared}/config/paperclip.yml" do
   source "paperclip.yml.erb"
   owner "deploy"
   notifies :run, "execute[restart webapp]"
-  only_if { node[:cc_rails_portal][:s3] }
+  only_if { node[:cc_rails_portal][:s3_bucket] }
 end
 
 
@@ -216,7 +216,7 @@ template "#{appshared}/config/installer.yml" do
 end
 
 # aws settings:
-if node[:cc_rails_portal][:s3]
+if node[:cc_rails_portal][:s3_bucket]
   template "#{appshared}/config/aws_s3.yml" do
     source "aws_s3.yml.erb"
     owner "deploy"
