@@ -1,4 +1,7 @@
 #!/usr/bin/env ruby
+require "rubygems"
+require "bundler/setup"
+
 require 'fog'
 
 ec2 = ::Fog::Compute[:aws]
