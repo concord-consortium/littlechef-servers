@@ -45,9 +45,9 @@ ec2_opts = {
   }
 }
 start = Time.now
-puts "*** creating new server"
+puts "*** creating new server  (usually takes 30 seconds)"
 server = ec2.servers.create(ec2_opts)
 server.wait_for { ready? }
 server.reload
 puts "    finished in #{Time.now - start}s"
-server
+puts "dns name: #{server.dns_name}"
