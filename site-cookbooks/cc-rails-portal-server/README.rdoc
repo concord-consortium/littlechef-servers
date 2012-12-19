@@ -49,12 +49,10 @@ to. I think there is a bug in littlechefs precedence implementation.
 = Moving production data to the EC2 instance:
   
   <pre></code>
-  mysqldump -u $DB_USER -p$DB_PASSWORD --lock-tables=false --add-drop-table --quick --extended-insert $DATABASE_NAME | pv | mysql -C -h $RDS_NAME.cheea3ib6y8u.us-east-1.rds.amazonaws.com -u $RDS_USER -p$RDS_PASSWORD portal
+  mysqldump -u $DB_USER -p$DB_PASSWORD --lock-tables=false --add-drop-table --quick --extended-insert $DATABASE_NAME | mysql -C -h $RDS_NAME.$RDS_DOMAIN.us-east-1.rds.amazonaws.com -u $RDS_USER -p$RDS_PASSWORD portal
   <pre></code>
 
   Before running this you'll need to add the database host to the security group of the RDS instance.
-
-  Also if your databsae doesn't have pv then can just remove it. It gives a progress view of the data going through the pipe. You can also watch the database storage size on AWS to watch progress.
 
 = Moving production resource page attachements to AWS:
 

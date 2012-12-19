@@ -1,0 +1,28 @@
+Steps for Migrating a production portal to AWS
+
+Advance work
+- copy the production database to AWS a new DB in AWS lets call it [project_name]-staging
+- create a new staging ec2 instance that is using this database
+- have people test it out
+
+Prepare before disabling production site:
+- reduce the ttl in dns
+- allocate a new elastic ip and let it rest
+- create a new production db on aws: script/create_db.rb (need to set the db name in the production role)
+- create a new ec2 production instance: script/create_ec2.rb
+- run fix node:[ec2 instance dns] role:[projecname]-production (change db name in role to [project_name]-staging)
+- create a new capistrono config for [project_name]-production-aws
+- run cap [project_name]-production-aws deploy
+
+Actual down time work
+- put up the maintence screen on interactions production: cap [project_name]-production disable_web
+- run the command to copy the production database to AWS
+- switch chef role to point to new db: [project_name]-production
+- run fix node:[ec2 instance dns] role:[projecname]-production
+- run cap migrate
+- test a little
+- associate elasitc ip with ec2 instance
+- update dns
+
+TODO:
+These steps don't describe the process of migrating the any attachments to s3
