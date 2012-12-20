@@ -40,7 +40,8 @@ class Fog::AWS::RDS::Server
       connection.servers.create(opts)
     else
       restore_result = connection.restore_db_instance_to_point_in_time(identity, destination_instance_name, {
-          'UseLatestRestorableTime' => true
+          'UseLatestRestorableTime' => true,
+          'AvailabilityZone' => availability_zone
         })
       if restore_result.status != 200
         raise "Failed to restore db instance to make staging: #{restore_result.inspect}"
