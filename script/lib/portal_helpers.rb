@@ -12,6 +12,7 @@ def clone_portal_servers(options)
 
   mock_aws(rds_instance: source_rds_instance, ec2_instance_name: source_ec2_name)
 
+  # do the rds instance first because it takes the longest (about 10 minutes)
   # clone the source rds instance by restoring the most recent backup
   clone_rds_instance source_rds_instance, new_rds_instance
 
@@ -19,6 +20,16 @@ def clone_portal_servers(options)
   server = clone_ec2_instance source_ec2_name, new_ec2_name
 
   r53 = ::Fog::DNS[:aws]
+
+  puts "waiting for ec2 instance to finish booting up"
+  sleep 45
+
+  # add the host key to known hosts
+  system "ssh -o StrictHostKeyChecking=no #{server.dns_name} exit"
+  system "fix node:#{server.dns_name} role:#{options[:new_server_role]}"
+
+  puts "waiting for RDS instance to finish configuring"
+  copy_rds_security_group_names(source_rds_instance, new_rds_instance)
 
   # add dynamic public ip entry to Route53 with short ttl
   zone = r53.zones.all({"name" => "concord.org."}).first
@@ -39,5 +50,7 @@ def clone_portal_servers(options)
   else
     zone.records.create(new_dns_entry)
   end
+
+  server
 end
 

@@ -15,15 +15,24 @@ def clone_rds_instance(source_rds_instance, new_rds_instance)
 
   new_rds_server = source_rds_server.restore_most_recent(new_rds_instance)
 
-  # not sure if we need to wait here or not
-  new_rds_server.wait_for { ready? }
-  # update the security group
-  new_rds_server.modify(true, {
-    security_group_names: source_rds_server.security_group_names
-    })
-  puts "    finished in #{Time.now - start}s"
+  # also need to update the security_groups but that cannot be done until the instance is available
+  # but we don't want to wait for it here because it is more efficient to be able to run other
+  # tasks
+  # so you should call the copy_rds_security_group_names method below to finish up
 
   new_rds_server.reload
+end
+
+def copy_rds_security_group_names(source_rds_instance, target_rds_instance)
+  rds = ::Fog::AWS[:rds]
+
+  source_rds_server = rds.servers.get(source_rds_instance)
+  target_rds_server = rds.servers.get(target_rds_instance)
+  target_rds_server.wait_for{ state == 'available'}
+
+  target_rds_server.modify(true, {
+    security_group_names: source_rds_server.db_security_groups.map{|h| h['DBSecurityGroupName']}
+  })
 end
 
 # monkey patch Server, we should clean this up and submit it to fog
