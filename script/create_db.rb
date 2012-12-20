@@ -6,6 +6,7 @@ require 'fog'
 require 'trollop'
 require 'json'
 require_relative 'lib/chef'
+require_relative 'lib/aws_config'
 
 rds = ::Fog::AWS[:rds]
 
@@ -19,14 +20,7 @@ Trollop::die :project, "is required" unless options[:project]
 proj = options[:project]
 proj_data_bag = JSON.load File.new("data_bags/sites/#{proj}.json")
 stage_role = load_chef_role "#{proj}-#{options[:stage]}"
-
-default_config = JSON.load File.new("aws-config/defaults.json")
-if File.exists? "aws-config/#{proj}.json"
-  proj_config = JSON.load File.new("aws-config/#{proj}.json")
-  config = default_config.merge(proj_config)
-else
-  config = default_config
-end
+config = aws_config(proj)
 
 rds_opts = {
   id: stage_role['override_attributes']['cc_rails_portal']['db_rds_instance_name'],

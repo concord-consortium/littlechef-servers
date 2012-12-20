@@ -7,6 +7,7 @@ require 'trollop'
 require 'json'
 
 require_relative 'lib/mocks'
+require_relative 'lib/aws_config'
 
 # Fog.mock!
 # mock_aws(ec2_instance_name: "RitesProduction")
@@ -19,16 +20,9 @@ Trollop::die :stage, "is required (ex: production, production1, staging)" unless
 Trollop::die :project, "is required" unless options[:project]
 
 proj = options[:project]
+config = aws_config(proj)
 
 ec2 = ::Fog::Compute[:aws]
-
-default_config = JSON.load File.new("aws-config/defaults.json")
-if File.exists? "aws-config/#{proj}.json"
-  proj_config = JSON.load File.new("aws-config/#{proj}.json")
-  config = default_config.merge(proj_config)
-else
-  config = default_config
-end
 
 # create new EC2 instance which copies the important bits from the production server
 ec2_opts = {
