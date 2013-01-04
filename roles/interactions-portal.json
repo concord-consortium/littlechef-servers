@@ -11,8 +11,8 @@
             "site_id": "interactions",
             "site_name": "Interactions Portal",
             "theme": "interactions",
-            "email": "interactions@concord.org",
-            "jnlp_family": "all-otrunk-snapshot",
+            "email": "interactions-help@concord.org",
+            "jnlp_family": "interactions-otrunk",
             "jnlp_version": "snapshot",
             "admin_user": {
                 "first_name": "Aaron",
