@@ -6,6 +6,11 @@ package "tree"
 
 include_recipe "java"
 
+package "openjdk-6-jdk" do
+  action :install
+  version "6b24-1.11.5-0ubuntu1~12.04.1"
+end
+
 # we need this concord maven provider to resolve
 # some legacy artifacts used by otrunk
 
@@ -52,18 +57,31 @@ execute "apt-get update" do
   user "root"
 end
 
-package "nodejs"
-package "npm"
+include_recipe "apache2"
+
+package "apache2" do
+  action :install
+  version "2.2.22-1ubuntu1.2"
+end
 
 # include_recipe "nodejs"
+
+package "nodejs" do
+  action :install
+  version "0.8.16-1chl1~precise1"
+end
+
+package "npm" do
+  action :install
+  version "1.1.69-1chl1~precise1"
+end
+
 # include_recipe "authbind"
 
-# I might need to setup a user and group here
-# also this should be pulled out into its own cookbook with a switch
-# for source versus package mode just like node.js
-# and of course there might be a chef cookbook that does this already
-# also might need to setup the couchdb service
-package "couchdb"
+package "couchdb" do
+  action :install
+  version "1.2.0-1ppa1+0"
+end
 
 # the couchdb service script creates this folder but does so as root
 # instead of the couchdb user
@@ -124,11 +142,19 @@ execute "enable the locate database" do
   command "sudo updatedb"
 end
 
+# Clone Lab framework with embedded web application
 git "/var/www/app" do
   user "deploy"
   group "root"
   repository "git://github.com/concord-consortium/lab.git"
   action :sync
+end
+
+# Create tmp dir in web app so Passenger restarts work by touching tmp/restart.txt
+directory "/var/www/app/server/public/tmp" do
+  owner "deploy"
+  group "root"
+  mode "775"
 end
 
 execute "fix-permissions" do
@@ -140,8 +166,6 @@ execute "fix-permissions" do
   sudo chmod -R g+w /usr/local/rvm/*
   COMMAND
 end
-
-include_recipe "apache2"
 
 # # maven needs this to work if JAVA_HOME isn't defined
 # link "/usr/lib/jvm/default-java" do
@@ -162,3 +186,4 @@ web_app "lab" do
   enable true
   notifies :reload, resources(:service => "apache2"), :delayed
 end
+
