@@ -15,11 +15,11 @@ cookbook 'sudo'
 cookbook 'emacs'
 cookbook 'maven'
 
-cookbook 'java',          :git => 'https://github.com/opscode-cookbooks/java'
-cookbook 'nodejs',        :git => 'https://github.com/mdxp/nodejs-cookbook'
-cookbook 'npm',           :git => 'https://github.com/balbeko/chef-npm/'
-cookbook 'authbind',      :git => 'https://github.com/realityforge-cookbooks/authbind'
-cookbook 'zip',           :git => 'https://github.com/phlipper/chef-zip'
+cookbook 'java',          :git => 'git://github.com/opscode-cookbooks/java.git'
+cookbook 'nodejs',        :git => 'git://github.com/mdxp/nodejs-cookbook.git'
+cookbook 'npm',           :git => 'git://github.com/balbeko/chef-npm.git'
+cookbook 'authbind',      :git => 'git://github.com/realityforge/chef-authbind.git'
+cookbook 'zip',           :git => 'git://github.com/phlipper/chef-zip.git'
 
 # http://fnichol.github.com/chef-rvm/
 cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'

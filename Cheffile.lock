@@ -1,31 +1,46 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    apache2 (1.3.0)
-    apt (1.5.0)
-    ark (0.0.16)
-    couchdb (1.0.4)
+    apache2 (1.4.2)
+    apt (1.8.0)
+    ark (0.0.17)
+    build-essential (1.3.2)
+    chef_handler (1.1.4)
+    couchdb (2.0.0)
       erlang (>= 0.0.0)
-    dmg (1.0.0)
+      yum (>= 0.0.0)
+    cutlery (0.1.0)
+    dmg (1.1.0)
     emacs (0.8.2)
     erlang (1.1.2)
       yum (>= 0.5.0)
-    git (2.0.0)
+    git (2.1.2)
       build-essential (>= 0.0.0)
       dmg (>= 0.0.0)
       runit (>= 0.0.0)
+      windows (>= 0.0.0)
       yum (>= 0.0.0)
-    maven (0.3.0)
+    maven (0.13.0)
       ark (>= 0.0.0)
       java (>= 0.0.0)
-    nginx (1.1.0)
+    nginx (1.1.4)
       build-essential (>= 0.0.0)
-      ohai (>= 1.1.0)
-    ohai (1.1.2)
-    runit (0.16.0)
-    sudo (1.2.0)
-    users (1.1.2)
-    yum (2.0.2)
+      ohai (>= 1.1.4)
+    ohai (1.1.6)
+    runit (0.16.2)
+    sudo (2.0.4)
+    users (1.3.0)
+    windows (1.7.0)
+      chef_handler (>= 0.0.0)
+    yum (2.1.0)
+
+GIT
+  remote: git://github.com/balbeko/chef-npm.git
+  ref: master
+  sha: 6865658b2cb81fdf5e5c6f9f2650833965da8426
+  specs:
+    npm (0.1.0)
+      nodejs (>= 0.0.0)
 
 GIT
   remote: git://github.com/fnichol/chef-rvm.git
@@ -45,49 +60,36 @@ GIT
       rvm (>= 0.0.0)
 
 GIT
-  remote: https://github.com/balbeko/chef-npm/
+  remote: git://github.com/mdxp/nodejs-cookbook.git
   ref: master
-  sha: 12957919d37bcd4b9704dc59508f1b6959c208b0
+  sha: 54e0d661f2d18979c915960d294756440e3cdd38
   specs:
-    npm (0.1.0)
-      nodejs (>= 0.0.0)
-
-GIT
-  remote: https://github.com/concord-consortium/chef-repo
-  path: cookbooks
-  ref: master
-  sha: 1e26989f62129ff4c1fefe2187182087c3e6c4fb
-  specs:
-    build-essential (0.7.0)
-
-GIT
-  remote: https://github.com/mdxp/nodejs-cookbook
-  ref: master
-  sha: af27e223295869cde9de7c2840dd5abea2127ece
-  specs:
-    nodejs (1.0.0)
+    nodejs (1.0.3)
+      apt (>= 0.0.0)
       build-essential (>= 0.0.0)
 
 GIT
-  remote: https://github.com/opscode-cookbooks/java
+  remote: git://github.com/opscode-cookbooks/java.git
   ref: master
-  sha: 480d71459e960a2778eb12443a8ca63d638707be
+  sha: 92a12d17413e8635cdc06dc535f59f53e63c18d7
   specs:
-    java (1.6.5)
+    java (1.8.0)
+      windows (>= 0.0.0)
 
 GIT
-  remote: https://github.com/phlipper/chef-zip
+  remote: git://github.com/phlipper/chef-zip.git
   ref: master
   sha: 59f244cfc3f6c5e9d90c86d5d6575e2b9401cc47
   specs:
     zip (1.0.0)
 
 GIT
-  remote: https://github.com/realityforge-cookbooks/authbind
+  remote: git://github.com/realityforge/chef-authbind.git
   ref: master
-  sha: 82be7eb34aa720ee6fc76d39df2fb6fab0bcfbf9
+  sha: 93f26418aea453382e5ca22163ab9125866e59f5
   specs:
-    authbind (0.1.1)
+    authbind (0.1.5)
+      cutlery (>= 0.0.0)
 
 DEPENDENCIES
   apache2 (>= 0)

@@ -38,14 +38,14 @@
         },
         "nodejs": {
             "install_method": "package",
-            "version": "0.6.18"
+            "version": "0.8.16"
         },
         "rvm": {
           "default_ruby": "ruby-1.9.3-p194",
           "group_users": [ "deploy" ]
         },
         "rvm_passenger": {
-          "version":     "3.0.12",
+          "version":     "3.0.19",
           "rvm_ruby":    "ruby-1.9.3-p194"
         }
     },
