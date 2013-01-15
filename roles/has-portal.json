@@ -19,6 +19,19 @@
               "last_name": "Unger",
               "login": "aunger",
               "email": "aunger@concord.org"
+            },
+            "tiny_mce": {
+              "buttons1": [
+                    "bold,italic,underline",
+                    "formatselect",
+                    "styleselect",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "justifyleft,justifycenter,justifyright",
+                    "code"
+              ]
             }
         },
         "http_proxies": [
