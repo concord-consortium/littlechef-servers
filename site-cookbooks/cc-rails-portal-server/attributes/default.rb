@@ -11,6 +11,7 @@ default[:cc_rails_portal][:jnlp_family] = "all-otrunk-snapshot"
 default[:cc_rails_portal][:jnlp_version] = "snapshot"
 default[:cc_rails_portal][:use_adhoc_workgroups] = "true"
 default[:cc_rails_portal][:use_gse] = "false"
+default[:cc_rails_portal][:dont_sanitize_xhtml] = "false"
 default[:cc_rails_portal][:runnable_mime_type] = ""
 default[:cc_rails_portal][:static_assets] = true
 default[:cc_rails_portal][:top_level_container_name] = "investigation"

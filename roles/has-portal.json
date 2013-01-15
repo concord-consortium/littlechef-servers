@@ -32,7 +32,8 @@
                     "justifyleft,justifycenter,justifyright",
                     "code"
               ]
-            }
+            },
+            "dont_sanitize_xhtml": "true"
         },
         "http_proxies": [
             { "path": "/resources/",
