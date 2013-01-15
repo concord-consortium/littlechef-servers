@@ -15,7 +15,7 @@
             "db_rds_instance_name": "test-rails-portal",
             "rpm_name": "XProject32 (aws)",
             "theme": "xproject",
-            "email": "aunger@concord.org",
+            "email": "all-portal-errors@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
             "jnlp_version": "snapshot",
             "admin_user": {
