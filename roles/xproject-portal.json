@@ -10,10 +10,10 @@
     "override_attributes": {
         "cc_rails_portal": {
             "site_name": "Demo Portal",
-            "site_id": "xproject32",
-            "site_url": "http://xproject32.dev.concord.org",
+            "site_id": "xproject",
+            "site_url": "http://xproject.dev.concord.org",
             "db_rds_instance_name": "test-rails-portal",
-            "rpm_name": "XProject32 (aws)",
+            "rpm_name": "XProject (aws)",
             "theme": "xproject",
             "email": "all-portal-errors@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
