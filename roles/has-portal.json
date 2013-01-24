@@ -13,7 +13,7 @@
             "theme": "has",
             "email": "has-help@concord.org",
             "jnlp_family": "has-otrunk",
-            "jnlp_version": "0.1.0-20110816.143908",
+            "jnlp_version": "0.1.0-20130122.165520",
             "admin_user": {
               "first_name": "Aaron",
               "last_name": "Unger",
