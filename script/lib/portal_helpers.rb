@@ -6,7 +6,9 @@ require_relative 'mocks'
 def clone_portal_servers(options)
   source_rds_instance = options[:source_rds_instance]
   source_ec2_name = options[:source_ec2_name]
+  skip_rds = options[:skip_rds]
   new_rds_instance = options[:new_rds_instance]
+  skip_ec2 = options[:skip_ec2]
   new_ec2_name = options[:new_ec2_name]
   new_hostname = options[:new_hostname]
 
@@ -14,15 +16,19 @@ def clone_portal_servers(options)
 
   # do the rds instance first because it takes the longest (about 10 minutes)
   # clone the source rds instance by restoring the most recent backup
-  clone_rds_instance source_rds_instance, new_rds_instance
+  clone_rds_instance source_rds_instance, new_rds_instance unless skip_rds
 
   # make a new ec2 instance using the same settings as a source one
-  server = clone_ec2_instance source_ec2_name, new_ec2_name
+  unless skip_ec2
+    server = clone_ec2_instance source_ec2_name, new_ec2_name
+    puts "waiting for ec2 instance to finish booting up"
+    sleep 45
+  else
+    ec2 = ::Fog::Compute[:aws]
+    server = ec2.servers.find{|s| s.tags["Name"] == new_ec2_name}
+  end
 
   r53 = ::Fog::DNS[:aws]
-
-  puts "waiting for ec2 instance to finish booting up"
-  sleep 45
 
   # add the host key to known hosts
   system "ssh -o StrictHostKeyChecking=no #{server.dns_name} exit"
