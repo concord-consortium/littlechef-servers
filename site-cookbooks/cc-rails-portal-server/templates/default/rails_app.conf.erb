@@ -23,6 +23,10 @@
   ErrorDocument 404 /404.html
   ErrorDocument 500 /500.html
 
+  # Allow NewRelic to log time spent in apache before hitting rails
+  # https://newrelic.com/docs/features/tracking-front-end-time
+  RequestHeader set X-Queue-Start "%t"
+
   RewriteEngine On
 
   # Handle maintenance mode
