@@ -1,5 +1,5 @@
 {
-    "name": "lightweight-mw",
+    "name": "lightweight-mw-production",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
