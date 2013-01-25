@@ -14,12 +14,14 @@ require_relative 'lib/aws_config'
 
 options = Trollop::options do
   opt :project, "Name of project, it will be used for the aws-config, security group, and rds id, and databag", :type => :string
+  opt :remove_dev, "Remove a 'dev' instance instead of 'staging'"
   opt :no_destroy, "Find the resources but don't destroy"
 end
 Trollop::die :project, "is required" unless options[:project]
 
 proj = options[:project]
-staging_role = load_chef_role "#{proj}-staging"
+target_stage = options[:remove_dev] ? 'dev' : 'staging'
+staging_role = load_chef_role "#{proj}-#{target_stage}"
 config = aws_config(proj)
 hostname = config['hostname'] || proj
 
@@ -28,7 +30,7 @@ hostname = config['hostname'] || proj
 
 r53 = ::Fog::DNS[:aws]
 zone = r53.zones.find{|zone| zone.domain == "concord.org."}
-record = zone.records.all!.find{|record| record.name == "#{hostname}.staging.concord.org."}
+record = zone.records.all!.find{|record| record.name == "#{hostname}.#{target_stage}.concord.org."}
 
 if record.type != 'A' || record.value.length != 1
   puts("The staging DNS entry isn't what we expect:")
@@ -48,7 +50,7 @@ end
 puts "Server: name:#{server.tags['Name']} created_at:#{server.created_at} state:#{server.state} id:#{server.id}"
 
 # load in the database.yml from the server:
-db_settings = open("scp://deploy@#{hostname}.staging.concord.org:/web/portal/shared/config/database.yml")
+db_settings = open("scp://deploy@#{hostname}.#{target_stage}.concord.org:/web/portal/shared/config/database.yml")
 db_settings = YAML.load db_settings
 db_settings = db_settings['production']
 
