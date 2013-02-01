@@ -18,6 +18,20 @@
         "recipe[lab-server]"
     ],
     "default_attributes": {
+        "deploy_user_keys": {
+            "group_definitions": {
+                "internal_developers": [
+                  "scytacki",
+                  "sfentress",
+                  "rklancer",
+                  "sbannasch",
+                  "npaessel",
+                  "pmorse",
+                  "tdyer",
+                  "aunger"]
+            },
+            "users": [ "internal_developers"]
+        },
         "authorization": {
             "sudo": {
                 "passwordless": true,
