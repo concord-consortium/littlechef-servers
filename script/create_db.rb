@@ -22,6 +22,39 @@ proj_data_bag = JSON.load File.new("data_bags/sites/#{proj}.json")
 stage_role = load_chef_role "#{proj}-#{options[:stage]}"
 config = aws_config(proj)
 
+# make sure the security_group exists
+puts "*** ensuring rds security group exists..."
+rds_sec_group = rds.security_groups.get(proj)
+unless rds_sec_group
+  rds_sec_group_opts = {
+    :id => proj,
+    :description => "#{proj} security group"
+  }
+  rds_sec_group = rds.security_groups.create(rds_sec_group_opts)
+  rds_sec_group.wait_for { ready? }
+  rds_sec_group.reload
+
+  # this is might fail if the ec2 security group doesn't exist yet
+  rds_sec_group.authorize_ec2_security_group(proj)
+end
+
+# make sure seymour can connect to the database
+rds_sec_group.authorize_cidrip("63.138.119.209/32") rescue Fog::AWS::RDS::AuthorizationAlreadyExists
+
+# create an RDS parameter group which increases the max packet size
+# this is probably only needed for our portal servers
+puts "*** ensuring max_allowed_packet is increased..."
+rds_param_group = rds.parameter_groups.get(proj)
+unless rds_param_group
+  rds_param_group_opts = {
+    :id => proj,
+    :family => "mysql#{config['db_engine_version']}",
+    :description => "increased max_packet_size"
+  }
+  rds_param_group = rds.parameter_groups.create(rds_param_group_opts)
+end
+rds_param_group.modify([{:name => "max_allowed_packet", :value => "16777216", :apply_method => "immediate"}])
+
 rds_opts = {
   id: stage_role['override_attributes']['cc_rails_portal']['db_rds_instance_name'],
   master_username: proj_data_bag['db_username'],
@@ -36,14 +69,6 @@ rds_opts = {
   security_group_names: [proj],
   db_name: 'portal'
 }
-
-# make sure seymour can connect to the database
-rds_sec_group = rds.security_groups.get(proj)
-rds_sec_group.authorize_cidrip("63.138.119.209/32") rescue Fog::AWS::RDS::AuthorizationAlreadyExists
-
-# make sure the parameter group that increases the packet size is setup
-rds_param_group = rds.parameter_groups.get(proj)
-rds_param_group.modify([{:name => "max_allowed_packet", :value => "16777216", :apply_method => "immediate"}])
 
 puts "*** creating new rds server: #{rds_opts[:id]} (usually takes 10 minutes)"
 start = Time.now
