@@ -1,3 +1,5 @@
+require 'fog'
+
 def clone_ec2_instance(source_ec2_name, new_ec2_name)
   ec2 = ::Fog::Compute[:aws]
 
@@ -19,11 +21,31 @@ def clone_ec2_instance(source_ec2_name, new_ec2_name)
       "Project"  => source_ec2_server.tags["Project"]
     }
   }
+  create_ec2_instance ec2_opts
+end
+
+def create_ec2_instance(options)
+  ec2 = ::Fog::Compute[:aws]
+
   start = Time.now
-  puts "*** creating new server: #{new_ec2_name}"
-  server = ec2.servers.create(ec2_opts)
+  puts "*** creating new server: #{options[:tags]["Name"]}  (usually takes 30 seconds)"
+  server = ec2.servers.create(options)
   server.wait_for { ready? }
   server.reload
+  puts "    dns name: #{server.dns_name}"
   puts "    finished in #{Time.now - start}s"
   server
+end
+
+def find_or_create_ec2_security_group(options)
+  ec2 = ::Fog::Compute[:aws]
+
+  puts "*** ensuring ec2 security group is set up: #{options[:name]}"
+  ec2_sec_group = ec2.security_groups.get(options[:name])
+  unless ec2_sec_group
+    ec2_sec_group = ec2.security_groups.create(options)
+    ec2_sec_group.authorize_port_range(22..22)
+    ec2_sec_group.authorize_port_range(80..80)
+    ec2_sec_group.authorize_port_range(443..443)
+  end
 end

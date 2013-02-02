@@ -2,46 +2,40 @@
 require "rubygems"
 require "bundler/setup"
 
-require 'fog'
 require 'trollop'
-require 'json'
-
+require 'etc'
 require_relative 'lib/mocks'
 require_relative 'lib/aws_config'
+require_relative 'lib/ec2_helpers'
 
 # Fog.mock!
-# mock_aws(ec2_instance_name: "RitesProduction")
 
 options = Trollop::options do
   opt :stage, "Stage of instance(production, staging, ...)", :type => :string
-  opt :project, "Name of project, it will be used for the aws-config, security group, and rds id, and databag", :type => :string
+  opt :project, "Name of project, it will be used for the aws-config and security group", :type => :string
+  opt :notes, "Notes about what this box is for", :type => :string
+  opt :contact, "Name to put in ec2 contacts tag", :type => :string, :default => Etc.getlogin
 end
 Trollop::die :stage, "is required (ex: production, production1, staging)" unless options[:stage]
 Trollop::die :project, "is required" unless options[:project]
 
-proj = options[:project]
-config = aws_config(proj)
+config = aws_config(options[:project])
 
-ec2 = ::Fog::Compute[:aws]
+find_or_create_ec2_security_group(
+  name:        options[:project],
+  description: "#{options[:project]} security group"
+)
 
-# create new EC2 instance which copies the important bits from the production server
-ec2_opts = {
-  :key_name  => config['ec2_key_name'],
-  :image_id  => config['ec2_image_id'],
-  :flavor_id => config['ec2_flavor_id'],
-  :availability_zone => config['availability_zone'],
-  :groups    => proj,
-  :tags => {
-    "Name"     => "#{proj}-#{options[:stage]}",
-    "Contacts" => 'Scott',  # <- should set this based on the current user running this script
-    "Notes"    => '',  # <- these are probably different than the production instance
-    "Project"  => proj
+create_ec2_instance(
+  key_name:          config['ec2_key_name'],
+  image_id:          config['ec2_image_id'],
+  flavor_id:         config['ec2_flavor_id'],
+  availability_zone: config['availability_zone'],
+  groups:            options[:project],
+  tags: {
+    "Name"     => "#{options[:project]}-#{options[:stage]}",
+    "Contacts" => options[:contact],
+    "Notes"    => options[:notes] || '',
+    "Project"  => options[:project] || ''
   }
-}
-start = Time.now
-puts "*** creating new server  (usually takes 30 seconds)"
-server = ec2.servers.create(ec2_opts)
-server.wait_for { ready? }
-server.reload
-puts "    finished in #{Time.now - start}s"
-puts "dns name: #{server.dns_name}"
+)

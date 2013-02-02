@@ -2,10 +2,11 @@
 require "rubygems"
 require "bundler/setup"
 
-require 'fog'
 require 'trollop'
 
 require 'etc'
+require_relative 'lib/aws_config'
+require_relative 'lib/ec2_helpers'
 
 options = Trollop::options do
   opt :name, "Name of ec2 instance to make", :type => :string
@@ -14,28 +15,20 @@ options = Trollop::options do
 end
 Trollop::die :name, "is required" unless options[:name]
 
-require_relative 'lib/aws_config'
+config = aws_config(nil)
 
-aws_conf = aws_config(nil)
-
-ec2 = ::Fog::Compute[:aws]
-
-start = Time.now
-puts "*** creating new server"
-server = ec2.servers.create({
-  key_name: aws_conf['ec2_key_name'],
-  image_id: aws_conf['ec2_image_id'],
-  flavor_id: aws_conf['ec2_flavor_id'],
-  availability_zone: aws_conf['availability_zone'],
-  groups: 'default',
+server = create_ec2_instance(
+  key_name:          config['ec2_key_name'],
+  image_id:          config['ec2_image_id'],
+  flavor_id:         config['ec2_flavor_id'],
+  availability_zone: config['availability_zone'],
+  groups:            'default',
   tags: {
     "Name"     => options[:name],
-    "Contacts" => options[:contact],  # <- should set this based on the current user running this script
-    "Notes"    => options[:notes],  # <- these are probably different than the production instance
+    "Contacts" => options[:contact],
+    "Notes"    => options[:notes],
     "Project"  => ''
   }
-})
-server.wait_for { ready? }
-server.reload
-puts "    finished in #{Time.now - start}s"
+)
+
 puts server.inspect
