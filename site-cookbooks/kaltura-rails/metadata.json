@@ -1,0 +1,9 @@
+{
+  "name": "kaltura-rails",
+  "platforms": {
+    "ubuntu": ">= 10.0.0"
+  },
+  "recipes": {
+    "kaltura-rails": "additional steps for setting up kaltura with rails app"
+  }
+}

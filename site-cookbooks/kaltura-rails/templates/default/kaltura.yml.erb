@@ -1,0 +1,26 @@
+# dropped of by chef
+# config/kaltura.yml
+base: &base
+  login_email: 'USER_EMAIL'
+  login_password: 'THE_PASSWORD'
+  partner_id: '100'
+  subpartner_id: '10000'
+  administrator_secret: '<%= @credentials['administrator_secret'] %>'
+  user_secret: '<%= @credentials['user_secret'] %>'
+  thumb_width: '300'
+  thumb_height: '300'
+  service_url: 'http://kaltura-video.concord.org'
+  player_conf_id: '1727877'
+  duration_modal_player_conf_id: '1727878'
+
+development:
+  <<: *base
+
+test:
+  <<: *base
+
+cucumber:
+  <<: *base
+
+production:
+  <<: *base

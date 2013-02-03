@@ -3,7 +3,8 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[rails-portal-server]"
+        "role[rails-portal-server]",
+        "recipe[kaltura-rails]"
     ],
     "default_attributes": {},
     "override_attributes": {
