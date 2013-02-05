@@ -1,5 +1,5 @@
 # create kaltura.yml file in shared folder
-template "/web/portal/shared/kaltura.yml" do
+template "/web/portal/shared/config/kaltura.yml" do
   source "kaltura.yml.erb"
   owner "deploy"
   group "deploy"
