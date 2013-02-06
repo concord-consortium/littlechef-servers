@@ -1,0 +1,20 @@
+{
+    "name": "vpb-production",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[vpb]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails_portal": {
+            "db_rds_instance_name": "vpb-production",
+            "s3_bucket": "vpb-production",
+            "rpm_name": "VPB Production (aws)",
+            "site_name": "Video Paper Builder",
+            "site_url": "http://vpb.concord.org",
+            "server_name": "vpb.concord.org"
+        }
+    }
+}
+

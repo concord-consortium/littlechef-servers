@@ -1,0 +1,37 @@
+{
+    "name": "vpb",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]",
+        "recipe[kaltura-rails]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails_portal": {
+            "site_id": "vpb",
+            "theme": "xproject",
+            "email": "scytacki@concord.org",
+            "admin_user": {
+                "first_name": "Scott",
+                "last_name": "Cytacki",
+                "login": "scytacki",
+                "email": "scytacki@concord.org"
+            },
+            "tiny_mce": {
+                "buttons1": [
+                    "bold,italic,underline",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "code"
+                ]
+            }
+        }
+    }
+}
+
+
+
+

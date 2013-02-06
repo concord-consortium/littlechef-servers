@@ -1,10 +1,9 @@
 {
-    "name": "vpb",
+    "name": "vpb-staging",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[rails-portal-server]",
-        "recipe[kaltura-rails]"
+        "role[vpb]"
     ],
     "default_attributes": {},
     "override_attributes": {
@@ -12,28 +11,9 @@
             "db_rds_instance_name": "vpb-staging",
             "s3_bucket": "vpb-staging",
             "rpm_name": "VPB Staging (aws)",
-            "site_id": "vpb",
-            "site_name": "Video Paper Builder",
+            "site_name": "Video Paper Builder Staging",
             "site_url": "http://vpb.staging.concord.org",
-            "server_name": "vpb.staging.concord.org",
-            "theme": "xproject",
-            "email": "scytacki@concord.org",
-            "admin_user": {
-                "first_name": "Scott",
-                "last_name": "Cytacki",
-                "login": "scytacki",
-                "email": "scytacki@concord.org"
-            },
-            "tiny_mce": {
-                "buttons1": [
-                    "bold,italic,underline",
-                    "sup,sub",
-                    "bullist,numlist",
-                    "link,image",
-                    "pastext, pasteword,selectall",
-                    "code"
-                ]
-            }
+            "server_name": "vpb.staging.concord.org"
         }
     }
 }
