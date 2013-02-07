@@ -12,9 +12,10 @@ end
 package "newrelic-sysmond"
 
 bash "config newrelic sysmon" do
+  rpm_key = node[:cc_rails_portal][:rpm_account_type]
   user "root"
   code <<-SCRIPT
-    nrsysmond-config --set license_key=#{data_bag_item('credentials', 'newrelic')['license_key']}
+    nrsysmond-config --set license_key=#{data_bag_item('credentials', 'newrelic')[rpm_key]}
   SCRIPT
 end
 
