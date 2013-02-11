@@ -41,7 +41,8 @@ def find_or_create_ec2_security_group(options)
   ec2 = ::Fog::Compute[:aws]
 
   puts "*** ensuring ec2 security group is set up: #{options[:name]}"
-  ec2_sec_group = ec2.security_groups.get(options[:name])
+  # names are not case sensitive
+  ec2_sec_group = ec2.security_groups.find{|sg| sg.name.downcase == options[:name].downcase}
   unless ec2_sec_group
     ec2_sec_group = ec2.security_groups.create(options)
     ec2_sec_group.authorize_port_range(22..22)
