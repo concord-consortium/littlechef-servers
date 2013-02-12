@@ -25,6 +25,8 @@ cookbook 'npm',
     # :git => 'https://github.com/realityforge-cookbooks/authbind'
 cookbook 'chef-ruby',
     :git => 'https://github.com/concord-consortium/chef-ruby', :ref => 'libreadline'
+cookbook 'imagemagick',
+    :git => 'git://github.com/cookbooks/imagemagick.git'
 
 # Concord cookbooks
 cookbook 'apache2', :git => 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'

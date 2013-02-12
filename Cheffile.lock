@@ -26,6 +26,13 @@ SITE
     yum (0.5.2)
 
 GIT
+  remote: git://github.com/cookbooks/imagemagick.git
+  ref: master
+  sha: c5ebefc51482ced8001d18c716d4346691e9f35c
+  specs:
+    imagemagick (0.2.2)
+
+GIT
   remote: https://github.com/balbeko/chef-npm/
   ref: master
   sha: 12957919d37bcd4b9704dc59508f1b6959c208b0
@@ -78,6 +85,7 @@ DEPENDENCIES
   chef-ruby (>= 0)
   couchdb (>= 0)
   git (>= 0)
+  imagemagick (>= 0)
   nodejs (>= 0)
   npm (>= 0)
   passenger_apache2 (>= 0)
