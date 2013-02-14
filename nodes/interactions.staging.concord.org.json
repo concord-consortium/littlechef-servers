@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.255.138.17",
+    "run_list": [
+        "role[interactions-staging]"
+    ]
+}

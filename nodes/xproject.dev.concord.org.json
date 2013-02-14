@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.190.46.22",
+    "run_list": [
+        "role[xproject-portal]"
+    ]
+}

@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.31.143.210",
+    "run_list": [
+      "role[vpb-staging]"
+    ]
+}

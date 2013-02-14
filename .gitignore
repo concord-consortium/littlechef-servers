@@ -2,3 +2,4 @@ cookbooks
 tmp
 .rvmrc
 *~
+nodes/ec2-*

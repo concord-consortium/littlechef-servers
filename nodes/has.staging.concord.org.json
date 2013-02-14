@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.30.138.98",
+    "run_list": [
+        "role[has-staging]"
+    ]
+}
