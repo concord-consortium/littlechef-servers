@@ -13,9 +13,11 @@
             "site_name": "HAS",
             "db_rds_instance_name": "has-production",
             "s3_bucket": "has-staging",
-            "rpm_name": "HAS (aws)",
-            "rpm_account_type": "standard_key",
             "google_analytics_account": "UA-6899787-27"
+        },
+        "new_relic":{
+            "rpm_account_type": "standard_key",
+            "app_name": "XProject"
         }
     }
 }

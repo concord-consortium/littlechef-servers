@@ -13,7 +13,6 @@
             "site_id": "xproject",
             "site_url": "http://xproject.dev.concord.org",
             "db_rds_instance_name": "test-rails-portal",
-            "rpm_name": "XProject (aws)",
             "theme": "xproject",
             "email": "all-portal-errors@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
@@ -24,6 +23,9 @@
                 "login": "aunger",
                 "email": "aunger@concord.org"
             }
+        },
+        "new_relic":{
+            "app_name": "XProject"
         }
     }
 }

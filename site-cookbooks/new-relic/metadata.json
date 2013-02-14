@@ -4,6 +4,8 @@
     "ubuntu": ">= 10.0.0"
   },
   "recipes": {
-    "new-relic": "add server monitoring"
+    "new-relic": "add server and rails app monitoring",
+    "new-relic::rails_app_monitoring": "add server monitoring",
+    "new-relic::server_monitoring": "add rails app monitoring"
   }
 }

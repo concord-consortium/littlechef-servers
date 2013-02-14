@@ -12,8 +12,10 @@
             "site_url": "http://has.staging.concord.org",
             "site_name": "HAS(staging)",
             "db_rds_instance_name": "has-staging",
-            "s3_bucket": "has-staging",
-            "rpm_name": "HAS staging (aws)"
+            "s3_bucket": "has-staging"
+        },
+        "new_relic":{
+            "app_name": "HAS staging"
         }
     }
 }

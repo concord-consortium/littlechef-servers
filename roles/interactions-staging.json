@@ -11,8 +11,10 @@
         "cc_rails_portal": {
             "site_url": "http://interactions.staging.concord.org",
             "db_rds_instance_name": "interactions-staging1",
-            "s3_bucket": "interactions-staging",
-            "rpm_name": "Interactions staging (aws)"
+            "s3_bucket": "interactions-staging"
+        },
+        "new_relic":{
+            "app_name": "Interactions staging"
         }
     }
 }

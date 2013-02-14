@@ -238,20 +238,6 @@ if node[:cc_rails_portal][:s3_bucket]
   end
 end
 
-# newrelic rpm settings
-template "#{appshared}/config/newrelic.yml" do
-  source "newrelic.yml.erb"
-  owner "deploy"
-  rpm_key = node[:cc_rails_portal][:rpm_account_type]
-  variables(
-    :license_key  => data_bag_item('credentials', 'newrelic')[rpm_key],
-    #:license_key => data_bag_item('credentials', "newrelic"),
-    :app_name    => node[:cc_rails_portal][:rpm_name]
-  )
-  notifies :run, "execute[restart webapp]"
-  only_if { node[:cc_rails_portal][:rpm_name] }
-end
-
 template "#{appshared}/config/google_analytics.yml" do
   source "google_analytics.yml.erb"
   owner "deploy"

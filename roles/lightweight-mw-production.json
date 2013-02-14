@@ -10,7 +10,6 @@
         "cc_rails_portal": {
             "db_rds_instance_name": "lightweight-mw",
             "s3_bucket": "lightweight-mw",
-            "rpm_name": "Lightweight MW (aws)",
             "site_id": "lightweight-mw",
             "site_name": "Lightweight MW Portal",
             "site_url": "http://lightweight-mw.concord.org",
@@ -38,6 +37,9 @@
         },
         "deploy_user_keys": {
             "users": [ "internal_developers", "ddamelin"]
+        },
+        "new_relic":{
+            "app_name": "Lightweight MW"
         }
 
     }

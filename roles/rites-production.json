@@ -13,13 +13,15 @@
             "db_rds_instance_name": "rites-production-6",
             "db_pool": 10,
             "s3_bucket": "rites-production",
-            "rpm_name": "RITES production (aws)",
-            "rpm_account_type": "standard_key",
             "google_analytics_account": "UA-6899787-24"
         },
         "rails": {
             "max_pool_size": 10,
             "min_instances": 6
+        },
+        "new_relic":{
+            "rpm_account_type": "standard_key",
+            "app_name": "RITES production (aws)"
         }
     }
 }

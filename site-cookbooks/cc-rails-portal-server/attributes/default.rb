@@ -16,7 +16,6 @@ default[:cc_rails_portal][:runnable_mime_type] = ""
 default[:cc_rails_portal][:static_assets] = true
 default[:cc_rails_portal][:top_level_container_name] = "investigation"
 default[:cc_rails_portal][:google_analytics_account] = "UA-6899787-23"
-default[:cc_rails_portal][:rpm_account_type] = "free_key"
 default[:cc_rails_portal][:admin_user] = {
 	:first_name => 'Aaron',
     :login => 'aunger',

@@ -11,8 +11,10 @@
         "cc_rails_portal": {
             "site_url": "http://interactions.portal.concord.org",
             "db_rds_instance_name": "interactions-production1",
-            "s3_bucket": "interactions-production",
-            "rpm_name": "Interactions (aws)"
+            "s3_bucket": "interactions-production"
+        },
+        "new_relic":{
+            "app_name": "Interactions"
         }
     }
 }

@@ -12,8 +12,10 @@
             "site_url": "http://rites-investigations.staging.concord.org",
             "jnlp_version": "snapshot",
             "db_rds_instance_name": "rites-staging",
-            "s3_bucket": "rites-staging",
-            "rpm_name": "RITES staging (aws)"
+            "s3_bucket": "rites-staging"
+        },
+        "new_relic":{
+            "app_name": "RITES staging (aws)"
         }
     }
 }

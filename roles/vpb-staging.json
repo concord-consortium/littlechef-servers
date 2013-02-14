@@ -10,10 +10,12 @@
         "cc_rails_portal": {
             "db_rds_instance_name": "vpb-staging",
             "s3_bucket": "vpb-staging",
-            "rpm_name": "VPB Staging (aws)",
             "site_name": "Video Paper Builder Staging",
             "site_url": "http://vpb.staging.concord.org",
             "server_name": "vpb.staging.concord.org"
+        },
+        "new_relic":{
+            "app_name": "VPB Staging"
         }
     }
 }
