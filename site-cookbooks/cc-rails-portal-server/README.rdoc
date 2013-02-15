@@ -57,12 +57,9 @@ to. I think there is a bug in littlechefs precedence implementation.
 = Moving production resource page attachements to AWS:
 
   <pre></code>
-  s3cmd put --recursive attachments s3://$BUCKET_NAME/
+  s3cmd put --acl-public --recursive attachments s3://$BUCKET_NAME/
   <pre></code>
 
-  Then after doing that you'll need to make all the files have public access. There is an option in the AWS UI for this called "make public" in the actions on a folder.
-  Normally paperclip makes them public as it uploads them to s3.
-  
   If these attachments were used in activities as image links, then all of those references will need to be updated with the new url. Here is some sample code for doing this:
   - Embeddable::Xhtml.all.each{|xhtml| xhtml.content = xhtml.content.gsub(/interactions\.portal\.concord\.org\/system/, 's3.amazonaws.com/interactions-production'); xhtml.save!}; nil
   - Embeddable::VideoPlayer.all.each{|vp| next if vp.video_url.nil?; vp.video_url = vp.video_url.sub(/interactions\.portal\.concord\.org\/system/, 's3.amazonaws.com/interactions-production'); vp.save!}; nil
