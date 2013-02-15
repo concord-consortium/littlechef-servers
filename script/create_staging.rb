@@ -41,5 +41,19 @@ server = clone_portal_servers({
   new_server_role:     "#{proj}-#{target_stage}"
   })
 
-puts "the last step is go into a portal checkout and run:"
+production_s3_bucket = production_role['override_attributes']['cc_rails_portal']['s3_bucket']
+if production_s3_bucket
+  target_s3_bucket = staging_role['override_attributes']['cc_rails_portal']['s3_bucket']
+  unless target_s3_bucket
+    puts "There is a production s3 bucket defined in roles/#{proj}-production.json, but there is NOT "
+    puts " a s3 bucket defined in roles/#{proj}-#{target_stage}.json"
+    puts "If you need to make a bucket run:"
+    puts "   script/create_bucket.rb -p #{proj} -s #{target_stage}"
+    target_s3_bucket = "#{proj}-#{target_stage}"
+  end
+  puts "If you want copy the s3 resources from the production bucket, this will do the trick:"
+  puts "   s3cmd cp --acl-public --recursive s3://#{production_s3_bucket} s3://#{target_s3_bucket}"
+end
+
+puts "the last step is to deploy the code from your application with capistrano. For example:"
 puts "  cap #{proj}-#{target_stage} deploy deploy:migrate"
