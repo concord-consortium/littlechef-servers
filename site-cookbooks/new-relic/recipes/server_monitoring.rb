@@ -13,7 +13,7 @@ package "newrelic-sysmond"
 
 service "newrelic-sysmond" do
   supports [ :restart, :status ]
-  action [:enable, :start]
+  action :enable
 end
 
 bash "config newrelic sysmon" do
