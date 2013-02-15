@@ -1,0 +1,7 @@
+{
+    "ipaddress": "10.31.144.114",
+    "name": "vpb.concord.org",
+    "run_list": [
+        "role[vpb-production]"
+    ]
+}
