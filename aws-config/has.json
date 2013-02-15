@@ -1,3 +1,4 @@
 {
-  "ec2_flavor_id": "m1.large"
+  "ec2_flavor_id": "m1.large",
+  "iam_user": "has-s3-user"
 }
