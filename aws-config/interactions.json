@@ -1,3 +1,4 @@
 {
-  "availability_zone": "us-east-1b"
+  "availability_zone": "us-east-1b",
+  "iam_user": "interactions-s3-user"
 }
