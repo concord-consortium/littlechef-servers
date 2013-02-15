@@ -62,6 +62,7 @@ end
 execute "restart webapp" do
   command "touch #{approot}/current/tmp/restart.txt"
   action :nothing
+  only_if { ::File.exists?("#{approot}/current/tmp")}
 end
 
 directory "#{appshared}" do
@@ -137,64 +138,6 @@ template "#{appshared}/config/mailer.yml" do
     :credentials => data_bag_item('credentials', 'smtp')
   )
   notifies :run, "execute[restart webapp]"
-end
-
-#########
-## everything below here should only happen once when the server is first provisioned
-## after that these things should be done with capistrano
-#########
-
-# folders in the shared folder and the links to them in the current release
-shared_folders = {
-  "config/nces_data" => "config/nces_data",
-  "log" => "log",
-  "public/otrunk-examples" => "public/otrunk-examples",
-  "public/sparks-content" => "public/sparks-content",
-  "public/installers" => "public/installers",
-  "rinet_data" => "rinet_data",
-  "system" => "public/system",
-  "pids" => "tmp/pids"
-}
-
-# files in the shared folder that are linked in the current release
-# TODO: with some chef foo we could have this happen through the template
-# definitions above
-shared_files = {
-  "config/database.yml" => "config/database.yml",
-  "config/installer.yml" => "config/installer.yml",
-  "config/mailer.yml" => "config/mailer.yml",
-  "config/newrelic.yml" => "config/newrelic.yml",
-  "config/settings.yml" => "config/settings.yml",
-  "config/rinet_data.yml" => "config/rinet_data.yml",
-  "config/initializers/site_keys.rb" => "config/initializers/site_keys.rb"
-}
-
-deploy "#{approot}" do
-  user "deploy"
-  repo "git://github.com/concord-consortium/rigse.git"
-  branch "master"
-  enable_submodules true
-  migrate false
-  action :deploy
-  restart_command "touch tmp/restart.txt"
-  before_symlink do
-    my_shared_path = new_resource.shared_path
-
-    shared_folders.keys.each do |dir|
-      directory "#{my_shared_path}/#{dir}" do
-        owner "deploy"
-        mode 0775
-      end
-    end
-  end
-
-  symlinks shared_folders.merge(shared_files)
-
-  # only deploy once after that capistrano should be used this might need to be 
-  # revisited handle cases where this resource definition changes itself
-  not_if do
-    File.exists?("#{approot}/current/Gemfile")
-  end
 end
 
 # optional paperclip settings
