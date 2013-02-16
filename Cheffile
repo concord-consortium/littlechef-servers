@@ -22,7 +22,7 @@ cookbook 'authbind',      :git => 'git://github.com/realityforge/chef-authbind.g
 cookbook 'zip',           :git => 'git://github.com/phlipper/chef-zip.git'
 
 # http://fnichol.github.com/chef-rvm/
-cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
+cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git'
 
 # https://github.com/fnichol/chef-rvm_passenger
 cookbook 'rvm_passenger', :git => 'git://github.com/fnichol/chef-rvm_passenger.git', :ref => 'v0.8.0'

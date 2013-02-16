@@ -5,6 +5,7 @@ SITE
     apt (1.8.0)
     ark (0.0.17)
     build-essential (1.3.2)
+    chef_gem (0.0.5)
     chef_handler (1.1.4)
     couchdb (2.0.0)
       erlang (>= 0.0.0)
@@ -44,10 +45,11 @@ GIT
 
 GIT
   remote: git://github.com/fnichol/chef-rvm.git
-  ref: v0.9.0
-  sha: 4a408e5d6c5a52c37388a799c516430263339849
+  ref: master
+  sha: b9a5c0044a2ea574ad6f7db28b7f0947271690ac
   specs:
-    rvm (0.9.0)
+    rvm (0.9.1)
+      chef_gem (>= 0.0.0)
 
 GIT
   remote: git://github.com/fnichol/chef-rvm_passenger.git
