@@ -1,0 +1,5 @@
+check process delayed_job
+  with pidfile <%= approot %>shared/pids/delayed_job.pid
+  start program = "cd <%= approot %>current && RAILS_ENV=production bundle exec script/delayed_job start --prefix <%= approot %>" as uid <%= rails_user %>
+  stop program  = "cd <%= approot %>current && RAILS_ENV=production bundle exec script/delayed_job stop" as uid <%= rails_user %>
+  if 5 restarts within 5 cycles then timeout

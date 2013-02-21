@@ -1,5 +1,5 @@
 {
-    "name": "monit-test",
+    "name": "cc-monit",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
