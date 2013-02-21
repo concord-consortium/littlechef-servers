@@ -6,11 +6,12 @@ Install littlechef
 
     pip install littlechef
     
-Install librarian-chef
+Configure Ruby
 
-    rvm --rvmrc --create use 1.9.3@littlechef-servers
-    gem install librarian
-    
+    source ./.rvmrc
+    bundle install --binstubs
+
+
 Run initial librarian install
 
     librarian-chef install

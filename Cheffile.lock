@@ -41,6 +41,13 @@ GIT
       nodejs (>= 0.0.0)
 
 GIT
+  remote: https://github.com/concord-consortium/chef-monit.git
+  ref: master
+  sha: 263af2c0a7dcd4f85d3ef538c5861cacfd108d75
+  specs:
+    monit (1.1.0)
+
+GIT
   remote: https://github.com/concord-consortium/chef-repo
   path: cookbooks
   ref: master
@@ -86,6 +93,7 @@ DEPENDENCIES
   couchdb (>= 0)
   git (>= 0)
   imagemagick (>= 0)
+  monit (>= 0)
   nodejs (>= 0)
   npm (>= 0)
   passenger_apache2 (>= 0)

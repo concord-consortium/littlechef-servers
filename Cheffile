@@ -21,7 +21,7 @@ cookbook 'nodejs',
     :git => 'https://github.com/mdxp/nodejs-cookbook'
 cookbook 'npm',
     :git => 'https://github.com/balbeko/chef-npm/'
-# cookbook 'authbind', 
+# cookbook 'authbind',
     # :git => 'https://github.com/realityforge-cookbooks/authbind'
 cookbook 'chef-ruby',
     :git => 'https://github.com/concord-consortium/chef-ruby', :ref => 'libreadline'
@@ -32,6 +32,7 @@ cookbook 'imagemagick',
 cookbook 'apache2', :git => 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
 cookbook 'passenger_apache2', :git => 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
 
+cookbook 'monit', :git => 'https://github.com/concord-consortium/chef-monit.git'
 # example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'
 #
