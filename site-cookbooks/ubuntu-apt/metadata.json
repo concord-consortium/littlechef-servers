@@ -1,0 +1,9 @@
+{
+  "name": "ubuntu-apt",
+  "platforms": {
+    "ubuntu": ">= 10.0.0"
+  },
+  "recipes": {
+    "ubuntu-apt": "Use ubuntu default apt sources, instead of http://us-east-1.ec2.archive.ubuntu.com/"
+  }
+}
