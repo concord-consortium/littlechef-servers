@@ -3,7 +3,7 @@ include_recipe "monit"
 template node["monit"]["main_config_path"] do
   owner  "root"
   group  "root"
-  mode   "0700"
+  mode   "0644"
   source "monitrc.erb"
   variables(
     :mail  => data_bag_item('credentials', 'smtp'),
@@ -11,16 +11,22 @@ template node["monit"]["main_config_path"] do
   )
 end
 
-# aws additional monit files:
-node[:cc_monit][:jobs].each do |conf|
-  approot    = "/web/portal"  # TODO: nodification in cc_rails_portal
-  rails_user = "deploy"       # TODO: nodification in cc_rails_portal
 
-  monit_monitrc conf do
+# aws additional monit files:
+node["cc_monit"]["jobs"].each do |conf|
+  base = node["monit"]["includes_dir"]
+  Chef::Log.info("MONIT: configuring job '#{conf}'")
+  template "#{base}/#{conf}.monitrc" do
+    owner  "root"
+    group  "root"
+    mode   "0500"
+    source "#{conf}.monitrc.erb"
     variables({
       :category    => "system",
-      :approot     => approot,
-      :rails_user  => rails_user
-      })
+      :approot     => "/web/portal",
+      :rails_user  => "deploy"
+    })
+    notifies :restart, "service[monit]", :immediately
+    action :create
   end
 end

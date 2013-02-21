@@ -1,1 +1,1 @@
-default[:cc_monit][:jobs] = ['test']
+default["cc_monit"]["jobs"] = ['test']

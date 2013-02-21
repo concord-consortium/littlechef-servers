@@ -4,7 +4,12 @@
     "json_class": "Chef::Role",
     "run_list": [
        "recipe[cc-monit]"
-    ]
+    ],
+    "override_attributes": {
+      "cc_monit" : {
+        "jobs": ["delayed_job"]
+      }
+    }
 }
 
 

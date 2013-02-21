@@ -16,8 +16,8 @@ set mailserver email-smtp.us-east-1.amazonaws.com port 25
 
 set mail-format {
   from: all-portal-errors@concord.org
-  subject: MONIT TEST: $SERVICE $EVENT at $DATE
-  message: Monit $ACTION $SERVICE at $DATE on $HOST,
+  subject: MONIT: <%= node['hostname'] %> $SERVICE $EVENT
+  message: Monit <%= node['hostname'] %> $ACTION $SERVICE at $DATE
 Dutifully,
 Monit
 
