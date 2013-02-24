@@ -21,6 +21,9 @@ cookbook 'npm',           :git => 'git://github.com/balbeko/chef-npm.git'
 cookbook 'authbind',      :git => 'git://github.com/realityforge/chef-authbind.git'
 cookbook 'zip',           :git => 'git://github.com/phlipper/chef-zip.git'
 
+# https://github.com/opscode-cookbooks/ark/pull/8
+cookbook 'ark',           :git => 'git://github.com/opscode-cookbooks/ark.git'
+
 # http://fnichol.github.com/chef-rvm/
 cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git'
 

@@ -1,37 +1,40 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    apache2 (1.4.2)
-    apt (1.8.0)
-    ark (0.0.17)
-    build-essential (1.3.2)
+    apache2 (1.6.0)
+    apt (1.9.0)
+    build-essential (1.3.4)
     chef_gem (0.0.5)
     chef_handler (1.1.4)
-    couchdb (2.0.0)
+    couchdb (2.2.0)
       erlang (>= 0.0.0)
       yum (>= 0.0.0)
     cutlery (0.1.0)
     dmg (1.1.0)
-    emacs (0.8.2)
-    erlang (1.1.2)
+    emacs (0.8.4)
+    erlang (1.2.0)
+      build-essential (>= 0.0.0)
       yum (>= 0.5.0)
-    git (2.1.2)
+    git (2.3.0)
       build-essential (>= 0.0.0)
       dmg (>= 0.0.0)
-      runit (>= 0.0.0)
+      runit (~> 1.0)
       windows (>= 0.0.0)
       yum (>= 0.0.0)
-    maven (0.13.0)
+    maven (0.14.0)
       ark (>= 0.0.0)
       java (>= 0.0.0)
-    nginx (1.1.4)
+    nginx (1.4.0)
+      apt (>= 0.0.0)
       build-essential (>= 0.0.0)
       ohai (>= 1.1.4)
-    ohai (1.1.6)
-    runit (0.16.2)
+      yum (>= 0.0.0)
+    ohai (1.1.8)
+    runit (1.0.6)
+      build-essential (>= 0.0.0)
     sudo (2.0.4)
     users (1.3.0)
-    windows (1.7.0)
+    windows (1.8.4)
       chef_handler (>= 0.0.0)
     yum (2.1.0)
 
@@ -46,7 +49,7 @@ GIT
 GIT
   remote: git://github.com/fnichol/chef-rvm.git
   ref: master
-  sha: b9a5c0044a2ea574ad6f7db28b7f0947271690ac
+  sha: 37ae6f0d6540ebc95d22004d68dd45fe304d7255
   specs:
     rvm (0.9.1)
       chef_gem (>= 0.0.0)
@@ -64,18 +67,25 @@ GIT
 GIT
   remote: git://github.com/mdxp/nodejs-cookbook.git
   ref: master
-  sha: 54e0d661f2d18979c915960d294756440e3cdd38
+  sha: 10d682eefb0e89d51ee5f3727065cf544d757e1f
   specs:
     nodejs (1.0.3)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
 
 GIT
+  remote: git://github.com/opscode-cookbooks/ark.git
+  ref: master
+  sha: b8c4aaf17d6e88aa857af6b2038eb0dba9981c0b
+  specs:
+    ark (0.0.17)
+
+GIT
   remote: git://github.com/opscode-cookbooks/java.git
   ref: master
-  sha: 92a12d17413e8635cdc06dc535f59f53e63c18d7
+  sha: 7288eb7f4f2624f4c688652ea587c8805de5045f
   specs:
-    java (1.8.0)
+    java (1.9.6)
       windows (>= 0.0.0)
 
 GIT
@@ -96,6 +106,7 @@ GIT
 DEPENDENCIES
   apache2 (>= 0)
   apt (>= 0)
+  ark (>= 0)
   authbind (>= 0)
   couchdb (>= 0)
   emacs (>= 0)
