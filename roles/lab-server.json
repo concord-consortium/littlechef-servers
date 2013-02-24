@@ -56,12 +56,12 @@
             "version": "0.8.16"
         },
         "rvm": {
-          "default_ruby": "ruby-1.9.3-p385",
+          "default_ruby": "ruby-1.9.3-p392",
           "group_users": [ "deploy" ]
         },
         "rvm_passenger": {
           "version":     "3.0.19",
-          "rvm_ruby":    "ruby-1.9.3-p385"
+          "rvm_ruby":    "ruby-1.9.3-p392"
         }
     },
     "override_attributes": {}
