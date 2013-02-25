@@ -68,12 +68,12 @@ end
 
 package "nodejs" do
   action :install
-  version "0.8.16-1chl1~precise1"
+  version "0.8.20-1chl1~precise1"
 end
 
 package "npm" do
   action :install
-  version "1.1.69-1chl1~precise1"
+  version "1.2.11-1chl1~precise1"
 end
 
 # include_recipe "authbind"
