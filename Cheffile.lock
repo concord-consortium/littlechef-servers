@@ -21,7 +21,7 @@ SITE
       runit (~> 1.0)
       windows (>= 0.0.0)
       yum (>= 0.0.0)
-    maven (0.14.0)
+    maven (0.15.0)
       ark (>= 0.0.0)
       java (>= 0.0.0)
     nginx (1.4.0)
@@ -76,9 +76,9 @@ GIT
 GIT
   remote: git://github.com/opscode-cookbooks/ark.git
   ref: master
-  sha: b8c4aaf17d6e88aa857af6b2038eb0dba9981c0b
+  sha: 084aef10c0797d6f9ac13de668804cf78d6353dc
   specs:
-    ark (0.0.17)
+    ark (0.1.0)
 
 GIT
   remote: git://github.com/opscode-cookbooks/java.git
