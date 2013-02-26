@@ -53,8 +53,7 @@
           "version": "3"
         },
         "nodejs": {
-            "install_method": "package",
-            "version": "0.8.20"
+            "install_method": "package"
         },
         "rvm": {
           "default_ruby": "ruby-1.9.3-p392",

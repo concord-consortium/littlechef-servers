@@ -1,4 +1,3 @@
-
 # perhaps these should just be put in the runlist instead??
 
 package "python-software-properties"
@@ -28,8 +27,8 @@ cookbook_file "/home/deploy/.m2/settings.xml" do
   mode "664"
 end
 
-# add the node repository here so we can make sure that apt-get update
-# runs correctly
+# add the node repository here so we can make sure that apt-get update runs correctly
+# https://launchpad.net/~chris-lea/+archive/node.js/
 apt_repository 'node.js' do
   uri 'http://ppa.launchpad.net/chris-lea/node.js/ubuntu'
   distribution node['lsb']['codename']
@@ -40,8 +39,8 @@ apt_repository 'node.js' do
 end
 
 # ppa for the couchdb repository
+# https://launchpad.net/~longsleep/+archive/couchdb
 apt_repository 'couchdb' do
-  # https://launchpad.net/~longsleep/+archive/couchdb
   uri 'http://ppa.launchpad.net/longsleep/couchdb/ubuntu'
   distribution node['lsb']['codename']
   components ['main']
@@ -68,12 +67,12 @@ end
 
 package "nodejs" do
   action :install
-  version "0.8.20-1chl1~precise1"
+  version "0.8.21-1chl1~precise1"
 end
 
 package "npm" do
   action :install
-  version "1.2.11-1chl1~precise1"
+  version "1.2.12-1chl1~precise1"
 end
 
 # include_recipe "authbind"
