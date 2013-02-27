@@ -92,8 +92,8 @@ template "#{appshared}/config/initializers/site_keys.rb" do
   owner "deploy"
 
   site_id = node[:cc_rails_portal][:site_id]
-  site_item = data_bag_item('sites', site_id)  
-    
+  site_item = data_bag_item('sites', site_id)
+
   variables(
     :site_key => site_item["site_key"]
   )
@@ -106,7 +106,7 @@ template "#{appshared}/config/database.yml" do
   owner "deploy"
 
   site_id = node[:cc_rails_portal][:site_id]
-  site_item = data_bag_item('sites', site_id)  
+  site_item = data_bag_item('sites', site_id)
 
   db = {}
 
@@ -140,6 +140,19 @@ template "#{appshared}/config/mailer.yml" do
   notifies :run, "execute[restart webapp]"
 end
 
+# Padlet.com used to be wallwisher.
+# Their product is an online whiteboard. Interactions thinks
+# other projects will like it.
+template "#{appshared}/config/padlet.yml" do
+  source "padlet.yml.erb"
+  owner "deploy"
+  variables(
+    :credentials => data_bag_item('credentials', 'ccpadlet')
+  )
+  notifies :run, "execute[restart webapp]"
+end
+
+
 # optional paperclip settings
 template "#{appshared}/config/paperclip.yml" do
   source "paperclip.yml.erb"
@@ -147,7 +160,6 @@ template "#{appshared}/config/paperclip.yml" do
   notifies :run, "execute[restart webapp]"
   only_if { node[:cc_rails_portal][:s3_bucket] }
 end
-
 
 template "#{appshared}/config/installer.yml" do
   source "installer.yml.erb"
