@@ -183,6 +183,5 @@ web_app "lab" do
   server_aliases [node['lab-hostname']]
   docroot "/var/www/app/server/public"
   enable true
-  notifies :reload, resources(:service => "apache2"), :delayed
+  notifies :restart, resources(:service => "apache2"), :delayed
 end
-
