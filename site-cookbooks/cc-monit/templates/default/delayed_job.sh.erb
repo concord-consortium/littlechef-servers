@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+# CAUTION: File maintained by Chef in
+# templates/default/delayed_jo.sh (littlechef site-cookbook cc-monit)
+# expects to be located in ? <%= @approot %>/delayed_job.sh
+
+if [ $# -lt 1 ] ; then
+    echo "Usage:   " $0 " <start | stop> "
+    exit 1
+fi
+
+# approot=<%= @approot %>
+approot=/web/portal
+current=$approot/current
+shared=$approot/shared/
+action=$1
+
+logfile=$shared/log/monit_delayed_job.log
+cd $current
+
+bundle_exec="/usr/local/bin/bundle exec"
+delayed_job="script/delayed_job $action --prefix $current"
+export RAILS_ENV=production
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+timestamp=`date`
+me=`whoami`
+whereami=`pwd`
+environment=`env`
+ruby=`which ruby`
+version=`$ruby --version`
+cmd="$rails_env $bundle_exec $delayed_job"
+
+echo "------------------------------------------------" >> $logfile 2>&1
+echo "date: $timestamp"  >> $logfile 2>&1
+echo "Running $cmd" >> $logfile 2>&1
+echo "as $me"   >> $logfile 2>&1
+echo "in $whereami"   >> $logfile 2>&1
+echo "ruby is $ruby $version" >> $logfile 2>&1
+echo "------------------------------------------------" >> $logfile 2>&1
+echo "$environment"         >> $logfile 2>&1
+
+$cmd >> $logfile 2>&1

@@ -1,16 +1,23 @@
 include_recipe "monit"
 
+
 template node["monit"]["main_config_path"] do
   owner  "root"
   group  "root"
   mode   "0644"
   source "monitrc.erb"
-  variables(
-    :mail  => data_bag_item('credentials', 'smtp'),
-    :monit => data_bag_item('credentials', 'monit')
-  )
-end
+  server_name = node.name
 
+  # TODO: this might not work in all cases.
+  if node[:cc_rails_portal]
+    server_name = node[:cc_rails_portal][:site_name]
+  end
+
+  variables(
+    :mail      => data_bag_item('credentials', 'smtp'),
+    :monit     => data_bag_item('credentials', 'monit'),
+    :server_name => server_name   )
+end
 
 # aws additional monit files:
 node["cc_monit"]["jobs"].each do |conf|
@@ -26,7 +33,26 @@ node["cc_monit"]["jobs"].each do |conf|
       :approot     => "/web/portal",
       :rails_user  => "deploy"
     })
-    notifies :restart, "service[monit]", :immediately
     action :create
+    # notifies :restart, "service[monit]"
   end
+end
+
+template "/web/portal/delayed_job.sh" do
+  owner  "deploy"
+  group  "root"
+  mode   "0750"
+  source "delayed_job.sh.erb"
+  variables({
+    :approot     => "/web/portal",
+    :rails_user  => "deploy"
+  })
+  action :create
+  only_if do
+    File.exists?("/etc/passwd")
+  end
+end
+
+service "monit" do
+  action :restart
 end

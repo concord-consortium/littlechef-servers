@@ -16,8 +16,8 @@ set mailserver email-smtp.us-east-1.amazonaws.com port 25
 
 set mail-format {
   from: all-portal-errors@concord.org
-  subject: MONIT: <%= node['hostname'] %> $SERVICE $EVENT
-  message: Monit <%= node['hostname'] %> $ACTION $SERVICE at $DATE
+  subject: MONIT: <%= @server_name %> $SERVICE $EVENT
+  message: Monit <%= @server_name %>  $ACTION $SERVICE at $DATE
 Dutifully,
 Monit
 
@@ -26,8 +26,9 @@ Monit
 
 # Web interface
 set httpd port 2812 and
+  allow localhost
+  allow 127.0.0.1
   allow 63.138.0.0/255.255.0.0
-  allow <%= @monit['user'] %>:<%= @monit['password'] %>
 
 # Include config files
 include /etc/monit/conf.d/*
