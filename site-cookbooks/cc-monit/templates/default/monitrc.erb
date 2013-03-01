@@ -7,7 +7,7 @@ set daemon 20
 set logfile /var/log/monit.log
 
 # Mail alerts
-set alert all-portal-errors@concord.org
+set alert all-portal-errors@concord.org not {instance}
 set mailserver email-smtp.us-east-1.amazonaws.com port 25
   USERNAME  <%= @mail['user'] %> PASSWORD <%= @mail['password'] %>
   using TLSV1

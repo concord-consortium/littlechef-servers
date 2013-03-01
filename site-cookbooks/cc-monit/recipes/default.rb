@@ -1,6 +1,18 @@
 include_recipe "monit"
 
 
+# remove the default load monitor...
+redundant_load_rc_file = "#{node["monit"]["includes_dir"]}/load.monitrc"
+file redundant_load_rc_file do
+  owner "root"
+  group "root"
+  mode 00755
+  action :delete
+  only_if do
+    File.exists?(redundant_load_rc_file)
+  end
+end
+
 template node["monit"]["main_config_path"] do
   owner  "root"
   group  "root"
