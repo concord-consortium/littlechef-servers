@@ -1,0 +1,6 @@
+{
+  "login_user":     "ubuntu",
+  "instance_name":  "wise_ec2",
+  "group_name":     "wise4",
+  "ports":          [22,25,80,8080]
+}

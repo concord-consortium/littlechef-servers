@@ -5,3 +5,5 @@ tmp
 nodes/ec2-*
 bin
 config
+*.tar.gz
+wise4-step-types.json

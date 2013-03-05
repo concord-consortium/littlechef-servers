@@ -10,7 +10,15 @@ cookbook 'git'
 cookbook 'apt'
 cookbook 'couchdb'
 cookbook 'sudo'
-cookbook 'tomcat'
+cookbook "emacs"
+cookbook "vim"
+cookbook "openssl"
+cookbook "mysql"
+cookbook "java"
+cookbook "ant"
+
+# see below for cc_wise_tomcat
+# cookbook 'tomcat'
 
 # use a modified python cookbook to fix a recent issue
 cookbook 'python',
@@ -33,6 +41,17 @@ cookbook 'apache2', :git => 'https://github.com/concord-consortium/chef-repo', :
 cookbook 'passenger_apache2', :git => 'https://github.com/concord-consortium/chef-repo', :path => 'cookbooks'
 
 cookbook 'monit', :git => 'https://github.com/concord-consortium/chef-monit.git'
+
+cc_wise_cookbooks = "git://github.com/concord-consortium/wise-cookbooks.git"
+
+
+# TODO: move it out of wise, or rename..
+cookbook "tomcat",
+  :git => cc_wise_cookbooks
+
+cookbook "wise4",
+  :git => "file:///Users/npaessel/lab/git/wise-cookbooks"
+
 # example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'
 #

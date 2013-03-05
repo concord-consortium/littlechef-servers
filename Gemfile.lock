@@ -86,4 +86,5 @@ PLATFORMS
 DEPENDENCIES
   fog
   librarian
+  thor
   trollop
