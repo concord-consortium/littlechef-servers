@@ -63,6 +63,43 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 
             fix node:lab.dev.concord.org
 
+### Setup a new WISE server
+
+1.  Spin up an ec2 instance
+    
+        ./script/create_ec2.rb -s staging -p wise_project -n "my wise server"
+
+2.  Install WISE server
+        
+        fix node:$HOSTNAME_OF_SERVER role:wise4
+
+3.  Enjoy `thor wise *` commands.
+    
+        this wise:list
+        thor wise:backup <instance_id>
+
+### Adding new features to the lab.server configuration
+
+1.  Spin up your own instance using the steps above. 
+
+2.  Modify the necessary files to add the feature
+    - `roles/lab-server.json` for changing an attribute or adding a recipe
+    - `site-cookbooks/lab-server` for changing default deploy steps
+    - `site-cookbooks/node-couch-webapp` for changing node and couch configuration
+    - `Chefile` to use a new cookbook that isn't listed there see the "Add New Cookbook" section
+
+3.  Update your instance
+
+        fix node:$HOSTNAME_OF_SERVER
+
+4.  Make sure it builds from scratch, redoing the "Setup a new lab.server" steps
+
+5.  To put these features on the public server you have 2 options 
+    -   copy the necessary data from the old server to the new one, and switch the ElasticIP to the new server
+    -   update the public version (Note: it isn't part of this system yet so this command won't work yet)
+
+            fix node:lab.dev.concord.org
+
 ### Adding a New Cookbook
 
 There are 2 types of cookbooks supported: cookbooks and site-cookbooks.
