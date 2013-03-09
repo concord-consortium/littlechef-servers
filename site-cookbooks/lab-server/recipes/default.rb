@@ -141,6 +141,10 @@ execute "enable the locate database" do
   command "sudo updatedb"
 end
 
+execute "enable access to a default locale" do
+  command "sudo locale-gen en_US"
+end
+
 # Clone Lab framework with embedded web application
 git "/var/www/app" do
   user "deploy"
