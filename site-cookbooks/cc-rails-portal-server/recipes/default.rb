@@ -24,23 +24,26 @@ include_recipe "apache2::disable_default_site"
 approot = "/web/portal"
 appshared = "#{approot}/shared"
 docroot = "#{approot}/current/public"
+portal = node[:cc_rails_portal]
+site_id = portal[:site_id]
+site_item = data_bag_item('sites', site_id)
 
 directory "#{approot}" do
   recursive true
   owner "deploy"
 end
 
-if node[:cc_rails_portal][:base_uri] != "/"
+if portal[:base_uri] != "/"
   docroot = "#{approot}/static"
 
   # trim the final "/foo" from the path, so we get the parent path
-  base_parent = node[:cc_rails_portal][:base_uri].sub(/\/$/, '').sub(/\/[^\/]*$/,'')
+  base_parent = portal[:base_uri].sub(/\/$/, '').sub(/\/[^\/]*$/,'')
 
   directory "#{approot}/static#{base_parent}" do
     recursive true
   end
 
-  link "#{approot}/static#{node[:cc_rails_portal][:base_uri]}" do
+  link "#{approot}/static#{portal[:base_uri]}" do
     to "#{approot}/current/public"
   end
 end
@@ -48,14 +51,14 @@ end
 web_app "portal" do
   cookbook "cc-rails-portal-server"
   template "rails_app.conf.erb"
-  server_name node[:cc_rails_portal][:server_name]
-  server_aliases node[:cc_rails_portal][:server_aliases]
+  server_name portal[:server_name]
+  server_aliases portal[:server_aliases]
   docroot docroot
   rails_env node[:rails][:environment]
-  rails_base_uri node[:cc_rails_portal][:base_uri]
+  rails_base_uri portal[:base_uri]
   proxies node[:http_proxies]
   extra_config node[:http_extra]
-  static_assets node[:cc_rails_portal][:static_assets]
+  static_assets portal[:static_assets]
   notifies :reload, resources(:service => "apache2"), :delayed
 end
 
@@ -90,10 +93,6 @@ end
 template "#{appshared}/config/initializers/site_keys.rb" do
   source "site_keys.rb.erb"
   owner "deploy"
-
-  site_id = node[:cc_rails_portal][:site_id]
-  site_item = data_bag_item('sites', site_id)
-
   variables(
     :site_key => site_item["site_key"]
   )
@@ -105,24 +104,21 @@ template "#{appshared}/config/database.yml" do
   source "database.yml.erb"
   owner "deploy"
 
-  site_id = node[:cc_rails_portal][:site_id]
-  site_item = data_bag_item('sites', site_id)
-
   db = {}
 
-  if node[:cc_rails_portal][:db_host]
-    db['host'] = node[:cc_rails_portal][:db_host]
-  elsif node[:cc_rails_portal][:db_rds_instance_name]
-    rds_data_bag = data_bag_item('rds_domains', node[:cc_rails_portal][:rds_domain])
-    db['host'] = "#{node[:cc_rails_portal][:db_rds_instance_name]}.#{rds_data_bag['domain']}"
+  if portal[:db_host]
+    db['host'] = portal[:db_host]
+  elsif portal[:db_rds_instance_name]
+    rds_data_bag = data_bag_item('rds_domains', portal[:rds_domain])
+    db['host'] = "#{portal[:db_rds_instance_name]}.#{rds_data_bag['domain']}"
   else
     raise "no host defined for the database"
   end
 
-  db['database'] = node[:cc_rails_portal][:db_database]
+  db['database'] = portal[:db_database]
   db['username'] = site_item['db_username']
   db['password'] = site_item['db_password']
-  db['pool']     = node[:cc_rails_portal][:db_pool]
+  db['pool']     = portal[:db_pool]
 
   variables(
     :db => db
@@ -158,7 +154,7 @@ template "#{appshared}/config/paperclip.yml" do
   source "paperclip.yml.erb"
   owner "deploy"
   notifies :run, "execute[restart webapp]"
-  only_if { node[:cc_rails_portal][:s3_bucket] }
+  only_if { portal[:s3_bucket] }
 end
 
 template "#{appshared}/config/installer.yml" do
@@ -166,30 +162,27 @@ template "#{appshared}/config/installer.yml" do
   owner "deploy"
   notifies :run, "execute[restart webapp]"
   variables(
-    :installer => node[:cc_rails_portal][:installer]
+    :installer => portal[:installer]
   )
-  only_if { node[:cc_rails_portal][:installer] }
+  only_if { portal[:installer] }
 end
 
 # aws settings:
-if node[:cc_rails_portal][:s3_bucket]
+if portal[:s3_bucket]
   template "#{appshared}/config/aws_s3.yml" do
     source "aws_s3.yml.erb"
     owner "deploy"
 
-    site_id = node[:cc_rails_portal][:site_id]
-    site_item = data_bag_item('sites', site_id)
-
     s3 = {}
     s3['access_key_id'] = site_item['aws_access_key_id']
     s3['secret_access_key'] = site_item['aws_secret_access_key']
-    s3['bucket'] = node[:cc_rails_portal][:s3_bucket]
+    s3['bucket'] = portal[:s3_bucket]
 
     variables(
       :s3 => s3
     )
     notifies :run, "execute[restart webapp]"
-    only_if { node[:cc_rails_portal][:s3_bucket] }
+    only_if { portal[:s3_bucket] }
   end
 end
 
@@ -197,11 +190,11 @@ template "#{appshared}/config/google_analytics.yml" do
   source "google_analytics.yml.erb"
   owner "deploy"
   variables(
-    :account_id => node[:cc_rails_portal][:google_analytics_account]
+    :account_id => portal[:google_analytics_account]
   )
   notifies :run, "execute[restart webapp]"
 end
 
-if node[:cc_rails_portal][:google_analytics_account] == "UA-6899787-23"
+if portal[:google_analytics_account] == "UA-6899787-23"
   log("Using default Google Analytics Account! You might consider setting up your own.") { level :warn }
 end
