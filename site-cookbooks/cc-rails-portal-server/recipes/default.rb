@@ -87,6 +87,9 @@ end
 template "#{appshared}/config/settings.yml" do
   source "settings.yml.erb"
   owner "deploy"
+  variables(
+    :site_key => site_item["site_key"]
+  )
   notifies :run, "execute[restart webapp]"
 end
 
