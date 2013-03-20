@@ -50,7 +50,7 @@ cookbook "tomcat",
   :git => cc_wise_cookbooks
 
 cookbook "wise4",
-  :git => "file:///Users/npaessel/lab/git/wise-cookbooks"
+  :git => cc_wise_cookbooks
 
 # example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'

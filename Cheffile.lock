@@ -40,13 +40,6 @@ SITE
     yum (0.5.2)
 
 GIT
-  remote: file:///Users/npaessel/lab/git/wise-cookbooks
-  ref: master
-  sha: a28396fd29e5316117c93e9f80c4014a739db0d3
-  specs:
-    wise4 (0.0.2)
-
-GIT
   remote: git://github.com/concord-consortium/wise-cookbooks.git
   ref: master
   sha: d2806bcc6e8bf7696e1c40cf5ace0024d4a27391
@@ -54,6 +47,7 @@ GIT
     tomcat (0.10.3)
       java (>= 0.0.0)
       jpackage (>= 0.0.0)
+    wise4 (0.0.2)
 
 GIT
   remote: git://github.com/cookbooks/imagemagick.git
