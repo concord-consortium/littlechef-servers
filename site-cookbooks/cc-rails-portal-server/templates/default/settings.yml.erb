@@ -42,7 +42,7 @@ production:
   <% end %>
   dont_sanitize_xhtml: <%= portal[:dont_sanitize_xhtml] %>
   <% admin_user = portal[:admin_user] %>
-  default_admin_user: 
+  default_admin_user:
     first_name: <%= admin_user[:first_name] %>
     login: <%= admin_user[:login] %>
     last_name: <%= admin_user[:last_name] %>
@@ -55,3 +55,4 @@ production:
   recent_activity_on_login: <%= portal[:recent_activity_on_login] %>
   <% end %>
   pepper: <%= @site_key %>
+  default_password: <%= @default_password %>

@@ -88,7 +88,8 @@ template "#{appshared}/config/settings.yml" do
   source "settings.yml.erb"
   owner "deploy"
   variables(
-    :site_key => site_item["site_key"]
+    :site_key => site_item["site_key"],
+    :default_password => data_bag_item('credentials','default_password')['default_password']
   )
   notifies :run, "execute[restart webapp]"
 end
