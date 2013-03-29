@@ -1,0 +1,20 @@
+{
+    "name": "nextgen-production",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[nextgen-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails_portal": {
+            "site_url": "http://nextgen.concord.org",
+            "db_rds_instance_name": "nextgen-production",
+            "s3_bucket": "nextgen-production"
+        },
+        "new_relic":{
+            "app_name": "Nextgen"
+        }
+    }
+}

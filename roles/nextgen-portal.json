@@ -1,0 +1,39 @@
+{
+    "name": "nextgen-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails_portal": {
+            "site_id": "nextgen",
+            "site_name": "NextGen Portal",
+            "theme": "nextgen",
+            "email": "nextgen-help@concord.org",
+            "jnlp_family": "nextgen-otrunk",
+            "jnlp_version": "snapshot",
+            "admin_user": {
+                "first_name": "Noah",
+                "last_name": "Paessel",
+                "login": "knowuh",
+                "email": "npaessel@concord.org"
+            },
+            "tiny_mce": {
+                "buttons1": [
+                    "bold,italic,underline",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "code"
+                ]
+            }
+        }
+    }
+}
+
+
+
+

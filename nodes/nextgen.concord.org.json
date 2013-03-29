@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.30.155.89",
+    "run_list": [
+        "role[nextgen-production]"
+    ]
+}
