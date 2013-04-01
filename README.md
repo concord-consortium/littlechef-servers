@@ -63,20 +63,6 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 
             fix node:lab.dev.concord.org
 
-### Setup a new WISE server
-
-1.  Spin up an ec2 instance
-    
-        ./script/create_ec2.rb -s staging -p wise_project -n "my wise server"
-
-2.  Install WISE server
-        
-        fix node:$HOSTNAME_OF_SERVER role:wise4
-
-3.  Enjoy `thor wise *` commands.
-    
-        this wise:list
-        thor wise:backup <instance_id>
 
 ### Adding new features to the lab.server configuration
 
@@ -99,6 +85,38 @@ This repository uses a submodule for the data_bags folder. It is a private repos
     -   update the public version (Note: it isn't part of this system yet so this command won't work yet)
 
             fix node:lab.dev.concord.org
+
+### Setup a new WISE server
+
+1.  Spin up an ec2 instance
+    
+        ./script/create_ec2.rb -s staging -p wise_project -n "my wise server"
+
+2.  Install WISE server
+        
+        fix node:$HOSTNAME_OF_SERVER role:wise4
+
+3.  Enjoy `thor wise *` commands.
+    
+        this wise:list
+        thor wise:backup <instance_id>
+
+
+### Setup a new Production ortal Server ###
+
+0. Setup your environment, as per the direction at the top.
+0. Create a new aws config in `aws-config/<projectname>.json`
+0. run `bundle ./script/create_ec2.rb --stage production --project <project name>`
+0. Create a new elastic IP address using the AWS web console, and associate that address with this new instance ID (reported from script).
+0. Again, using the AWS web console, create a DNS entry for your host using Route 53.
+0. Create the S3 Bins for your project `./script/create_s3_bucket.rb --stage production --project <projectname>`
+0. Using the information from the output of the S3 bucket creation script, create a new databag for your site in `data_bags/sites/<sitename>.json`
+0. Create the databases for your project `./script/create_db.rb --stage production --project nextgen ``
+0. Create a Roles for your project in `roles/<projectname>.json`, `roles/<projectname>-production.json` and `roles/<projectname>-staging.json`. The roles should include a reference to the rails portal role. See `roles/interactions-portal.json` for example. eg `"role[rails-portal-server]"`.
+0. run fix on your node `fix node:<projectname>.concord.org role:<projectname>-production`
+0. checkout the rigse project, create new entries in `deploy.rb` and add `deploy/<projectname>-staging.rb` and `deploy/<projectname>-production.rb`
+0. Deploy: `bundle exec cap projectname-production deploy`
+0. Setup the default project: `bundle exec cap projectname-production setup:default_project`
 
 ### Adding a New Cookbook
 
