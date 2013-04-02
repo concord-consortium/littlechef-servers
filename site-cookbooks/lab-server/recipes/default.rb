@@ -5,9 +5,10 @@ package "tree"
 
 include_recipe "java"
 
+# https://launchpad.net/ubuntu/precise/amd64/openjdk-6-jdk
 package "openjdk-6-jdk" do
   action :install
-  version "6b24-1.11.5-0ubuntu1~12.04.1"
+  version "6b27-1.12.3-0ubuntu1~12.04.1"
 end
 
 # we need this concord maven provider to resolve
@@ -60,26 +61,19 @@ include_recipe "apache2"
 
 package "apache2" do
   action :install
-  version "2.2.22-1ubuntu1.2"
+  version "2.2.22-1ubuntu1.3"
 end
 
 # include_recipe "nodejs"
-
+# installing nodejs now also installs npm
 package "nodejs" do
   action :install
-  version "0.8.22-1chl1~precise1"
+  version "0.10.2-1chl1~precise1"
 end
-
-package "npm" do
-  action :install
-  version "1.2.14-1chl1~precise1"
-end
-
-# include_recipe "authbind"
 
 package "couchdb" do
   action :install
-  version "1.2.0-1ppa1+0"
+  version "1.2.1-0ppa1+0"
 end
 
 # the couchdb service script creates this folder but does so as root
