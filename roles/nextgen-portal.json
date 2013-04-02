@@ -12,8 +12,8 @@
             "site_name": "NextGen Portal",
             "theme": "nextgen",
             "email": "nextgen-help@concord.org",
-            "jnlp_family": "nextgen-otrunk",
-            "jnlp_version": "snapshot",
+            "states_and_provinces": "all",
+            "use_jnlps": false,
             "admin_user": {
                 "first_name": "Noah",
                 "last_name": "Paessel",
