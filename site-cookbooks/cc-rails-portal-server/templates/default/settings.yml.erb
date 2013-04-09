@@ -1,6 +1,7 @@
 <% portal = node[:cc_rails_portal] %>
 ---
 production:
+  password_for_default_users: <%= @default_password %>
   site_name: <%= portal[:site_name] %>
   site_url: <%= portal[:site_url] %>
   theme: <%= portal[:theme] %>
@@ -55,4 +56,4 @@ production:
   recent_activity_on_login: <%= portal[:recent_activity_on_login] %>
   <% end %>
   pepper: <%= @site_key %>
-  default_password: <%= @default_password %>
+
