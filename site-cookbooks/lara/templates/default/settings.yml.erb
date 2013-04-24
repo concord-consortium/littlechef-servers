@@ -1,0 +1,16 @@
+<% portal = node[:lara] %>
+---
+production:
+  password_for_default_users: <%= @default_password %>
+  site_name: <%= portal[:site_name] %>
+  site_url: <%= portal[:site_url] %>
+  admin_email: <%= portal[:email] %>
+  help_email: <%= portal[:email] %>
+  dont_sanitize_xhtml: <%= portal[:dont_sanitize_xhtml] %>
+  <% admin_user = portal[:admin_user] %>
+  default_admin_user:
+    first_name: <%= admin_user[:first_name] %>
+    login: <%= admin_user[:login] %>
+    last_name: <%= admin_user[:last_name] %>
+    email: <%= admin_user[:email] %>
+  pepper: <%= @site_key %>
