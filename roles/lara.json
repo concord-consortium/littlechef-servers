@@ -33,6 +33,20 @@
             "version": "3.0.12",
             "root_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12",
             "module_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12/ext/apache2/mod_passenger.so"
-        }
+        },
+        "cc_rails_portal": {
+            "site_id": "authoring",
+            "site_name": "Lightweight MW Portal",
+            "email": "pmorse@concord.org",
+            "admin_user": {
+                "first_name": "Parker",
+                "last_name": "Morse",
+                "login": "pmorse",
+                "email": "pmorse@concord.org"
+            }
+        },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "ddamelin"]
+        },
     }
 }

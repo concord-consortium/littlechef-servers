@@ -8,35 +8,9 @@
     "default_attributes": {},
     "override_attributes": {
         "cc_rails_portal": {
-            "db_rds_instance_name": "lightweight-mw",
-            "s3_bucket": "authoring",
-            "site_id": "authoring",
-            "site_name": "Lightweight MW Portal",
+            "db_rds_instance_name": "lightweight-mw-dev",
             "site_url": "http://authoring.concord.org",
-            "server_name": "authoring.concord.org",
-            "theme": "xproject",
-            "email": "aunger@concord.org",
-            "jnlp_family": "all-otrunk-snapshot",
-            "jnlp_version": "snapshot",
-            "admin_user": {
-                "first_name": "Aaron",
-                "last_name": "Unger",
-                "login": "aunger",
-                "email": "aunger@concord.org"
-            },
-            "tiny_mce": {
-                "buttons1": [
-                    "bold,italic,underline",
-                    "sup,sub",
-                    "bullist,numlist",
-                    "link,image",
-                    "pastext, pasteword,selectall",
-                    "code"
-                ]
-            }
-        },
-        "deploy_user_keys": {
-            "users": [ "internal_developers", "ddamelin"]
+            "server_name": "authoring.concord.org"
         },
         "new_relic":{
             "app_name": "Lightweight MW"

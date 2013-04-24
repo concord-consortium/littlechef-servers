@@ -3,39 +3,14 @@
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[rails-portal-server]"
+        "role[lara]"
     ],
     "default_attributes": {},
     "override_attributes": {
         "cc_rails_portal": {
             "db_rds_instance_name": "lightweight-mw-dev",
-            "site_id": "authoring",
-            "site_name": "Lightweight MW Portal",
             "site_url": "http://authoring.dev.concord.org",
-            "server_name": "authoring.dev.concord.org",
-            "theme": "xproject",
-            "email": "pmorse@concord.org",
-            "jnlp_family": "all-otrunk-snapshot",
-            "jnlp_version": "snapshot",
-            "admin_user": {
-                "first_name": "Parker",
-                "last_name": "Morse",
-                "login": "pmorse",
-                "email": "pmorse@concord.org"
-            },
-            "tiny_mce": {
-                "buttons1": [
-                    "bold,italic,underline",
-                    "sup,sub",
-                    "bullist,numlist",
-                    "link,image",
-                    "pastext, pasteword,selectall",
-                    "code"
-                ]
-            }
-        },
-        "deploy_user_keys": {
-            "users": [ "internal_developers", "ddamelin"]
+            "server_name": "authoring.dev.concord.org"
         },
         "new_relic":{
             "app_name": "Lightweight MW Dev"
