@@ -1,0 +1,38 @@
+{
+    "name": "lara",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[base-ruby-1_9_3]",
+        "recipe[deploy-user]",
+        "recipe[cc-lara]",
+        "recipe[aws-cloudwatch-monitoring]",
+        "recipe[new-relic]",
+        "recipe[cc-monit]"
+    ],
+    "default_attributes": {
+        "ruby": {
+            "version": "1.9.3-p194"
+        },
+        "deploy_user_keys": {
+            "group_definitions": {
+                "internal_developers": [
+                  "scytacki",
+                  "sfentress",
+                  "rklancer",
+                  "sbannasch",
+                  "npaessel",
+                  "pmorse",
+                  "aunger"]
+            },
+            "users": [ "internal_developers"]
+        }
+    },
+    "override_attributes": {
+        "passenger": {
+            "version": "3.0.12",
+            "root_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12",
+            "module_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12/ext/apache2/mod_passenger.so"
+        }
+    }
+}

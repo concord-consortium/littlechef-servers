@@ -1,27 +1,28 @@
 {
-    "name": "lightweight-mw-staging",
+    "name": "authoring-production",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[rails-portal-server]"
+        "role[lara]"
     ],
     "default_attributes": {},
     "override_attributes": {
         "cc_rails_portal": {
-            "db_rds_instance_name": "lightweight-mw-staging",
-            "site_id": "lightweight-mw",
+            "db_rds_instance_name": "lightweight-mw",
+            "s3_bucket": "authoring",
+            "site_id": "authoring",
             "site_name": "Lightweight MW Portal",
-            "site_url": "http://lightweight-mw.staging.concord.org",
-            "server_name": "lightweight-mw.staging.concord.org",
+            "site_url": "http://authoring.concord.org",
+            "server_name": "authoring.concord.org",
             "theme": "xproject",
-            "email": "pmorse@concord.org",
+            "email": "aunger@concord.org",
             "jnlp_family": "all-otrunk-snapshot",
             "jnlp_version": "snapshot",
             "admin_user": {
-                "first_name": "Parker",
-                "last_name": "Morse",
-                "login": "pmorse",
-                "email": "pmorse@concord.org"
+                "first_name": "Aaron",
+                "last_name": "Unger",
+                "login": "aunger",
+                "email": "aunger@concord.org"
             },
             "tiny_mce": {
                 "buttons1": [
@@ -38,7 +39,7 @@
             "users": [ "internal_developers", "ddamelin"]
         },
         "new_relic":{
-            "app_name": "Lightweight MW Staging"
+            "app_name": "Lightweight MW"
         }
 
     }
