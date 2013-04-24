@@ -1,6 +1,6 @@
 {
     "ipaddress": "10.28.66.218",
     "run_list": [
-        "role[lightweight-mw-staging]"
+        "role[lara-staging]"
     ]
 }

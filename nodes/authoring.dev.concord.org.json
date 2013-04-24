@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.159.60.144",
+    "run_list": [
+        "role[lara-dev]"
+    ]
+}

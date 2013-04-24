@@ -82,15 +82,6 @@ end
   end
 end
 
-template "#{appshared}/config/settings.yml" do
-  source "settings.yml.erb"
-  owner "deploy"
-  variables(
-    :site_key => site_item["site_key"],
-    :default_password => data_bag_item('credentials','default_password')['default_password']
-  )
-  notifies :run, "execute[restart webapp]"
-end
 
 template "#{appshared}/config/initializers/site_keys.rb" do
   source "site_keys.rb.erb"
@@ -138,55 +129,6 @@ template "#{appshared}/config/mailer.yml" do
   notifies :run, "execute[restart webapp]"
 end
 
-# Padlet.com used to be wallwisher.
-# Their product is an online whiteboard. Interactions thinks
-# other projects will like it.
-template "#{appshared}/config/padlet.yml" do
-  source "padlet.yml.erb"
-  owner "deploy"
-  variables(
-    :credentials => data_bag_item('credentials', 'ccpadlet')
-  )
-  notifies :run, "execute[restart webapp]"
-end
-
-
-# optional paperclip settings
-template "#{appshared}/config/paperclip.yml" do
-  source "paperclip.yml.erb"
-  owner "deploy"
-  notifies :run, "execute[restart webapp]"
-  only_if { portal[:s3_bucket] }
-end
-
-template "#{appshared}/config/installer.yml" do
-  source "installer.yml.erb"
-  owner "deploy"
-  notifies :run, "execute[restart webapp]"
-  variables(
-    :installer => portal[:installer]
-  )
-  only_if { portal[:installer] }
-end
-
-# aws settings:
-if portal[:s3_bucket]
-  template "#{appshared}/config/aws_s3.yml" do
-    source "aws_s3.yml.erb"
-    owner "deploy"
-
-    s3 = {}
-    s3['access_key_id'] = site_item['aws_access_key_id']
-    s3['secret_access_key'] = site_item['aws_secret_access_key']
-    s3['bucket'] = portal[:s3_bucket]
-
-    variables(
-      :s3 => s3
-    )
-    notifies :run, "execute[restart webapp]"
-    only_if { portal[:s3_bucket] }
-  end
-end
 
 template "#{appshared}/config/google_analytics.yml" do
   source "google_analytics.yml.erb"

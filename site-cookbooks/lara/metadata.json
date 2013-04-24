@@ -1,9 +1,9 @@
 {
-  "name": "lara"
+  "name": "lara",
   "platforms": {
     "ubuntu": ">= 10.0.0"
   },
   "recipes": {
-    "lara": "extra stuff to setup lightwieght authoring and runtime"
+    "lara": "configuration for lightwieght authoring and runtime (LARA)"
   }
 }

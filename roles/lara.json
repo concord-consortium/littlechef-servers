@@ -5,10 +5,9 @@
     "run_list": [
         "role[base-ruby-1_9_3]",
         "recipe[deploy-user]",
-        "recipe[cc-lara]",
+        "recipe[lara]",
         "recipe[aws-cloudwatch-monitoring]",
-        "recipe[new-relic]",
-        "recipe[cc-monit]"
+        "recipe[new-relic]"
     ],
     "default_attributes": {
         "ruby": {
@@ -34,9 +33,9 @@
             "root_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12",
             "module_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12/ext/apache2/mod_passenger.so"
         },
-        "cc_rails_portal": {
-            "site_id": "authoring",
-            "site_name": "Lightweight MW Portal",
+        "lara": {
+            "site_id": "lara",
+            "site_name": "LightWeight Activity Running and Authoring site",
             "email": "pmorse@concord.org",
             "admin_user": {
                 "first_name": "Parker",
@@ -47,6 +46,6 @@
         },
         "deploy_user_keys": {
             "users": [ "internal_developers", "ddamelin"]
-        },
+        }
     }
 }

@@ -7,8 +7,8 @@
     ],
     "default_attributes": {},
     "override_attributes": {
-        "cc_rails_portal": {
-            "db_rds_instance_name": "lightweight-mw-staging",
+        "lara": {
+            "db_rds_instance_name": "lara-staging",
             "site_url": "http://authoring.staging.concord.org",
             "server_name": "authoring.staging.concord.org"
         },

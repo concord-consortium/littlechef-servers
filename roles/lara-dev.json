@@ -7,8 +7,8 @@
     ],
     "default_attributes": {},
     "override_attributes": {
-        "cc_rails_portal": {
-            "db_rds_instance_name": "lightweight-mw-dev",
+        "lara": {
+            "db_rds_instance_name": "lara-dev",
             "site_url": "http://authoring.dev.concord.org",
             "server_name": "authoring.dev.concord.org"
         },
