@@ -129,6 +129,20 @@ template "#{appshared}/config/mailer.yml" do
   notifies :run, "execute[restart webapp]"
 end
 
+# override the app_environment_variables.rb settings
+template "#{appshared}/config/app_environment_variables.rb" do
+  @sso_server_url    = portal[:sso_server_url]
+  @sso_client_id     = portal[:sso_client_id]
+  @sso_client_secret = data_bag_item('credentials', 'sso')[@sso_client_id]
+  source "app_environment_variables.rb.erb"
+  owner "deploy"
+  variables(
+    :sso_server_url    => @sso_server_url,
+    :sso_client_id     => @sso_client_id,
+    :sso_client_secret => @sso_client_secret
+  )
+  notifies :run, "execute[restart webapp]"
+end
 
 template "#{appshared}/config/google_analytics.yml" do
   source "google_analytics.yml.erb"
