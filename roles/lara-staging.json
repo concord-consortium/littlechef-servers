@@ -10,7 +10,8 @@
         "lara": {
             "db_rds_instance_name": "lara-staging",
             "site_url": "http://authoring.staging.concord.org",
-            "server_name": "authoring.staging.concord.org"
+            "server_name": "authoring.staging.concord.org",
+            "sso_client_id": "authoring-staging"
         },
         "new_relic":{
             "app_name": "Lightweight MW Staging"

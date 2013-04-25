@@ -10,7 +10,9 @@
         "lara": {
             "db_rds_instance_name": "lara",
             "site_url": "http://authoring.concord.org",
-            "server_name": "authoring.concord.org"
+            "server_name": "authoring.concord.org",
+            "sso_server_url": "http://nextgen.concord.org",
+            "sso_client_id": "authoring"
         },
         "new_relic":{
             "app_name": "Lightweight MW"
