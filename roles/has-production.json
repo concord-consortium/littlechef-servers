@@ -17,7 +17,7 @@
         },
         "new_relic":{
             "rpm_account_type": "standard_key",
-            "app_name": "XProject"
+            "app_name": "HAS Production"
         }
     }
 }
