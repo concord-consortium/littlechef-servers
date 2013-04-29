@@ -5,7 +5,6 @@
     "run_list": [
         "role[base-ruby-1_9_3]",
         "role[common-deploy-user]",
-        "recipe[deploy-user]",
         "recipe[cc-rails-portal-server]",
         "recipe[aws-cloudwatch-monitoring]",
         "recipe[new-relic]",
