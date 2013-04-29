@@ -1,0 +1,23 @@
+{
+    "name": "common-deploy-user",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "recipe[deploy-user]"
+    ],
+    "default_attributes": {
+        "deploy_user_keys": {
+            "group_definitions": {
+                "internal_developers": [
+                  "scytacki",
+                  "sfentress",
+                  "rklancer",
+                  "sbannasch",
+                  "npaessel",
+                  "pmorse",
+                  "aunger"]
+            },
+            "users": [ "internal_developers"]
+        }
+    }
+}

@@ -4,7 +4,7 @@
     "json_class": "Chef::Role",
     "run_list": [
         "role[base-ruby-1_9_3]",
-        "recipe[deploy-user]",
+        "role[common-deploy-user]",
         "recipe[lara]",
         "recipe[aws-cloudwatch-monitoring]",
         "recipe[new-relic]"
@@ -12,19 +12,6 @@
     "default_attributes": {
         "ruby": {
             "version": "1.9.3-p194"
-        },
-        "deploy_user_keys": {
-            "group_definitions": {
-                "internal_developers": [
-                  "scytacki",
-                  "sfentress",
-                  "rklancer",
-                  "sbannasch",
-                  "npaessel",
-                  "pmorse",
-                  "aunger"]
-            },
-            "users": [ "internal_developers"]
         }
     },
     "override_attributes": {
