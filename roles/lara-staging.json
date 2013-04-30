@@ -7,10 +7,12 @@
     ],
     "default_attributes": {},
     "override_attributes": {
-        "lara": {
+        "cc_rails": {
             "db_rds_instance_name": "lara-staging",
+            "server_name": "authoring.staging.concord.org"
+        },
+        "lara": {
             "site_url": "http://authoring.staging.concord.org",
-            "server_name": "authoring.staging.concord.org",
             "sso_client_id": "authoring-staging"
         },
         "new_relic":{
