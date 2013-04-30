@@ -56,7 +56,7 @@ end
 rds_param_group.modify([{:name => "max_allowed_packet", :value => "16777216", :apply_method => "immediate"}])
 
 rds_opts = {
-  id: stage_role['override_attributes']['cc_rails_portal']['db_rds_instance_name'],
+  id: stage_role['override_attributes']['cc_rails']['db_rds_instance_name'],
   master_username: proj_data_bag['db_username'],
   password: proj_data_bag['db_password'],
   engine: 'mysql',

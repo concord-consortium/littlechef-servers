@@ -27,8 +27,8 @@ config = aws_config(proj)
 hostname = config['hostname'] || proj
 
 # you need to make sure the staging rds instance is unique and doesn't conflict with an existing one
-staging_rds_name = staging_role['override_attributes']['cc_rails_portal']['db_rds_instance_name']
-production_rds_name = production_role['override_attributes']['cc_rails_portal']['db_rds_instance_name']
+staging_rds_name = staging_role['override_attributes']['cc_rails']['db_rds_instance_name']
+production_rds_name = production_role['override_attributes']['cc_rails']['db_rds_instance_name']
 
 server = clone_portal_servers({
   source_rds_instance: production_rds_name,
@@ -41,8 +41,8 @@ server = clone_portal_servers({
   new_server_role:     "#{proj}-#{target_stage}"
   })
 
-production_s3_bucket = production_role['override_attributes']['cc_rails_portal']['s3_bucket']
-if production_s3_bucket
+if production_portal_role = production_role['override_attributes']['cc_rails_portal'] &&
+   production_s3_bucket = production_portal_role['s3_bucket']
   target_s3_bucket = staging_role['override_attributes']['cc_rails_portal']['s3_bucket']
   unless target_s3_bucket
     puts "There is a production s3 bucket defined in roles/#{proj}-production.json, but there is NOT "
