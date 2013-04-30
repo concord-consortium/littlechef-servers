@@ -20,8 +20,10 @@
             "root_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12",
             "module_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12/ext/apache2/mod_passenger.so"
         },
+        "cc_rails": {
+            "site_id": "lara"
+        },
         "lara": {
-            "site_id": "lara",
             "site_name": "LightWeight Activity Running and Authoring site",
             "sso_server_url": "http://nextgen.staging.concord.org",
             "sso_client_id": "authoring-dev",

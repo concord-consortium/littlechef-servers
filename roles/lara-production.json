@@ -7,10 +7,11 @@
     ],
     "default_attributes": {},
     "override_attributes": {
-        "lara": {
+        "cc_rails": {
             "db_rds_instance_name": "lara",
-            "site_url": "http://authoring.concord.org",
-            "server_name": "authoring.concord.org",
+            "server_name": "authoring.concord.org"
+        },
+        "lara": {
             "sso_server_url": "http://nextgen.concord.org",
             "sso_client_id": "authoring"
         },

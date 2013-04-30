@@ -8,8 +8,10 @@
     ],
     "default_attributes": {},
     "override_attributes": {
+        "cc_rails": {
+            "site_id": "vpb"
+        },
         "cc_rails_portal": {
-            "site_id": "vpb",
             "theme": "xproject",
             "email": "scytacki@concord.org",
             "admin_user": {

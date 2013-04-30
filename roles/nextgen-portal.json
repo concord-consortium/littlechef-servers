@@ -7,8 +7,10 @@
     ],
     "default_attributes": {},
     "override_attributes": {
+        "cc_rails": {
+            "site_id": "nextgen"
+        },
         "cc_rails_portal": {
-            "site_id": "nextgen",
             "site_name": "NextGen Portal",
             "theme": "nextgen",
             "email": "nextgen-help@concord.org",

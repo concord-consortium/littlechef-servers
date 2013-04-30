@@ -1,7 +1,3 @@
-default[:cc_rails_portal][:db_database] = "portal"
-default[:cc_rails_portal][:db_pool] = 5
-default[:cc_rails_portal][:rds_domain] = "cc-us-east-1"
-default[:cc_rails_portal][:base_uri] = "/"
 default[:cc_rails_portal][:states_and_provinces] = "all"
 default[:cc_rails_portal][:site_name] = "Cross Project Portal"
 default[:cc_rails_portal][:site_url] = "http://localhost:3000"
@@ -13,13 +9,10 @@ default[:cc_rails_portal][:use_adhoc_workgroups] = "true"
 default[:cc_rails_portal][:use_gse] = "false"
 default[:cc_rails_portal][:dont_sanitize_xhtml] = "false"
 default[:cc_rails_portal][:runnable_mime_type] = ""
-default[:cc_rails_portal][:static_assets] = true
 default[:cc_rails_portal][:top_level_container_name] = "investigation"
-default[:cc_rails_portal][:google_analytics_account] = "UA-6899787-23"
 default[:cc_rails_portal][:admin_user] = {
 	:first_name => 'Aaron',
     :login => 'aunger',
     :last_name => 'Unger',
     :email => 'aunger@concord.org'
 }
-default[:rails][:min_instances] = 1

@@ -7,8 +7,10 @@
     ],
     "default_attributes": {},
     "override_attributes": {
+        "cc_rails": {
+            "site_id": "interactions"
+        },
         "cc_rails_portal": {
-            "site_id": "interactions",
             "site_name": "Interactions Portal",
             "theme": "interactions",
             "email": "interactions-help@concord.org",

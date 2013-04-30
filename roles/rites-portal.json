@@ -6,9 +6,11 @@
        "role[rails-portal-server]"
     ],
     "default_attributes": {},
-    "override_attributes": {    
-       "cc_rails_portal": {
-       	    "site_id": "rites",
+    "override_attributes": {
+        "cc_rails": {
+            "site_id": "rites"
+        },
+        "cc_rails_portal": {
 		    "site_name": "RITES Investigations",
             "theme": "rites",
             "email": "rites-help@concord.org",

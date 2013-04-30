@@ -8,9 +8,11 @@
     "default_attributes": {
     },
     "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "nextgen-staging"
+        },
         "cc_rails_portal": {
             "site_url": "http://nextgen.staging.concord.org",
-            "db_rds_instance_name": "nextgen-staging",
             "s3_bucket": "nextgen-staging"
         },
         "new_relic":{

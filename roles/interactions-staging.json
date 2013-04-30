@@ -8,9 +8,11 @@
     "default_attributes": {
     },
     "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "interactions-staging3"
+        },
         "cc_rails_portal": {
             "site_url": "http://interactions.staging.concord.org",
-            "db_rds_instance_name": "interactions-staging3",
             "s3_bucket": "interactions-staging"
         },
         "new_relic":{

@@ -14,13 +14,15 @@
         }
     },
     "override_attributes": {
-      "cc_rails_portal": {
+      "cc_rails": {
         "site_id": "genigames",
-        "site_name": "GeniGames",
         "server_name": "baseline-portal.genigames.concord.org",
         "base_uri": "/portal",
         "db_host": "db.genigames.concord.org",
         "db_database": "baseline_portal"
+      },
+      "cc_rails_portal": {
+        "site_name": "GeniGames"
       },
       "passenger": {
           "version": "3.0.12",

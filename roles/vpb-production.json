@@ -7,8 +7,10 @@
     ],
     "default_attributes": {},
     "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "vpb-production"
+        },
         "cc_rails_portal": {
-            "db_rds_instance_name": "vpb-production",
             "s3_bucket": "vpb-production",
             "site_name": "Video Paper Builder",
             "site_url": "http://vpb.concord.org",

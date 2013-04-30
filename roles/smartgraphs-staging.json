@@ -8,8 +8,10 @@
     "default_attributes": {
     },
     "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "smartgraphs-staging"
+        },
     	"cc_rails_portal": {
-            "db_rds_instance_name": "smartgraphs-staging",
             "s3_bucket": "smartgraphs-staging",
             "site_name": "SmartGraphs AWS Staging",
             "site_url": "http://aws1.smartgraphs.concord.org"

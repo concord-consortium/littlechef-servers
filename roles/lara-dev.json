@@ -7,10 +7,11 @@
     ],
     "default_attributes": {},
     "override_attributes": {
-        "lara": {
+        "cc_rails": {
             "db_rds_instance_name": "lara-dev",
-            "site_url": "http://authoring.dev.concord.org",
-            "server_name": "authoring.dev.concord.org",
+            "server_name": "authoring.dev.concord.org"
+        },
+        "lara": {
             "sso_client_id": "authoring-dev"
         },
         "new_relic":{

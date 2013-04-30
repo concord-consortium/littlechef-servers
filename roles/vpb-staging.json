@@ -7,12 +7,14 @@
     ],
     "default_attributes": {},
     "override_attributes": {
-        "cc_rails_portal": {
+        "cc_rails": {
             "db_rds_instance_name": "vpb-staging",
+            "server_name": "vpb.staging.concord.org"
+        },
+        "cc_rails_portal": {
             "s3_bucket": "vpb-staging",
             "site_name": "Video Paper Builder Staging",
-            "site_url": "http://vpb.staging.concord.org",
-            "server_name": "vpb.staging.concord.org"
+            "site_url": "http://vpb.staging.concord.org"
         },
         "new_relic":{
             "app_name": "VPB Staging"

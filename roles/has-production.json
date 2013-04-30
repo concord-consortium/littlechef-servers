@@ -8,12 +8,14 @@
     "default_attributes": {
     },
     "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "has-production",
+            "google_analytics_account": "UA-6899787-27"
+        },
         "cc_rails_portal": {
             "site_url": "http://has.portal.concord.org",
             "site_name": "HAS",
-            "db_rds_instance_name": "has-production",
-            "s3_bucket": "has-staging",
-            "google_analytics_account": "UA-6899787-27"
+            "s3_bucket": "has-staging"
         },
         "new_relic":{
             "rpm_account_type": "standard_key",

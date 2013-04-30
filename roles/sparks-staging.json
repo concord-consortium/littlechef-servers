@@ -8,9 +8,11 @@
     "default_attributes": {
     },
     "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "sparks-staging"
+        },
         "cc_rails_portal": {
             "site_url": "http://aws1.sparks.concord.org",
-            "db_rds_instance_name": "sparks-staging",
             "runnable_mime_type": "run_sparks_html",
             "top_level_container_name": "page",
             "s3_bucket": "cc-sparks"
