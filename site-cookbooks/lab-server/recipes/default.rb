@@ -8,7 +8,7 @@ include_recipe "java"
 # https://launchpad.net/ubuntu/precise/amd64/openjdk-6-jdk
 package "openjdk-6-jdk" do
   action :install
-  version "6b27-1.12.3-0ubuntu1~12.04.1"
+  version "6b27-1.12.5-0ubuntu0.12.04.1"
 end
 
 # we need this concord maven provider to resolve
@@ -68,7 +68,7 @@ end
 # installing nodejs now also installs npm
 package "nodejs" do
   action :install
-  version "0.10.2-1chl1~precise1"
+  version "0.10.7-1chl1~precise1"
 end
 
 package "couchdb" do
