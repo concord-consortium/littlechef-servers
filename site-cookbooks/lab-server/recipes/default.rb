@@ -68,7 +68,7 @@ end
 # installing nodejs now also installs npm
 package "nodejs" do
   action :install
-  version "0.10.7-1chl1~precise1"
+  version "0.10.9-1chl1~precise1"
 end
 
 # package "couchdb" do
