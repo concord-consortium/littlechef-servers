@@ -148,7 +148,7 @@ git "/var/www/app" do
 end
 
 # Create tmp dir in web app so Passenger restarts work by touching tmp/restart.txt
-directory "/var/www/app/server/public/tmp" do
+directory "/var/www/app/tmp" do
   owner "deploy"
   group "root"
   mode "775"
@@ -168,7 +168,7 @@ end
 # link "/usr/lib/jvm/default-java" do
 #   to "/usr/lib/jvm/java-6-openjdk-amd64/jre"
 # end
-# 
+#
 
 # execute "disable-default-apache2-site" do
 #   command "sudo a2dissite default"
@@ -179,7 +179,7 @@ web_app "lab" do
   cookbook "apache2"
   server_name node['lab-hostname']
   server_aliases [node['lab-hostname']]
-  docroot "/var/www/app/server/public"
+  docroot "/var/www/app/public"
   enable true
   notifies :restart, resources(:service => "apache2"), :delayed
 end
