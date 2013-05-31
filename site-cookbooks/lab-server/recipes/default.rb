@@ -41,14 +41,14 @@ end
 
 # ppa for the couchdb repository
 # https://launchpad.net/~longsleep/+archive/couchdb
-apt_repository 'couchdb' do
-  uri 'http://ppa.launchpad.net/longsleep/couchdb/ubuntu'
-  distribution node['lsb']['codename']
-  components ['main']
-  keyserver "keyserver.ubuntu.com"
-  key "56A3D45E "
-  action :add
-end
+# apt_repository 'couchdb' do
+#   uri 'http://ppa.launchpad.net/longsleep/couchdb/ubuntu'
+#   distribution node['lsb']['codename']
+#   components ['main']
+#   keyserver "keyserver.ubuntu.com"
+#   key "56A3D45E "
+#   action :add
+# end
 
 # the apt_repository tries to do this itself, but it isn't using
 # the root user so it seems to fail
@@ -71,18 +71,18 @@ package "nodejs" do
   version "0.10.7-1chl1~precise1"
 end
 
-package "couchdb" do
-  action :install
-  version "1.2.1-0ppa1+0"
-end
+# package "couchdb" do
+#   action :install
+#   version "1.2.1-0ppa1+0"
+# end
 
 # the couchdb service script creates this folder but does so as root
 # instead of the couchdb user
-directory "/var/run/couchdb" do
-  owner "couchdb"
-  group "root"
-  mode "755"
-end
+# directory "/var/run/couchdb" do
+#   owner "couchdb"
+#   group "root"
+#   mode "755"
+# end
 
 directory "/var/www" do
   owner "deploy"
@@ -108,9 +108,9 @@ script "setup_coffee" do
   code "sudo npm install -g coffee-script"
 end
 
-service "couchdb" do
-  action :start
-end
+# service "couchdb" do
+#   action :start
+# end
 
 group "rvm" do
   append true
