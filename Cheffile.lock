@@ -47,6 +47,13 @@ GIT
       nodejs (>= 0.0.0)
 
 GIT
+  remote: git://github.com/customink-webops/phantomjs.git
+  ref: master
+  sha: fcf87c8fcfeec2387487f429c194358253c33229
+  specs:
+    phantomjs (0.1.0)
+
+GIT
   remote: git://github.com/fnichol/chef-rvm.git
   ref: master
   sha: 622a6efc6e691a010a57b85619fc605e866614a2
@@ -115,6 +122,7 @@ DEPENDENCIES
   maven (>= 0)
   nodejs (>= 0)
   npm (>= 0)
+  phantomjs (>= 0)
   rvm (>= 0)
   rvm_passenger (>= 0)
   sudo (>= 0)
