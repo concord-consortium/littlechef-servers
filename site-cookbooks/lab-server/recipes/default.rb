@@ -164,6 +164,16 @@ execute "fix-permissions" do
   COMMAND
 end
 
+if ::File.exist?("/var/www/app/config/config.yml")
+  puts "config/config.yml exists"
+else
+  ruby_block "Creating default config/config.yml" do
+   block do
+    ::FileUtils.cp "/var/www/app/config/config.sample.yml", "/var/www/app/config/config.yml"
+   end
+  end
+end
+
 # # maven needs this to work if JAVA_HOME isn't defined
 # link "/usr/lib/jvm/default-java" do
 #   to "/usr/lib/jvm/java-6-openjdk-amd64/jre"
