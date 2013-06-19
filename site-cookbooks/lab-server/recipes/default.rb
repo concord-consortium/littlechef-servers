@@ -164,6 +164,14 @@ execute "fix-permissions" do
   COMMAND
 end
 
+# create global git configuration for deploy user
+template "/home/deploy/.gitconfig" do
+  source "dot-gitconfig.erb"
+  mode 0664
+  owner "deploy"
+  group "deploy"
+end
+
 if ::File.exist?("/var/www/app/config/config.yml")
   puts "config/config.yml exists"
 else
