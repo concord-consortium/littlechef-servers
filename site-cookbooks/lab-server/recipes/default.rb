@@ -170,6 +170,7 @@ else
   ruby_block "Creating default config/config.yml" do
    block do
     ::FileUtils.cp "/var/www/app/config/config.sample.yml", "/var/www/app/config/config.yml"
+    ::FileUtils.chown 'deploy', 'root', "/var/www/app/config/config.yml"
    end
   end
 end
