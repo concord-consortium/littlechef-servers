@@ -57,15 +57,16 @@
             "install_method": "package"
         },
         "rvm": {
-          "default_ruby": "ruby-1.9.3-p392",
+          "upgrade": "stable",
+          "default_ruby": "ruby-2.0.0-p247",
           "group_users": [ "deploy" ]
         },
         "rvm_passenger": {
-          "version":     "3.0.19",
-          "rvm_ruby":    "ruby-1.9.3-p392"
+          "version":     "4.0.8",
+          "rvm_ruby":    "ruby-2.0.0-p247"
         },
         "phantomjs": {
-          "version":     "1.9.0"
+          "version":     "1.9.1"
         }
     },
     "override_attributes": {}

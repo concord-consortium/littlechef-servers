@@ -11,6 +11,10 @@ package "openjdk-6-jdk" do
   version "6b27-1.12.5-0ubuntu0.12.04.1"
 end
 
+package "libicu-dev" do
+  action :install
+end
+
 # we need this concord maven provider to resolve
 # some legacy artifacts used by otrunk
 

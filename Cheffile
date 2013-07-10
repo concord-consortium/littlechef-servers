@@ -14,7 +14,8 @@ cookbook 'couchdb'
 cookbook 'sudo'
 cookbook 'emacs'
 cookbook 'maven'
-cookbook 'chef-solo-search'
+cookbook 'chef-solo-search', :git => 'git://github.com/edelight/chef-solo-search', :ref => '0.4.0'
+# cookbook 'chef-solo-search'
 
 cookbook 'java',          :git => 'git://github.com/opscode-cookbooks/java.git'
 cookbook 'nodejs',        :git => 'git://github.com/mdxp/nodejs-cookbook.git'
@@ -26,10 +27,10 @@ cookbook 'zip',           :git => 'git://github.com/phlipper/chef-zip.git'
 cookbook 'ark',           :git => 'git://github.com/opscode-cookbooks/ark.git'
 
 # http://fnichol.github.com/chef-rvm/
-cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git'
+cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
 
 # https://github.com/fnichol/chef-rvm_passenger
-cookbook 'rvm_passenger', :git => 'git://github.com/fnichol/chef-rvm_passenger.git', :ref => 'v0.8.0'
+cookbook 'rvm_passenger', :git => 'git://github.com/fnichol/chef-rvm_passenger.git', :ref => 'v0.8.2'
 
 # https://github.com/customink-webops/phantomjs
 cookbook 'phantomjs',     :git => 'git://github.com/customink-webops/phantomjs.git'

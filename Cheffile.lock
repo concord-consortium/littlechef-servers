@@ -1,66 +1,75 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    apache2 (1.6.0)
-    apt (1.9.0)
-    build-essential (1.3.4)
-    chef-solo-search (0.4.0)
+    apache2 (1.6.6)
+    apt (2.0.0)
+    build-essential (1.4.0)
     chef_gem (0.1.0)
     chef_handler (1.1.4)
+    chocolatey (0.0.5)
+      powershell (>= 0.0.0)
     couchdb (2.4.0)
       erlang (>= 0.0.0)
       yum (>= 0.0.0)
-    cutlery (0.1.0)
+    cutlery (0.2.6)
+      partial_search (>= 0.0.0)
     dmg (1.1.0)
-    emacs (0.8.4)
-    erlang (1.2.0)
+    emacs (0.9.0)
+    erlang (1.3.0)
+      apt (>= 1.7.0)
       build-essential (>= 0.0.0)
       yum (>= 0.5.0)
-    git (2.3.0)
+    git (2.5.2)
       build-essential (>= 0.0.0)
       dmg (>= 0.0.0)
-      runit (~> 1.0)
+      runit (>= 1.0)
       windows (>= 0.0.0)
       yum (>= 0.0.0)
-    maven (0.15.0)
+    maven (0.16.2)
       ark (>= 0.0.0)
       java (>= 0.0.0)
-    nginx (1.4.0)
+    nginx (1.7.0)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
       ohai (>= 1.1.4)
+      runit (>= 0.0.0)
       yum (>= 0.0.0)
-    ohai (1.1.8)
-    runit (1.1.0)
+    ohai (1.1.10)
+    partial_search (1.0.0)
+    powershell (1.1.0)
+      windows (>= 1.2.8)
+    runit (1.1.6)
       build-essential (>= 0.0.0)
-    sudo (2.0.4)
-    users (1.4.0)
-    windows (1.8.4)
+      yum (>= 0.0.0)
+    sudo (2.1.2)
+    users (1.5.0)
+    windows (1.10.0)
       chef_handler (>= 0.0.0)
-    yum (2.2.0)
+    yum (2.3.0)
 
 GIT
   remote: git://github.com/balbeko/chef-npm.git
   ref: master
-  sha: 6865658b2cb81fdf5e5c6f9f2650833965da8426
+  sha: b1b48facbfd9e73b991c0b99535e09f41bf0170f
   specs:
-    npm (0.1.0)
+    npm (0.1.2)
       nodejs (>= 0.0.0)
 
 GIT
   remote: git://github.com/customink-webops/phantomjs.git
   ref: master
-  sha: fcf87c8fcfeec2387487f429c194358253c33229
+  sha: f6fe4041d3fe3aa3236026f0338b2a35bee89ed2
   specs:
-    phantomjs (0.1.0)
+    phantomjs (1.0.2)
+      build-essential (>= 0.0.0)
+      chocolatey (>= 0.0.0)
 
 GIT
   remote: git://github.com/fnichol/chef-rvm.git
-  ref: master
-  sha: 622a6efc6e691a010a57b85619fc605e866614a2
+  ref: v0.9.0
+  sha: 4a408e5d6c5a52c37388a799c516430263339849
   specs:
-    rvm (0.9.1)
-      chef_gem (>= 0.0.0)
+    rvm (0.9.0)
 
 GIT
   remote: git://github.com/fnichol/chef-rvm_passenger.git
@@ -75,25 +84,25 @@ GIT
 GIT
   remote: git://github.com/mdxp/nodejs-cookbook.git
   ref: master
-  sha: 164383284398f6905dd9d5acd648c6daeec25cb9
+  sha: 2511ae287152e8b6677e57e044a8314ba6688b36
   specs:
-    nodejs (1.1.1)
+    nodejs (1.1.2)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
 
 GIT
   remote: git://github.com/opscode-cookbooks/ark.git
   ref: master
-  sha: 084aef10c0797d6f9ac13de668804cf78d6353dc
+  sha: df3a6f69e23431270395190a21e148593cd93355
   specs:
-    ark (0.1.0)
+    ark (0.3.1)
 
 GIT
   remote: git://github.com/opscode-cookbooks/java.git
   ref: master
-  sha: c9fe9875b2e4f764847070972b5a2559b1d72cd3
+  sha: dbe84c57390e5ebac11221ef26147fd8e87d09e0
   specs:
-    java (1.10.0)
+    java (1.12.1)
       windows (>= 0.0.0)
 
 GIT
@@ -110,6 +119,13 @@ GIT
   specs:
     authbind (0.1.7)
       cutlery (>= 0.0.0)
+
+GIT
+  remote: https://github.com/edelight/chef-solo-search
+  ref: 0.4.0
+  sha: 5ba022d02c51cafc7b5323c1209fbb7936e4f60b
+  specs:
+    chef-solo-search (0.4.0)
 
 DEPENDENCIES
   apache2 (>= 0)

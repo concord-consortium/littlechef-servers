@@ -4,6 +4,6 @@
     "ubuntu": ">= 10.0.0"
   },
   "recipes": {
-    "lab-server": "Create apache2-passenger-ruby-node-couchdb server and install and build lab"
+    "lab-server": "Create apache2-passenger-ruby-node-phantomjs server and install and build lab"
   }
 }
