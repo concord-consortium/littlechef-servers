@@ -1,0 +1,6 @@
+{
+    "ipaddress": "10.28.245.161",
+    "run_list": [
+        "role[lara-production]"
+    ]
+}
