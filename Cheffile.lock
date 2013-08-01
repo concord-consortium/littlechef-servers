@@ -3,8 +3,9 @@ SITE
   specs:
     apache2 (1.6.6)
     apt (2.0.0)
+    bluepill (2.2.2)
+      rsyslog (>= 0.0.0)
     build-essential (1.4.0)
-    chef_gem (0.1.0)
     chef_handler (1.1.4)
     chocolatey (0.0.5)
       powershell (>= 0.0.0)
@@ -28,20 +29,21 @@ SITE
     maven (0.16.2)
       ark (>= 0.0.0)
       java (>= 0.0.0)
-    nginx (1.7.0)
-      apt (>= 0.0.0)
+    nginx (0.101.6)
+      bluepill (>= 0.0.0)
       build-essential (>= 0.0.0)
-      ohai (>= 1.1.4)
+      ohai (~> 1.0.2)
       runit (>= 0.0.0)
       yum (>= 0.0.0)
-    ohai (1.1.10)
-    partial_search (1.0.0)
+    ohai (1.0.2)
+    partial_search (1.0.2)
     powershell (1.1.0)
       windows (>= 1.2.8)
+    rsyslog (1.6.0)
     runit (1.1.6)
       build-essential (>= 0.0.0)
       yum (>= 0.0.0)
-    sudo (2.1.2)
+    sudo (2.1.4)
     users (1.5.0)
     windows (1.10.0)
       chef_handler (>= 0.0.0)
@@ -56,13 +58,30 @@ GIT
       nodejs (>= 0.0.0)
 
 GIT
+  remote: git://github.com/concord-consortium/chef-rvm_passenger.git
+  ref: newer_apache2_cookbook_version
+  sha: c5c5f676319e9239999f84c6bcf66846ae99568f
+  specs:
+    rvm_passenger (0.8.4)
+      apache2 (< 1.7.0)
+      nginx (~> 0.101.0)
+      rvm (>= 0.8.0)
+
+GIT
   remote: git://github.com/customink-webops/phantomjs.git
   ref: master
-  sha: f6fe4041d3fe3aa3236026f0338b2a35bee89ed2
+  sha: f6599db4577674860c3e50095bb452eba1ade0a2
   specs:
     phantomjs (1.0.2)
       build-essential (>= 0.0.0)
       chocolatey (>= 0.0.0)
+
+GIT
+  remote: git://github.com/edelight/chef-solo-search
+  ref: 0.4.0
+  sha: 5ba022d02c51cafc7b5323c1209fbb7936e4f60b
+  specs:
+    chef-solo-search (0.4.0)
 
 GIT
   remote: git://github.com/fnichol/chef-rvm.git
@@ -70,16 +89,6 @@ GIT
   sha: 4a408e5d6c5a52c37388a799c516430263339849
   specs:
     rvm (0.9.0)
-
-GIT
-  remote: git://github.com/fnichol/chef-rvm_passenger.git
-  ref: v0.8.0
-  sha: 0ccb3c4313b84889968b4e528ca38babfc03a1e5
-  specs:
-    rvm_passenger (0.8.0)
-      apache2 (>= 0.0.0)
-      nginx (>= 0.0.0)
-      rvm (>= 0.0.0)
 
 GIT
   remote: git://github.com/mdxp/nodejs-cookbook.git
@@ -119,13 +128,6 @@ GIT
   specs:
     authbind (0.1.7)
       cutlery (>= 0.0.0)
-
-GIT
-  remote: https://github.com/edelight/chef-solo-search
-  ref: 0.4.0
-  sha: 5ba022d02c51cafc7b5323c1209fbb7936e4f60b
-  specs:
-    chef-solo-search (0.4.0)
 
 DEPENDENCIES
   apache2 (>= 0)

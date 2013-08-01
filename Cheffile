@@ -30,7 +30,9 @@ cookbook 'ark',           :git => 'git://github.com/opscode-cookbooks/ark.git'
 cookbook 'rvm',           :git => 'git://github.com/fnichol/chef-rvm.git', :ref => 'v0.9.0'
 
 # https://github.com/fnichol/chef-rvm_passenger
-cookbook 'rvm_passenger', :git => 'git://github.com/fnichol/chef-rvm_passenger.git', :ref => 'v0.8.2'
+# cookbook 'rvm_passenger', :git => 'git://github.com/fnichol/chef-rvm_passenger.git', :ref => 'v0.8.2'
+#see un-merged pull request: https://github.com/fnichol/chef-rvm_passenger/pull/19
+cookbook 'rvm_passenger', :git => 'git://github.com/concord-consortium/chef-rvm_passenger.git', :ref => 'newer_apache2_cookbook_version'
 
 # https://github.com/customink-webops/phantomjs
 cookbook 'phantomjs',     :git => 'git://github.com/customink-webops/phantomjs.git'
