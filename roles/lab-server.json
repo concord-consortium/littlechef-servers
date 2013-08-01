@@ -59,7 +59,10 @@
         "rvm": {
           "upgrade": "stable",
           "default_ruby": "ruby-2.0.0-p247",
-          "group_users": [ "deploy" ]
+          "group_users": [ "deploy" ],
+          "global_gems": [
+            { "name": "chef", "version": "11.6.0" }
+          ]
         },
         "rvm_passenger": {
           "version":     "4.0.8",
