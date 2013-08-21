@@ -1,3 +1,4 @@
+ENV['DEFAULT_AUTH_PROVIDER']         ||= 'concord_portal'
 ENV['CONCORD_PORTAL_URL']            ||= '<%= @sso_server_url    %>'
 ENV['CONCORD_PORTAL_CLIENT_ID']      ||= '<%= @sso_client_id     %>'
 ENV['CONCORD_PORTAL_CLIENT_SECRET']  ||= '<%= @sso_client_secret %>'
