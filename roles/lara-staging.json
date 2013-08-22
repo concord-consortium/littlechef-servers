@@ -8,7 +8,7 @@
     "default_attributes": {},
     "override_attributes": {
         "cc_rails": {
-            "db_rds_instance_name": "lara-staging",
+            "db_rds_instance_name": "lara-staging2",
             "server_name": "authoring.staging.concord.org"
         },
         "lara": {
