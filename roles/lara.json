@@ -25,8 +25,8 @@
         },
         "lara": {
             "site_name": "LightWeight Activity Running and Authoring site",
-            "sso_server_url": "http://nextgen.staging.concord.org",
-            "sso_client_id": "authoring-dev",
+            "sso_server_url": "http://has.staging.concord.org",
+            "sso_client_id": "authoring.dev.concord.org",
             "email": "pmorse@concord.org",
             "admin_user": {
                 "first_name": "Parker",
