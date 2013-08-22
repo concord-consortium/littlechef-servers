@@ -12,7 +12,7 @@
             "server_name": "authoring.dev.concord.org"
         },
         "lara": {
-            "sso_client_id": "authoring.dev.concord.org"
+            "sso_client_id": "authoring-dev"
         },
         "new_relic":{
             "app_name": "Lightweight MW Dev"
