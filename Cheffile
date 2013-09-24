@@ -52,6 +52,9 @@ cookbook "tomcat",
 cookbook "wise4",
   :git => cc_wise_cookbooks
 
+cookbook "phantomjs", :git => "https://github.com/customink-webops/phantomjs"
+cookbook "libfontconfig", :git => "https://github.com/froschi/chef-cookbook-libfontconfig"
+
 # example cookbook descriptions
 # cookbook 'apache2', '>= 1.0.0'
 #

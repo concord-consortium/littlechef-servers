@@ -1,48 +1,59 @@
 SITE
   remote: http://community.opscode.com/api/v1
   specs:
-    ant (1.0.0)
+    ant (1.0.2)
       ark (>= 0.0.0)
       java (>= 0.0.0)
-    apt (1.4.2)
-    ark (0.1.0)
-    build-essential (1.0.2)
+    apt (2.1.1)
+    ark (0.3.2)
+    build-essential (1.4.2)
     chef_handler (1.1.4)
-    couchdb (1.0.0)
+    chocolatey (0.0.5)
+      powershell (>= 0.0.0)
+    couchdb (2.4.2)
       erlang (>= 0.0.0)
-    dmg (1.0.0)
-    emacs (0.8.4)
-    erlang (1.0.0)
-      yum (>= 0.5.0)
-    git (1.0.0)
-      dmg (>= 0.0.0)
-      runit (>= 0.0.0)
       yum (>= 0.0.0)
-    java (1.9.6)
-      windows (>= 0.0.0)
-    jpackage (1.0.0)
-      java (>= 0.0.0)
-    mysql (2.1.2)
+    dmg (2.0.0)
+    emacs (0.9.0)
+    erlang (1.3.2)
+      apt (>= 1.7.0)
       build-essential (>= 0.0.0)
+      yum (>= 0.5.0)
+    git (2.6.0)
+      build-essential (>= 0.0.0)
+      dmg (>= 0.0.0)
+      runit (>= 1.0.0)
+      windows (>= 0.0.0)
+      yum (>= 0.0.0)
+    java (1.13.0)
+      windows (>= 0.0.0)
+    jpackage (1.0.2)
+      java (>= 0.0.0)
+    mysql (3.0.4)
+      build-essential (> 1.1.0)
       openssl (>= 0.0.0)
-    openssl (1.0.0)
-    packages (0.9.2)
+    openssl (1.1.0)
+    packages (0.1.0)
+    powershell (1.1.2)
+      windows (>= 1.2.8)
     rails (0.9.2)
       apache2 (>= 0)
       ruby (>= 0)
-    ruby (0.9.0)
-    runit (0.15.0)
-    sudo (1.1.0)
-    users (1.1.2)
+    ruby (0.9.2)
+    runit (1.2.0)
+      build-essential (>= 0.0.0)
+      yum (>= 0.0.0)
+    sudo (2.2.0)
+    users (1.5.2)
     vim (1.0.2)
-    windows (1.8.4)
+    windows (1.10.0)
       chef_handler (>= 0.0.0)
-    yum (0.5.2)
+    yum (2.3.2)
 
 GIT
   remote: git://github.com/concord-consortium/wise-cookbooks.git
   ref: master
-  sha: d2806bcc6e8bf7696e1c40cf5ace0024d4a27391
+  sha: a28396fd29e5316117c93e9f80c4014a739db0d3
   specs:
     tomcat (0.10.3)
       java (>= 0.0.0)
@@ -59,9 +70,9 @@ GIT
 GIT
   remote: https://github.com/balbeko/chef-npm/
   ref: master
-  sha: 12957919d37bcd4b9704dc59508f1b6959c208b0
+  sha: 7d3bd0fd63e1e5bb08da90cf1afb0d6514cf3006
   specs:
-    npm (0.1.0)
+    npm (0.1.2)
       nodejs (>= 0.0.0)
 
 GIT
@@ -94,6 +105,15 @@ GIT
       build-essential (>= 0.0.0)
 
 GIT
+  remote: https://github.com/customink-webops/phantomjs
+  ref: master
+  sha: f6599db4577674860c3e50095bb452eba1ade0a2
+  specs:
+    phantomjs (1.0.2)
+      build-essential (>= 0.0.0)
+      chocolatey (>= 0.0.0)
+
+GIT
   remote: https://github.com/lastobelus/python.git
   ref: master
   sha: 44868073eb4eaae9d5e6fd99a47b33c085e038fa
@@ -105,10 +125,12 @@ GIT
 GIT
   remote: https://github.com/mdxp/nodejs-cookbook
   ref: master
-  sha: af27e223295869cde9de7c2840dd5abea2127ece
+  sha: 4c685529e7a8db0222b17407367e8b309afd3137
   specs:
-    nodejs (1.0.0)
+    nodejs (1.3.0)
+      apt (>= 0.0.0)
       build-essential (>= 0.0.0)
+      yum (>= 0.0.0)
 
 DEPENDENCIES
   ant (>= 0)
@@ -126,6 +148,8 @@ DEPENDENCIES
   npm (>= 0)
   openssl (>= 0)
   passenger_apache2 (>= 0)
+  phantomjs (>= 0)
+  phantomjs (>= 0)
   python (>= 0)
   sudo (>= 0)
   tomcat (>= 0)
