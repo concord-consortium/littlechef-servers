@@ -134,6 +134,13 @@ you run
 Add a folder to the site-cookbooks folder. The folder needs the standard Chef cookbook format.
 
 
+### MISC BUGS
+
+Sometimes, I have found (especially when trying to install PhantomJS) an error message returned by
+chef like this: `uninitialized constant Chef::Mixin::PowershellOut` and `Recipe Compile Error in /tmp/chef-solo/cookbooks/powershell/libraries/windows_architecture_helper.rb`.
+
+I am not sure why this happens, but the fix for me is to `rm -rf ./cookbooks/powershell` and then `librarian-chef install`.
+
 ### TODO
 
 When starting without ruby installed passenger doesn't install correctly because it is using the an ohai 
