@@ -7,9 +7,7 @@
         "role[common-deploy-user]",
         "recipe[lara]",
         "recipe[aws-cloudwatch-monitoring]",
-        "recipe[new-relic]",
-        "recipe[phantomjs]",
-        "recipe[phantom-support]"
+        "recipe[new-relic]"
     ],
     "default_attributes": {
         "ruby": {
