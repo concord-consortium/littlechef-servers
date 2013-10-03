@@ -21,13 +21,15 @@ template "#{appshared}/config/app_environment_variables.rb" do
   @sso_client_id     = lara[:sso_client_id]
   @sso_client_secret = data_bag_item('credentials', 'sso')[@sso_client_id]
   @rails_cookie_token = data_bag_item('credentials', 'rails_cookie_token')['lara']
+  @new_relic_license_key = data_bag_item('credentials', 'newrelic')['free_key']
   source "app_environment_variables.rb.erb"
   owner "deploy"
   variables(
     :sso_server_url    => @sso_server_url,
     :sso_client_id     => @sso_client_id,
     :sso_client_secret => @sso_client_secret,
-    :rails_cookie_token => @rails_cookie_token
+    :rails_cookie_token => @rails_cookie_token,
+    :new_relic_license_key => @new_relic_license_key
   )
   notifies :run, "execute[restart webapp]"
 end
