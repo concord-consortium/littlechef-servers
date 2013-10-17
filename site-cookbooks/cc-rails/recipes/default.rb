@@ -130,3 +130,9 @@ end
 if cc_rails[:google_analytics_account] == "UA-6899787-23"
   log("Using default Google Analytics Account! You might consider setting up your own.") { level :warn }
 end
+
+# override the mailer settings
+template "/etc/logrotate.d/passenger" do
+  source "logrotate_passenger.erb"
+end
+

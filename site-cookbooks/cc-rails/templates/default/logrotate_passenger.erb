@@ -1,0 +1,13 @@
+<%= node[:cc_rails][:appshared] %>/log/*.log {
+  weekly
+  size 200k
+  missingok
+  compress
+  delaycompress
+  notifempty
+  create 640 deploy deploy
+  sharedscripts
+    postrotate
+          touch <%=node[:cc_rails][:approot]%>/current/tmp/restart.txt
+    endscript
+}
