@@ -9,6 +9,7 @@
     "override_attributes": {
         "cc_rails": {
             "db_rds_instance_name": "lara",
+            "db_pool": 9,
             "server_name": "authoring.concord.org"
         },
         "lara": {
@@ -17,11 +18,10 @@
         },
         "new_relic":{
             "app_name": "Lightweight MW"
+        },
+        "rails": {
+            "max_pool_size": 8,
+            "min_instances": 2
         }
-
     }
 }
-
-
-
-
