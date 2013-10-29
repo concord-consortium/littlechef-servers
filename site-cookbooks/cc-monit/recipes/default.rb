@@ -43,7 +43,8 @@ node["cc_monit"]["jobs"].each do |conf|
     variables({
       :category    => "system",
       :approot     => "/web/portal",
-      :rails_user  => "deploy"
+      :rails_user  => "deploy",
+      :server_name => node["cc_monit"]["server_name"]
     })
     action :create
     # notifies :restart, "service[monit]"
