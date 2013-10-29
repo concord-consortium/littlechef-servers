@@ -12,16 +12,20 @@
             "db_pool": 9,
             "server_name": "authoring.concord.org"
         },
+        "cc_rails_portal": {
+            "site_url": "http://authoring.concord.org",
+            "site_name": "LARA"
+        },
         "lara": {
             "sso_server_url": "http://has.portal.concord.org",
             "sso_client_id": "authoring"
         },
-        "new_relic":{
-            "app_name": "Lightweight MW"
-        },
         "rails": {
             "max_pool_size": 8,
             "min_instances": 2
+        },
+        "new_relic":{
+            "app_name": "LARA (pro)"
         }
     }
 }

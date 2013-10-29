@@ -11,12 +11,16 @@
             "db_rds_instance_name": "lara-staging2",
             "server_name": "authoring.staging.concord.org"
         },
+        "cc_rails_portal": {
+            "site_url": "http://authoring.staging.concord.org",
+            "site_name": "LARA (staging)"
+        },
         "lara": {
             "site_url": "http://authoring.staging.concord.org",
             "sso_client_id": "authoring-staging"
         },
         "new_relic":{
-            "app_name": "Lightweight MW Staging"
+            "app_name": "LARA (staging)"
         }
 
     }
