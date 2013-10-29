@@ -3,7 +3,7 @@
 # Ruby, Java, .NET, PHP, and Python applications with deep visibility and low overhead.
 # For more information, visit www.newrelic.com.
 #
-# Generated July 11, 2012
+# Generated October 29, 2013 for littlechef by npaessel@concord.org
 #
 # This configuration file is custom generated for Concord Consortium
 
@@ -82,6 +82,17 @@ common: &default_settings
   apdex_t: 0.5
 
   # Proxy settings for connecting to the New Relic server.
+  #============================== Browser Monitoring ===============================
+  # New Relic Real User Monitoring gives you insight into the performance real users are
+  # experiencing with your website. This is accomplished by measuring the time it takes for
+  # your users' browsers to download and render your web pages by injecting a small amount
+  # of JavaScript code into the header and footer of each page.
+  browser_monitoring:
+      # By default the agent automatically injects the monitoring JavaScript
+      # into web pages. Set this attribute to false to turn off this behavior.
+      auto_instrument: true
+
+  # Proxy settings for connecting to the service.
   #
   # If a proxy is used, the host setting is required.  Other settings
   # are optional.  Default port is 8080.
@@ -224,3 +235,4 @@ production:
 staging:
   <<: *default_settings
   monitor_mode: true
+  app_name: <%= @app_name %> (Staging)
