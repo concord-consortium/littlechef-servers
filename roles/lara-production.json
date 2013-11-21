@@ -25,6 +25,7 @@
             "min_instances": 2
         },
         "new_relic":{
+            "rpm_account_type": "standard_key",
             "app_name": "LARA (pro)"
         }
     }
