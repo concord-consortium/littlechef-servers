@@ -27,13 +27,6 @@
         "lara": {
             "site_name": "LightWeight Activity Running and Authoring site",
             "sso_server_url": "http://has.staging.concord.org",
-            "email": "pmorse@concord.org",
-            "admin_user": {
-                "first_name": "Parker",
-                "last_name": "Morse",
-                "login": "pmorse",
-                "email": "pmorse@concord.org"
-            }
         },
         "deploy_user_keys": {
             "users": [ "internal_developers", "ddamelin"]
