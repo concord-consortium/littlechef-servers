@@ -126,6 +126,8 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 0. Configure some districts. Check config/settings.yml, add or remove
    states from the entry "states_and_provinces:" (all is valid)
 0. Run the cap task to setup districts: `cap <site> setup:districts`
+0. Run the cap task `cap <site> solr:hard_reindex` to get the solr
+   materials listings to work.
 ### Adding a New Cookbook
 
 There are 2 types of cookbooks supported: cookbooks and site-cookbooks.
