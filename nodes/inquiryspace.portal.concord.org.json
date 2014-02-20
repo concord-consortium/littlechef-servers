@@ -1,0 +1,7 @@
+{
+    "ipaddress": "10.255.206.65",
+    "name": "inquiryspace.portal.concord.org",
+    "run_list": [
+        "role[inquiryspace-production]"
+    ]
+}
