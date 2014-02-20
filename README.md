@@ -102,22 +102,30 @@ This repository uses a submodule for the data_bags folder. It is a private repos
         thor wise:backup <instance_id>
 
 
-### Setup a new Production ortal Server ###
+### Setup a new Production portal Server ###
 
 0. Setup your environment, as per the direction at the top.
 0. Create a new aws config in `aws-config/<projectname>.json`
-0. run `bundle ./script/create_ec2.rb --stage production --project <project name>`
+0. run `bundle exec ./script/create_ec2.rb --stage production --project <project name>`
 0. Create a new elastic IP address using the AWS web console, and associate that address with this new instance ID (reported from script).
 0. Again, using the AWS web console, create a DNS entry for your host using Route 53.
+0. echo '{"id": "<projectname>"}' >> data_bags/sites/<projectname>.json
 0. Create the S3 Bins for your project `./script/create_s3_bucket.rb --stage production --project <projectname>`
 0. Using the information from the output of the S3 bucket creation script, create a new databag for your site in `data_bags/sites/<sitename>.json`
-0. Create the databases for your project `./script/create_db.rb --stage production --project nextgen ``
+0. Add `db_username` and `db_password` to `data_bags/sites/<sitename>.json`
+0. Create the databases for your project `./script/create_db.rb --stage production --project <projectname>`
 0. Create a Roles for your project in `roles/<projectname>.json`, `roles/<projectname>-production.json` and `roles/<projectname>-staging.json`. The roles should include a reference to the rails portal role. See `roles/interactions-portal.json` for example. eg `"role[rails-portal-server]"`.
+0. make sure you specify the correct ssh_id and pem file in your
+   `.ssh/config` file
 0. run fix on your node `fix node:<projectname>.concord.org role:<projectname>-production`
 0. checkout the rigse project, create new entries in `deploy.rb` and add `deploy/<projectname>-staging.rb` and `deploy/<projectname>-production.rb`
+0. add a new theme for your project by copying and editing an existing
+   theme eg: `cp -r ./app/assets/themes/interactions ./app/assets/themes/newthemename` and `cp -r ./themes/interactions ./themes/newthemename`.  You will also have to modify app.scss to add a new `.project-header h1` background image for your project.
 0. Deploy: `bundle exec cap projectname-production deploy`
 0. Setup the default project: `bundle exec cap projectname-production setup:default_project`
-
+0. Configure some districts. Check config/settings.yml, add or remove
+   states from the entry "states_and_provinces:" (all is valid)
+0. Run the cap task to setup districts: `cap <site> setup:districts`
 ### Adding a New Cookbook
 
 There are 2 types of cookbooks supported: cookbooks and site-cookbooks.
