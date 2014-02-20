@@ -8,7 +8,8 @@
         "recipe[cc-rails-portal-server]",
         "recipe[aws-cloudwatch-monitoring]",
         "recipe[new-relic]",
-        "recipe[cc-monit]"
+        "recipe[cc-monit]",
+        "recipe[java]"
     ],
     "default_attributes": {
         "ruby": {
