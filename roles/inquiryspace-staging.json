@@ -1,0 +1,22 @@
+{
+    "name": "inquiryspace-staging",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[inquiryspace-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "inquiryspace-staging"
+        },
+        "cc_rails_portal": {
+            "site_url": "http://inquiryspace.staging.concord.org",
+            "s3_bucket": "inquiryspace-staging"
+        },
+        "new_relic":{
+            "app_name": "Inquiryspace staging"
+        }
+    }
+}

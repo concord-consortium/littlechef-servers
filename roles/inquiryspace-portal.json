@@ -1,0 +1,41 @@
+{
+    "name": "inquiryspace-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails": {
+            "site_id": "inquiryspace"
+        },
+        "cc_rails_portal": {
+            "site_name": "Inquiryspace Portal",
+            "theme": "inquiryspace",
+            "email": "inquiryspace-help@concord.org",
+            "jnlp_family": "interactions-otrunk",
+            "jnlp_version": "snapshot",
+            "admin_user": {
+                "first_name": "Noah",
+                "last_name": "Paessel",
+                "login": "knowuh",
+                "email": "npaessel@concord.org"
+            },
+            "tiny_mce": {
+                "buttons1": [
+                    "bold,italic,underline",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "code"
+                ]
+            }
+        }
+    }
+}
+
+
+
+

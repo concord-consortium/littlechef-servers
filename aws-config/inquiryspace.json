@@ -1,0 +1,4 @@
+{
+  "availability_zone": "us-east-1b",
+  "iam_user": "inquiryspace-s3-user"
+}
