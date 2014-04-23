@@ -1,22 +1,22 @@
 {
-    "name": "nextgen-production",
+    "name": "learn-production",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[nextgen-portal]"
+        "role[learn-portal]"
     ],
     "default_attributes": {
     },
     "override_attributes": {
         "cc_rails": {
-            "db_rds_instance_name": "nextgen-production"
+            "db_rds_instance_name": "learn-production"
         },
         "cc_rails_portal": {
-            "site_url": "http://nextgen.concord.org",
+            "site_url": "http://learn.concord.org",
             "s3_bucket": "nextgen-production"
         },
         "new_relic":{
-            "app_name": "Nextgen"
+            "app_name": "learn"
         }
     }
 }

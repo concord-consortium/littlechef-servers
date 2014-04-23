@@ -1,5 +1,5 @@
 {
-    "name": "nextgen-portal",
+    "name": "learn-portal",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
@@ -8,12 +8,12 @@
     "default_attributes": {},
     "override_attributes": {
         "cc_rails": {
-            "site_id": "nextgen"
+            "site_id": "learn"
         },
         "cc_rails_portal": {
-            "site_name": "NextGen Portal",
-            "theme": "nextgen",
-            "email": "nextgen-help@concord.org",
+            "site_name": "Learn Portal",
+            "theme": "learn",
+            "email": "learn-help@concord.org",
             "states_and_provinces": "all",
             "use_jnlps": false,
             "admin_user": {

@@ -1,0 +1,6 @@
+{
+    "ipaddress": "54.225.67.247",
+    "run_list": [
+        "role[learn-production]"
+    ]
+}

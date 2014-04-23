@@ -1,22 +1,22 @@
 {
-    "name": "nextgen-staging",
+    "name": "learn-staging",
     "chef_type": "role",
     "json_class": "Chef::Role",
     "run_list": [
-        "role[nextgen-portal]"
+        "role[learn-portal]"
     ],
     "default_attributes": {
     },
     "override_attributes": {
         "cc_rails": {
-            "db_rds_instance_name": "nextgen-staging"
+            "db_rds_instance_name": "learn-staging"
         },
         "cc_rails_portal": {
-            "site_url": "http://nextgen.staging.concord.org",
+            "site_url": "http://learn.staging.concord.org",
             "s3_bucket": "nextgen-staging"
         },
         "new_relic":{
-            "app_name": "Nextgen Staging"
+            "app_name": "learn Staging"
         }
     }
 }
