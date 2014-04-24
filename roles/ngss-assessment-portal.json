@@ -1,0 +1,41 @@
+{
+    "name": "ngss-assessment-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails": {
+            "site_id": "ngss-assessment"
+        },
+        "cc_rails_portal": {
+            "site_name": "ngss-assessment Portal",
+            "theme": "ngss-assessment",
+            "email": "ngss-assessment-help@concord.org",
+            "states_and_provinces": "all",
+            "use_jnlps": false,
+            "admin_user": {
+                "first_name": "Noah",
+                "last_name": "Paessel",
+                "login": "knowuh",
+                "email": "npaessel@concord.org"
+            },
+            "tiny_mce": {
+                "buttons1": [
+                    "bold,italic,underline",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "code"
+                ]
+            }
+        }
+    }
+}
+
+
+
+
