@@ -113,10 +113,18 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 0. Create the S3 Bins for your project `./script/create_s3_bucket.rb --stage production --project <projectname>`
 0. Using the information from the output of the S3 bucket creation script, create a new databag for your site in `data_bags/sites/<sitename>.json`
 0. Add `db_username` and `db_password` to `data_bags/sites/<sitename>.json`
-0. Create the databases for your project `./script/create_db.rb --stage production --project <projectname>`
 0. Create a Roles for your project in `roles/<projectname>.json`, `roles/<projectname>-production.json` and `roles/<projectname>-staging.json`. The roles should include a reference to the rails portal role. See `roles/interactions-portal.json` for example. eg `"role[rails-portal-server]"`.
+0. Create the databases for your project `./script/create_db.rb --stage production --project <projectname>`
 0. make sure you specify the correct ssh_id and pem file in your
    `.ssh/config` file
+0. add the following to your ~/.ssh/config file (TODO: we could do this
+   in `config.cfg`) :
+```
+Host <project-name>.*.concord.org
+  User ubuntu
+  IdentityFile ~/.ssh/genigames.pem
+
+```
 0. run fix on your node `fix node:<projectname>.concord.org role:<projectname>-production`
 0. checkout the rigse project, create new entries in `deploy.rb` and add `deploy/<projectname>-staging.rb` and `deploy/<projectname>-production.rb`
 0. add a new theme for your project by copying and editing an existing
