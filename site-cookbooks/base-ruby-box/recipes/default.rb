@@ -15,3 +15,7 @@ gem_package "ohai" do
   action :install
   gem_binary('/usr/local/bin/gem')	
 end
+
+package "ntp" do
+  action :install
+end
