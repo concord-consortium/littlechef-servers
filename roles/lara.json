@@ -29,7 +29,7 @@
             "sso_server_url": "http://has.staging.concord.org"
         },
         "deploy_user_keys": {
-            "users": [ "internal_developers", "ddamelin"]
+            "users": [ "internal_developers", "ddamelin","pjanik"]
         }
     }
 }
