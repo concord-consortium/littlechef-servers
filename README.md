@@ -136,7 +136,7 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 0. TBD: You might consider using a mysql databse dump of just the
    district data, using 'Sequel Pro' and the included
 0140425portal-districts-and-schools.sql.zip file (password protected) 
-0. Run the cap task `cap <site> solr:hard_reindex` to get the solr
+0. Run the cap task `bundle exec cap <site> solr:hard_reindex` to get the solr
    materials listings to work.
 0. This might be a good time to create a new staging server (maybe)
    using `./script/create_staging.rb --project <project-name>`
