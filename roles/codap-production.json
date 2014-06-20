@@ -1,0 +1,22 @@
+{
+    "name": "codap-production",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[codap-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "codap-production"
+        },
+        "cc_rails_portal": {
+            "site_url": "http://codap.portal.concord.org",
+            "s3_bucket": "codap-production"
+        },
+        "new_relic":{
+            "app_name": "codap"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "chef_environment": "_default", 
+    "ipaddress": "10.164.174.204", 
+    "name": "codap.portal.concord.org", 
+    "run_list": [
+        "role[codap-production]"
+    ]
+}

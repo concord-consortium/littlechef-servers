@@ -1,0 +1,41 @@
+{
+    "name": "codap-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails": {
+            "site_id": "codap"
+        },
+        "cc_rails_portal": {
+            "site_name": "CODAP Portal",
+            "theme": "codap",
+            "email": "codap-help@concord.org",
+            "states_and_provinces": "all",
+            "use_jnlps": false,
+            "admin_user": {
+                "first_name": "Aaron",
+                "last_name": "Unger",
+                "login": "aunger",
+                "email": "aunger@concord.org"
+            },
+            "tiny_mce": {
+                "buttons1": [
+                    "bold,italic,underline",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "code"
+                ]
+            }
+        }
+    }
+}
+
+
+
+

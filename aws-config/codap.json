@@ -1,0 +1,6 @@
+{
+  "availability_zone": "us-east-1c",
+  "db_allocated_storage": "12",
+  "iam_user": "codap-s3-user",
+  "ec2_flavor_id": "c3.large"
+}
