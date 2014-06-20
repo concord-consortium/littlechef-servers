@@ -109,7 +109,7 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 0. run `bundle exec ./script/create_ec2.rb --stage production --project <project name>`
 0. Create a new elastic IP address using the AWS web console, and associate that address with this new instance ID (reported from script).
 0. Again, using the AWS web console, create a DNS entry for your host using Route 53.
-0. echo '{"id": "<projectname>"}' >> data_bags/sites/<projectname>.json
+0. `echo '{"id": "<projectname>"}' >> data_bags/sites/<projectname>.json`
 0. Create the S3 Bins for your project `./script/create_s3_bucket.rb --stage production --project <projectname>`
 0. Using the information from the output of the S3 bucket creation script, create a new databag for your site in `data_bags/sites/<sitename>.json`
 0. Add `db_username` and `db_password` to `data_bags/sites/<sitename>.json`
@@ -119,21 +119,20 @@ This repository uses a submodule for the data_bags folder. It is a private repos
    `.ssh/config` file
 0. add the following to your ~/.ssh/config file (TODO: we could do this
    in `config.cfg`) :
-```
-Host <project-name>.*.concord.org
-  User ubuntu
-  IdentityFile ~/.ssh/genigames.pem
 
-```
+        Host <project-name>.*.concord.org
+          User ubuntu
+          IdentityFile ~/.ssh/genigames.pem
+
 0. run fix on your node `fix node:<projectname>.concord.org role:<projectname>-production`
 0. checkout the rigse project, create new entries in `deploy.rb` and add `deploy/<projectname>-staging.rb` and `deploy/<projectname>-production.rb`
 0. add a new theme for your project by copying and editing an existing
    theme eg: `cp -r ./app/assets/themes/interactions ./app/assets/themes/newthemename` and `cp -r ./themes/interactions ./themes/newthemename`.  You will also have to modify app.scss to add a new `.project-header h1` background image for your project.
 0. Deploy: `bundle exec cap projectname-production deploy`
-0. Setup the default project: `bundle exec cap projectname-production setup:default_project`
+0. Setup the default project: `bundle exec cap projectname-production setup:init_database`
 0. Configure some districts. Check config/settings.yml, add or remove
    states from the entry "states_and_provinces:" (all is valid)
-0. Run the cap task to setup districts: `cap <site> setup:districts`
+0. Run the cap task to setup districts (this will take a while if you use 'all' or have a lot of states): `bundle exec cap <site> setup:districts`
 0. TBD: You might consider using a mysql databse dump of just the
    district data, using 'Sequel Pro' and the included
 0140425portal-districts-and-schools.sql.zip file (password protected) 
