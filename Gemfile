@@ -1,5 +1,5 @@
 source "http://rubygems.org"
 gem "trollop"
 gem "fog"
-gem "librarian"
+gem "librarian-chef"
 gem "thor"
