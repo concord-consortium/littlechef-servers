@@ -1,0 +1,26 @@
+{
+    "name": "sgauthoring-staging",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[sgauthoring]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "sgauthoring-production",
+            "server_name": "sgauthoring.concord.org"
+        },
+        "cc_rails_portal": {
+            "site_url": "http://sgauthoring.concord.org",
+            "site_name": "sgauthoring"
+        },
+        "new_relic":{
+            "app_name": "SmartGraphs Authoring (Pro)"
+        }
+    }
+}
+
+
+
+

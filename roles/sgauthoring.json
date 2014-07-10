@@ -1,0 +1,32 @@
+{
+    "name": "sgauthoring",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[base-ruby-1_9_3]",
+        "role[rails-portal-server]"
+    ],  
+    "default_attributes": {
+        "ruby": {
+            "version": "1.9.3-p194"
+        }
+    },
+    "override_attributes": {
+        "passenger": {
+            "version": "3.0.12",
+            "root_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12",
+            "module_path": "/usr/local/lib/ruby/gems/1.9.1/gems/passenger-3.0.12/ext/apache2/mod_passenger.so"
+        },
+        "new_relic":{
+            "app_name": "SmartGraphs Authoring"
+        },
+        "cc_rails": {
+            "site_id": "sgauthoring",
+            "site_url": "http://sgauthoring.concord.org",
+            "site_name": "SmartGraphs Authoring"
+        },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "ddamelin","pjanik"]
+        }
+    }
+}
