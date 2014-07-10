@@ -9,7 +9,10 @@ bash "add newrelic apt repository" do
   not_if "test -f /etc/apt/sources.list.d/newrelic.list"
 end
 
-package "newrelic-sysmond"
+package "newrelic-sysmond" do  
+  action :install
+  options "--force-yes"
+end
 
 service "newrelic-sysmond" do
   supports [ :restart, :status ]
