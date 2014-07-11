@@ -4,7 +4,11 @@
     "json_class": "Chef::Role",
     "run_list": [
         "role[base-ruby-1_9_3]",
-        "role[rails-portal-server]"
+        "role[rails-portal-server]",
+        "recipe[aws-cloudwatch-monitoring]",
+        "recipe[new-relic]",
+        "recipe[cc-monit]",
+        "recipe[nodejs]"
     ],  
     "default_attributes": {
         "ruby": {
