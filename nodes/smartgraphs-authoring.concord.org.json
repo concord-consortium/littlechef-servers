@@ -1,7 +1,7 @@
 {
     "chef_environment": "_default", 
     "ipaddress": "10.28.134.67", 
-    "name": "sgauthoring.concord.org", 
+    "name": "smartgraphs-authoring.concord.org", 
     "run_list": [
         "role[sgauthoring-production]"
     ]
