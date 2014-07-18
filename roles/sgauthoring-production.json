@@ -9,7 +9,8 @@
     "override_attributes": {
         "cc_rails": {
             "db_rds_instance_name": "sgauthoring-production",
-            "server_name": "sgauthoring.concord.org"
+            "server_name": "smartgraphs-authoring.concord.org",
+            "server_aliases": ["smartgraphs-authoring.concord.org","smartgraphs-activities.concord.org"]
         },
         "cc_rails_portal": {
             "site_url": "http://sgauthoring.concord.org",
