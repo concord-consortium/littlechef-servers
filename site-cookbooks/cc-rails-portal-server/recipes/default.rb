@@ -90,3 +90,19 @@ if portal[:s3_bucket]
     only_if { portal[:s3_bucket] }
   end
 end
+
+# override the app_environment_variables.rb settings
+template "#{appshared}/config/app_environment_variables.rb" do
+  @portal_features  = portal[:portal_features]
+  @cors_origins     = portal[:cors_origins]
+  @cors_resources   = portal[:cors_resources]
+
+  source "app_environment_variables.rb.erb"
+  owner "deploy"
+  variables(
+    :portal_features   => @portal_features,
+    :cors_origins      => @cors_origins,
+    :cors_resources    => @cors_resources
+  )
+  notifies :run, "execute[restart webapp]"
+end

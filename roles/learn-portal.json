@@ -12,6 +12,7 @@
         },
         "cc_rails_portal": {
             "site_name": "Learn Portal",
+            "portal_features": "geniverse_remote_auth genigames_data allow_cors",
             "theme": "learn",
             "email": "learn-help@concord.org",
             "states_and_provinces": "all",
