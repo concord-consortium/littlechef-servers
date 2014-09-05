@@ -15,8 +15,16 @@ ENV['PORTAL_FEATURES'] ||= "<%= @portal_features %>"
 
 # CORS_ORIGINS:
 # Sets the allowed CORS origins to a specific whitelist. Requires ENV['PORTAL_FEATURES'] ||= 'allow_cors'
+<% if @cors_origins && @cors_origins.size > 0 %>
 ENV['CORS_ORIGINS']    ||= "<%= @cors_origins %>"
+<% else %>
+# ENV['CORS_ORIGINS']  ||= "*.concord.org"
+<% end %>
 
 # CORS_RESOURECES:
 # Sets the allowed CORS resources to a specific route. Requires ENV['PORTAL_FEATURES'] ||= 'allow_cors'
-ENV['CORS_RESOURCES']  ||= "<%= @cors_resources %>"
+<% if @cors_resources && @cors_resources.size > 0 %>
+ENV['CORS_RESOURCES']    ||= "<%= @cors_resources %>"
+<% else %>
+# ENV['CORS_RESOURCES']  ||= "*.concord.org"
+<% end %>
