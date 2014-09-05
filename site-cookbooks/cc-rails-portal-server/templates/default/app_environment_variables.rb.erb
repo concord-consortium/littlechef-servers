@@ -18,7 +18,7 @@ ENV['PORTAL_FEATURES'] ||= "<%= @portal_features %>"
 <% if @cors_origins && @cors_origins.size > 0 %>
 ENV['CORS_ORIGINS']    ||= "<%= @cors_origins %>"
 <% else %>
-# ENV['CORS_ORIGINS']  ||= "*.concord.org"
+# ENV['CORS_ORIGINS']  ||= "x.example.com y.example.com"
 <% end %>
 
 # CORS_RESOURECES:
@@ -26,5 +26,5 @@ ENV['CORS_ORIGINS']    ||= "<%= @cors_origins %>"
 <% if @cors_resources && @cors_resources.size > 0 %>
 ENV['CORS_RESOURCES']    ||= "<%= @cors_resources %>"
 <% else %>
-# ENV['CORS_RESOURCES']  ||= "*.concord.org"
+# ENV['CORS_RESOURCES']  ||= "*"
 <% end %>
