@@ -115,6 +115,10 @@ common: &default_settings
   # transactions and sends this to the New Relic service once a
   # minute. Included in the transaction is the exact call sequence of
   # the transactions including any SQL statements issued.
+
+  # NOTE: Its probably preferrable to turn on server-side configuration
+  # at New Relic which will override these params; see http://bit.ly/1ujjH5L 
+  # NP 2014-02  (as of Today HAS production uses server side config)
   transaction_tracer:
   
     # Transaction tracer is enabled by default. Set this to false to
@@ -153,6 +157,10 @@ common: &default_settings
   
   # Error collector captures information about uncaught exceptions and
   # sends them to New Relic for viewing
+
+  # NOTE: Its probably preferrable to turn on server-side configuration
+  # at New Relic which will override these params; see http://bit.ly/1ujjH5L 
+  # NP 2014-02  (as of Today HAS production uses server side config)
   error_collector:
     
     # Error collector is enabled by default. Set this to false to turn
