@@ -1,0 +1,24 @@
+{
+    "name": "has-load-test",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[has-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails": {
+            "db_rds_instance_name": "has-load-test"
+        },
+        "cc_rails_portal": {
+            "site_url": "http://has-load-test.concord.org",
+            "site_name": "HAS (LOAD_TEST)",
+            "s3_bucket": "has-staging"
+        },
+        "new_relic":{
+            "rpm_account_type": "standard_key",
+            "app_name": "HAS Load Test"
+        }
+    }
+}
