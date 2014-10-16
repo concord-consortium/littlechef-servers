@@ -106,3 +106,6 @@ template "#{appshared}/config/app_environment_variables.rb" do
   )
   notifies :run, "execute[restart webapp]"
 end
+
+# Solr assumes that cc-rails-portal has been setup first....
+include_recipe "cc-solr"
