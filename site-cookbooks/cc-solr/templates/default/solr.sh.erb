@@ -9,10 +9,10 @@ SOLR_PIDFILE="<%= @solr_pid_file %>"
 
 start_sunspot(){
   echo "Starting Sunspot"
-  if [ -f $SOLR_ROOT ]; then
+  if [ -d $SOLR_ROOT ]; then
     sudo -iu deploy bash -c "cd $SOLR_ROOT && bundle exec rake sunspot:solr:start RAILS_ENV=production";
   else
-    Echo "Solr root directory doesn't exist: $SOLR_ROOT";
+    echo "Solr root directory doesn't exist: $SOLR_ROOT";
   fi
 }
 
