@@ -31,7 +31,10 @@ template node["monit"]["main_config_path"] do
     :server_name => server_name   )
 end
 
-# aws additional monit files:
+# TODO: This is wrong. We should just use
+# the monit_monitrc provider (cookbooks/monit/providers/monitrc)
+# see for example: cc-solr default recipe.
+# additional monit files:
 node["cc_monit"]["jobs"].each do |conf|
   base = node["monit"]["includes_dir"]
   Chef::Log.info("MONIT: configuring job '#{conf}'")
