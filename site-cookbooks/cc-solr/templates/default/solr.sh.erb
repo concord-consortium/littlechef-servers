@@ -5,19 +5,24 @@
 set -e
 
 SOLR_ROOT="<%= @solr_dir %>"
+SOLR_PIDFILE="<%= @solr_pid_file %>"
 
 start_sunspot(){
   echo "Starting Sunspot"
-  sudo -iu deploy bash -c "cd $SOLR_ROOT && bundle exec rake sunspot:solr:start RAILS_ENV=production"
+  if [ -f $SOLR_ROOT ]; then
+    sudo -iu deploy bash -c "cd $SOLR_ROOT && bundle exec rake sunspot:solr:start RAILS_ENV=production";
+  else
+    Echo "Solr root directory doesn't exist: $SOLR_ROOT";
+  fi
 }
 
 stop_sunspot(){
   echo "Stopping Sunspot"
-  if [ -f /web/portal/shared/solr/pids/production/sunspot-solr-production.pid ]; then
+  if [ -f $SOLR_PIDFILE ]; then
     sudo -iu deploy bash -c "cd $SOLR_ROOT && bundle exec rake sunspot:solr:stop RAILS_ENV=production";
     sleep 1;
   else
-    echo "no solr process found";
+    echo "no solr process found in $SOLR_PIDFILE";
   fi
   # be a little more aggresive because sometimes old solr instances are running around causing trouble:
   for pid in $(pgrep -f Dsolr); do
