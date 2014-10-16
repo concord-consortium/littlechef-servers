@@ -1,0 +1,5 @@
+check process solr with pidfile "<%= @solr_pid_file %>"
+start program = "/etc/init.d/solr start" with timeout 60 seconds
+stop program = "/etc/init.d/solr stop"
+    if failed host localhost port 8983 protocol http and request "/solr/admin/ping" for 3 cycles then restart
+    if 5 restarts within 15 cycles then timeout

@@ -1,3 +1,4 @@
+include_recipe 'monit'
 
 template "/etc/init.d/solr" do 
   source "solr.sh.erb"
@@ -9,4 +10,8 @@ end
 service "solr" do
   supports :restart => true
   action [ :enable, :start ]
+end
+
+monit_monitrc "solr" do
+  variables({ :solr_pid_file => node[:solr][:pid_file]})
 end
