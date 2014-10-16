@@ -13,7 +13,7 @@ start_sunspot(){
 
 stop_sunspot(){
   echo "Stopping Sunspot"
-  if [ -f /web/portal/releases/20141016182013/solr/pids/production/sunspot-solr-production.pid ]; then
+  if [ -f /web/portal/shared/solr/pids/production/sunspot-solr-production.pid ]; then
     sudo -iu deploy bash -c "cd $SOLR_ROOT && bundle exec rake sunspot:solr:stop RAILS_ENV=production";
     sleep 1;
   else
