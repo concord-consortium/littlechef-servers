@@ -7,7 +7,7 @@ set daemon 20
 set logfile /var/log/monit.log
 
 # Mail alerts
-set alert all-portal-errors@concord.org not {instance}
+set alert all-portal-errors@concord.org on {timeout}
 set mailserver email-smtp.us-east-1.amazonaws.com port 25
   USERNAME  <%= @mail['user'] %> PASSWORD <%= @mail['password'] %>
   using TLSV1
@@ -15,7 +15,7 @@ set mailserver email-smtp.us-east-1.amazonaws.com port 25
 
 
 set mail-format {
-  from: all-portal-errors@concord.org
+  from: monit@concord.org
   subject: MONIT: <%= @server_name %> $SERVICE $EVENT
   message: Monit <%= @server_name %>  $ACTION $SERVICE at $DATE
 Dutifully,
