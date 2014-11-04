@@ -1,5 +1,5 @@
 {
-    "ipaddress": "10.28.245.161",
+    "ipaddress": "54.225.114.84",
     "run_list": [
         "role[lara-production]"
     ]
