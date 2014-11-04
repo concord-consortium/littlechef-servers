@@ -1,5 +1,5 @@
 {
-    "ipaddress": "10.169.18.73",
+    "ipaddress": "75.101.152.135",
     "run_list": [
         "role[has-production]"
     ]
