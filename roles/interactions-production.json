@@ -9,6 +9,7 @@
     },
     "override_attributes": {
         "cc_rails": {
+            "server_name": "interactions.portal.concord.org",
             "db_rds_instance_name": "interactions-production1"
         },
         "cc_rails_portal": {

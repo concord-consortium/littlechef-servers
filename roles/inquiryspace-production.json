@@ -9,6 +9,7 @@
     },
     "override_attributes": {
         "cc_rails": {
+            "server_name": "inquiryspace.portal.staging.concord.org",
             "db_rds_instance_name": "inquiryspace-production"
         },
         "cc_rails_portal": {

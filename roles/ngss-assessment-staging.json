@@ -9,6 +9,7 @@
     },
     "override_attributes": {
         "cc_rails": {
+            "server_name": "ngss-assessment.staging.concord.org",
             "db_rds_instance_name": "ngss-assessment-staging"
         },
         "cc_rails_portal": {

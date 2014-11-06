@@ -9,6 +9,9 @@
     },
     "override_attributes": {
         "cc_rails": {
+            "server_name": "learn.staging.concord.org",
+            "use_ssl": "true",
+            "only_use_ssl": "true",
             "db_rds_instance_name": "learn-staging"
         },
         "cc_rails_portal": {

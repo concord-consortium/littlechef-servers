@@ -9,6 +9,7 @@
     },
     "override_attributes": {
         "cc_rails": {
+            "server_name": "learn.concord.org",
             "db_rds_instance_name": "learn-production"
         },
         "cc_rails_portal": {
