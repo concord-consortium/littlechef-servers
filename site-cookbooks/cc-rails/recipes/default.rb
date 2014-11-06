@@ -56,7 +56,27 @@ web_app "portal" do
   proxies node[:http_proxies]
   extra_config node[:http_extra]
   static_assets cc_rails[:static_assets]
+  only_use_ssl cc_rails[:only_use_ssl]
+  use_ssl cc_rails[:use_ssl]
   notifies :reload, resources(:service => "apache2"), :delayed
+end
+
+if cc_rails[:use_ssl]
+  web_app "portal-ssl" do
+    cookbook "cc-rails"
+    template "rails_app_ssl.conf.erb"
+    server_name cc_rails[:server_name]
+    server_aliases cc_rails[:server_aliases]
+    docroot docroot
+    rails_env node[:rails][:environment]
+    rails_base_uri cc_rails[:base_uri]
+    proxies node[:http_proxies]
+    extra_config node[:http_extra]
+    static_assets cc_rails[:static_assets]
+    only_use_ssl cc_rails[:only_use_ssl]
+    use_ssl cc_rails[:use_ssl]
+    notifies :reload, resources(:service => "apache2"), :delayed
+  end
 end
 
 execute "restart webapp" do
