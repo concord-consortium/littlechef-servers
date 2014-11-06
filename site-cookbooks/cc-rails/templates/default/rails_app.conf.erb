@@ -55,15 +55,14 @@
 
   <% if @params[:proxies] %>
     <% @params[:proxies].each do |proxy| %>
-  <Proxy <%= proxy[:remote] %>*>
-    Order allow,deny
-    Allow from all
-    Deny from none
-  </Proxy>
+      <Proxy <%= proxy[:remote] %>*>
+        Order allow,deny
+        Allow from all
+        Deny from none
+      </Proxy>
 
-  ProxyPass        <%= proxy[:path] %>  <%= proxy[:remote] %>
-  ProxyPassReverse <%= proxy[:path] %>  <%= proxy[:remote] %>
-
+      ProxyPass        <%= proxy[:path] %>  <%= proxy[:remote] %>
+      ProxyPassReverse <%= proxy[:path] %>  <%= proxy[:remote] %>
     <% end %>
   <% end %>
 
