@@ -1,0 +1,8 @@
+{
+    "chef_environment": "_default", 
+    "ipaddress": "75.101.152.135", 
+    "name": "has.production.concord.org", 
+    "run_list": [
+        "role[has-production]"
+    ]
+}
