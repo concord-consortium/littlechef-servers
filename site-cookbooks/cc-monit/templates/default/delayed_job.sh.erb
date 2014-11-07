@@ -22,6 +22,7 @@ bundle_exec="/usr/local/bin/bundle exec"
 delayed_job="script/delayed_job $action --prefix $current"
 export RAILS_ENV=production
 export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+export NEW_RELIC_DISPATCHER=delayed_job
 
 timestamp=`date`
 me=`whoami`
