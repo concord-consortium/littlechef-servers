@@ -2,4 +2,4 @@ check process delayed_job
   with pidfile <%= @approot %>/shared/pids/delayed_job.pid
   start program = "<%= @approot %>/delayed_job.sh start" as uid <%= @rails_user %>
   stop program  = "<%= @approot %>/delayed_job.sh stop'" as uid <%= @rails_user %>
-  if 5 restarts within 5 cycles then timeout
+  if 10 restarts within 10 cycles then timeout
