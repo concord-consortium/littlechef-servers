@@ -8,10 +8,10 @@ set logfile /var/log/monit.log
 
 # Mail alerts
 set alert all-portal-errors@concord.org on {timeout}
-set mailserver email-smtp.us-east-1.amazonaws.com port 25
+set mailserver email-smtp.us-east-1.amazonaws.com port 587
   USERNAME  <%= @mail['user'] %> PASSWORD <%= @mail['password'] %>
   using TLSV1
-  with timeout 30 seconds
+  with timeout 55 seconds
 
 
 set mail-format {
