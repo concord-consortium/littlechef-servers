@@ -35,7 +35,10 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 
 2.  Install ChefSolo
 
-        fix node:$HOSTNAME_OF_SERVER deploy_chef
+        fix node:$HOSTNAME_OF_SERVER deploy_chef 
+
+        # TIP if the above fails, try these opts:
+        fix node:$HOSTNAME_OF_SERVER deploy_chef:method=omnibus,version=11.12
 
 3.  Install lab.server
 
