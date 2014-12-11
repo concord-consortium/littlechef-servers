@@ -9,7 +9,8 @@
     "override_attributes": {
         "cc_rails": {
             "db_rds_instance_name": "lara-staging4",
-            "server_name": "authoring.staging.concord.org"
+            "server_name": "authoring.staging.concord.org",
+            "use_ssl": "true"
         },
         "cc_rails_portal": {
             "site_url": "http://authoring.staging.concord.org",
