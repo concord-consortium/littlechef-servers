@@ -21,7 +21,11 @@
         },
         "new_relic":{
             "app_name": "LARA (staging)"
+        },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "ddamelin","pjanik","zeus"]
         }
+
 
     }
 }
