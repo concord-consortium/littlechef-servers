@@ -15,7 +15,7 @@
             "db_rds_instance_name": "learn-staging"
         },
         "cc_rails_portal": {
-            "site_url": "http://learn.staging.concord.org",
+            "site_url": "https://learn.staging.concord.org",
             "s3_bucket": "nextgen-staging"
         },
         "new_relic":{
