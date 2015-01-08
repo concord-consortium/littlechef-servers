@@ -1,6 +1,6 @@
 {
     "chef_environment": "_default", 
-    "ipaddress": "10.29.10.163", 
+    "ipaddress": "54.87.162.167", 
     "name": "smartgraphs-authoring.staging.concord.org", 
     "run_list": [
         "role[sgauthoring-staging]"
