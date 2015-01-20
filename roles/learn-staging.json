@@ -20,6 +20,9 @@
         },
         "new_relic":{
             "app_name": "learn Staging"
+        },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "pjanik","zeus"]
         }
     }
 }
