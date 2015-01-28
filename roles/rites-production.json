@@ -9,7 +9,7 @@
     },
     "override_attributes": {
         "cc_rails": {
-            "db_rds_instance_name": "rites-production-6",
+            "db_rds_instance_name": "rites-production",
             "db_pool": 10,
             "google_analytics_account": "UA-6899787-24"
         },

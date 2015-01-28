@@ -1,6 +1,7 @@
 {
-  "db_allocated_storage": "30",
+  "db_allocated_storage": "100",
   "ec2_flavor_id": "m1.large",
+  "db_flavor_id": "db.m3.medium",
   "hostname": "rites-investigations",
   "iam_user": "rites-s3-user"
 }
