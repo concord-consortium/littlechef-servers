@@ -1,4 +1,5 @@
 include_recipe 'monit'
+include_recipe 'java'
 
 template "/etc/init.d/solr" do 
   source "solr.sh.erb"
