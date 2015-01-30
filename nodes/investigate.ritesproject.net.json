@@ -1,0 +1,8 @@
+{
+    "chef_environment": "_default", 
+    "ipaddress": "10.164.207.215", 
+    "name": "investigate.ritesproject.net", 
+    "run_list": [
+        "role[rites-production]"
+    ]
+}

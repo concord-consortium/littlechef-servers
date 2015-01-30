@@ -14,7 +14,7 @@
             "google_analytics_account": "UA-6899787-24"
         },
         "cc_rails_portal": {
-            "site_url": "http://rites-investigations.concord.org",
+            "site_url": "http://investigate.ritesproject.net",
             "s3_bucket": "rites-production"
         },
         "rails": {
