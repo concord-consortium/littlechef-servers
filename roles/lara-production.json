@@ -18,7 +18,8 @@
         },
         "lara": {
             "sso_server_url": "http://has.portal.concord.org",
-            "sso_client_id": "authoring"
+            "sso_client_id": "authoring",
+            "stage": "production"
         },
         "rails": {
             "max_pool_size": 8,

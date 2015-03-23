@@ -18,7 +18,8 @@
         },
         "lara": {
             "site_url": "http://authoring.demo.concord.org",
-            "sso_client_id": "authoring-demo"
+            "sso_client_id": "authoring-demo",
+            "stage": "demo"
         },
         "new_relic":{
             "app_name": "LARA (demo)"

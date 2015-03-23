@@ -18,7 +18,8 @@
         },
         "lara": {
             "site_url": "http://authoring.staging.concord.org",
-            "sso_client_id": "authoring-staging"
+            "sso_client_id": "authoring-staging",
+            "stage": "staging"
         },
         "new_relic":{
             "app_name": "LARA (staging)"
