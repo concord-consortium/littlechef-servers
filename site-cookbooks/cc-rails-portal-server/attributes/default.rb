@@ -1,6 +1,7 @@
 default[:cc_rails_portal][:states_and_provinces] = "all"
 default[:cc_rails_portal][:site_name] = "Cross Project Portal"
 default[:cc_rails_portal][:site_url] = "http://localhost:3000"
+default[:cc_rails_portal][:authoring_site_url] = "//authoring.staging.concord.org"
 default[:cc_rails_portal][:theme] = "xproject"
 default[:cc_rails_portal][:email] = "xproject@concord.org"
 default[:cc_rails_portal][:jnlp_family] = "all-otrunk-snapshot"

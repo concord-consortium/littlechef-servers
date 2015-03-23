@@ -14,6 +14,7 @@
         },
         "cc_rails_portal": {
             "site_url": "http://ngss-assessment.portal.concord.org",
+            "authoring_site_url": "//authoring.concord.org",
             "s3_bucket": "ngss-assessment-production"
         },
         "new_relic":{
