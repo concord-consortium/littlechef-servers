@@ -1,5 +1,4 @@
 require 'fog'
-
 def clone_ec2_instance(source_ec2_name, new_ec2_name)
   ec2 = ::Fog::Compute[:aws]
 
@@ -42,7 +41,13 @@ def find_or_create_ec2_security_group(options)
 
   puts "*** ensuring ec2 security group is set up: #{options[:name]}"
   # names are not case sensitive
-  ec2_sec_group = ec2.security_groups.find{|sg| sg.name.downcase == options[:name].downcase}
+  # we also (unfortunately) seem to have unnamed security groups now?
+  # can't find the security group with nil name in the AWS console...
+  ec2_sec_group = ec2.security_groups.find do |sg| 
+    return false unless sg.name
+    return true if (sg.name.downcase == options[:name].downcase)
+  end
+
   unless ec2_sec_group
     ec2_sec_group = ec2.security_groups.create(options)
     ec2_sec_group.authorize_port_range(22..22)
