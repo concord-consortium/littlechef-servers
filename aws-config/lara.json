@@ -1,3 +1,4 @@
 {
+  "ec2_flavor_id": "m3.medium",
   "iam_user": "lara-s3-user"
 }
