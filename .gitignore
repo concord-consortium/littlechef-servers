@@ -7,3 +7,4 @@ bin
 config
 *.tar.gz
 wise4-step-types.json
+star_concord_org.crt
