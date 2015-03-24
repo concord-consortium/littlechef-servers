@@ -9,15 +9,15 @@
     "override_attributes": {
         "cc_rails": {
             "db_rds_instance_name": "lara-demo",
-            "server_name": "authoring.demo.concord.org",
+            "server_name": "authoring-demo.concord.org",
             "use_ssl": "true"
         },
         "cc_rails_portal": {
-            "site_url": "http://authoring.demo.concord.org",
+            "site_url": "http://authoring-demo.concord.org",
             "site_name": "LARA (demo)"
         },
         "lara": {
-            "site_url": "http://authoring.demo.concord.org",
+            "site_url": "http://authoring-demo.concord.org",
             "sso_client_id": "authoring-demo",
             "stage": "demo"
         },
