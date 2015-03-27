@@ -10,6 +10,7 @@
     "override_attributes": {
         "cc_rails": {
             "server_name": "learn.concord.org",
+            "use_ssl": "true",
             "db_rds_instance_name": "learn-production",
             "google_analytics_account": "UA-6899787-46"
         },
