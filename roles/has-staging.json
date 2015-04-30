@@ -10,7 +10,7 @@
     "override_attributes": {
         "cc_rails": {
             "server_name": "has.staging.concord.org",
-            "db_rds_instance_name": "has-staging"
+            "db_rds_instance_name": "has-staging-vpc"
         },
         "cc_rails_portal": {
             "site_url": "http://has.staging.concord.org",
