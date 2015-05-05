@@ -12,7 +12,7 @@
             "server_name": "learn.staging.concord.org",
             "use_ssl": "true",
             "only_use_ssl": "true",
-            "db_rds_instance_name": "learn-staging"
+            "db_rds_instance_name": "learn-staging-vpc"
         },
         "cc_rails_portal": {
             "site_url": "https://learn.staging.concord.org",

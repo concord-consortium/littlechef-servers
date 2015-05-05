@@ -12,7 +12,7 @@
             "server_name": "learn.concord.org",
             "use_ssl": "true",
             "only_use_ssl": "true",
-            "db_rds_instance_name": "learn-production",
+            "db_rds_instance_name": "learn-production-vpc",
             "google_analytics_account": "UA-6899787-46"
         },
         "cc_rails_portal": {
