@@ -44,7 +44,9 @@ SITE
     vim (1.0.2)
     windows (1.10.0)
       chef_handler (>= 0.0.0)
-    yum (2.3.2)
+    yum (3.6.0)
+    yum-epel (0.6.0)
+      yum (~> 3.0)
 
 GIT
   remote: git://github.com/concord-consortium/wise-cookbooks.git
@@ -66,9 +68,9 @@ GIT
 GIT
   remote: https://github.com/balbeko/chef-npm/
   ref: master
-  sha: 7d3bd0fd63e1e5bb08da90cf1afb0d6514cf3006
+  sha: 83d8f655b41e6d646dc3ca8a81355e96a36cde69
   specs:
-    npm (0.1.2)
+    npm (0.1.5)
       nodejs (>= 0.0.0)
 
 GIT
@@ -112,12 +114,12 @@ GIT
 GIT
   remote: https://github.com/mdxp/nodejs-cookbook
   ref: master
-  sha: 4c685529e7a8db0222b17407367e8b309afd3137
+  sha: e2415cd8c4e03dccf21d7ef6ca31e1c5c81467ca
   specs:
     nodejs (1.3.0)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
-      yum (>= 0.0.0)
+      yum-epel (>= 0.0.0)
 
 DEPENDENCIES
   ant (>= 0)

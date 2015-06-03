@@ -9,6 +9,8 @@ package "unzip"
 package "libfreetype6-dev"
 include_recipe "imagemagick"
 include_recipe "cc-rails"
+include_recipe "nodejs"
+include_recipe "nodejs::npm"
 
 # this should already be created by the users::sysadmins receipe
 # user "deploy" do
