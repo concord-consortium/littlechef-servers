@@ -24,8 +24,8 @@ server = ec2.servers.create({
   # ideally this could be automatically pulled from here:
   # https://help.ubuntu.com/community/UEC/Images#Machine_Consumable_Ubuntu_Cloud_Guest_images_Availability_Data
 
-  # This is 14.10, amd64, hvm:ebs
-  image_id: 'ami-59807632',
+  # This is 14.04, amd64, hvm:ebs
+  image_id: 'ami-2f6a8044',
   # because we are building ruby lets make this big so it is fast
   # it is likely that building is a single threaded thing so what matter is the single core
   # performance
