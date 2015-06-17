@@ -13,6 +13,7 @@ include_recipe "chef-ruby::gem_package"
 # patch applied above.
 gem_package "ohai" do 
   action :install
+  version "7.4.1"
   gem_binary('/usr/local/bin/gem')	
 end
 
