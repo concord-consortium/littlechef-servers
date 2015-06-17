@@ -20,18 +20,26 @@ puts "*** creating new server"
 server = ec2.servers.create({
   key_name: 'genigames',
   # the latest version can be looked up here:
-  # http://alestic.com/
+  # http://cloud-images.ubuntu.com/locator/ec2/
   # ideally this could be automatically pulled from here:
   # https://help.ubuntu.com/community/UEC/Images#Machine_Consumable_Ubuntu_Cloud_Guest_images_Availability_Data
-  image_id: 'ami-9c78c0f5',
+
+  # This is 14.10, amd64, hvm:ebs
+  image_id: 'ami-59807632',
   # because we are building ruby lets make this big so it is fast
   # it is likely that building is a single threaded thing so what matter is the single core
   # performance
-  flavor_id: 'm2.xlarge',
+  flavor_id: 'c4.large',
+
+  # Need to put it in a VPC
+  subnet_id: 'subnet-7fb16326',
+
   # this doesn't mater perhaps we can leave it blank, it does need to be
   # in the east though so we get the right ami and the saved image is in the right place
   # :availability_zone => config['availability_zone'],
-  groups: 'default', # should use a default here
+
+  # seems to need an explicity security group id because it is in a VPC
+  security_group_ids: ['sg-53f1a237'],
   tags: {
     "Name"     => "base-ruby-box",
     "Contacts" => 'Scott',  # <- should set this based on the current user running this script
