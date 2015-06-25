@@ -3,6 +3,11 @@
   "platforms": {
     "ubuntu": ">= 10.0.0"
   },
+  "dependencies": {
+    "imagemagick": ">= 0.0.0",
+    "cc-rails": ">= 0.0.0",
+    "cc-solr": ">= 0.0.0"
+  },
   "recipes": {
     "cc-rails-portal-server": "extra stuff to setup rails-portal-server"
   }

@@ -3,6 +3,9 @@
   "platforms": {
     "ubuntu": ">= 10.0.0"
   },
+  "dependencies": {
+  	"monit": "> 0.0.0"
+  },
   "recipes": {
     "cc-monit": "Configure monit for CC portals"
   }
