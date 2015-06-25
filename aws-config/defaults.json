@@ -1,9 +1,11 @@
 {
-  "availability_zone": "us-east-1e",
+  "availability_zone": "us-east-1c",
   "db_engine_version": "5.5",
   "db_flavor_id": "db.m1.small",
   "db_allocated_storage": "12",
   "ec2_key_name": "genigames",
-  "ec2_image_id": "ami-0721ac6e",
-  "ec2_flavor_id": "c1.medium"
+  "ec2_image_id": "ami-61e51f0a",
+  "ec2_flavor_id": "c3.large",
+  "vpc_id": "vpc-9c9714f9",
+  "subnet_id": "subnet-7fb16326"
 }
