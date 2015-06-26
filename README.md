@@ -40,8 +40,7 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 0. Create a Roles for your project in `roles/<projectname>.json`, `roles/<projectname>-production.json` and `roles/<projectname>-staging.json`. The roles should include a reference to the rails portal role. See `roles/interactions-portal.json` for example. eg `"role[rails-portal-server]"`.
 0. Create the databases for your project `./script/create_db.rb --stage production --project <projectname>`
 0. make sure you specify the correct ssh_id and pem file in your
-   `.ssh/config` file
-0. add the following to your ~/.ssh/config file (TODO: we could do this
+   `.ssh/config` file. Add the following to your ~/.ssh/config file (TODO: we could do this
    in `config.cfg`) :
 
         Host <project-name>.*.concord.org
@@ -49,6 +48,7 @@ This repository uses a submodule for the data_bags folder. It is a private repos
           IdentityFile ~/.ssh/genigames.pem
 
 0. run fix on your node `fix node:<projectname>.concord.org role:<projectname>-production`
+    NOTE: currently this will fail because of the SSL cert files need to manually copied to /etc/apache2/ssl
 0. checkout the rigse project, create new entries in `deploy.rb` and add `deploy/<projectname>-staging.rb` and `deploy/<projectname>-production.rb`
 0. add a new theme for your project by copying and editing an existing
    theme eg: `cp -r ./app/assets/themes/interactions ./app/assets/themes/newthemename` and `cp -r ./themes/interactions ./themes/newthemename`.  You will also have to modify app.scss to add a new `.project-header h1` background image for your project.
