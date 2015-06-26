@@ -27,95 +27,16 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 
     git submodule update --init
 
-### Setup a new lab.server
-
-1.  Spin up an ubuntu lucid server (could be AWS or could be elsewhere)
-
-    If you are using AWS then use `ami-8e40e7e7` so step 2 can be skipped
-
-2.  Install ChefSolo
-
-        fix node:$HOSTNAME_OF_SERVER deploy_chef 
-
-        # TIP if the above fails, try these opts:
-        fix node:$HOSTNAME_OF_SERVER deploy_chef:method=omnibus,version=11.12
-
-3.  Install lab.server
-
-        fix node:$HOSTNAME_OF_SERVER role:lab-server
-
-### Adding new features to the lab.server configuration
-
-1.  Spin up your own instance using the steps above.
-
-2.  Modify the necessary files to add the feature
-    - `roles/lab-server.json` for changing an attribute or adding a recipe
-    - `site-cookbooks/lab-server` for changing default deploy steps
-    - `site-cookbooks/node-couch-webapp` for changing node and couch configuration
-    - `Chefile` to use a new cookbook that isn't listed there see the "Add New Cookbook" section
-
-3.  Update your instance
-
-        fix node:$HOSTNAME_OF_SERVER
-
-4.  Make sure it builds from scratch, redoing the "Setup a new lab.server" steps
-
-5.  To put these features on the public server you have 2 options
-    -   copy the necessary data from the old server to the new one, and switch the ElasticIP to the new server
-    -   update the public version (Note: it isn't part of this system yet so this command won't work yet)
-
-            fix node:lab.dev.concord.org
-
-
-### Adding new features to the lab.server configuration
-
-1.  Spin up your own instance using the steps above.
-
-2.  Modify the necessary files to add the feature
-    - `roles/lab-server.json` for changing an attribute or adding a recipe
-    - `site-cookbooks/lab-server` for changing default deploy steps
-    - `site-cookbooks/node-couch-webapp` for changing node and couch configuration
-    - `Chefile` to use a new cookbook that isn't listed there see the "Add New Cookbook" section
-
-3.  Update your instance
-
-        fix node:$HOSTNAME_OF_SERVER
-
-4.  Make sure it builds from scratch, redoing the "Setup a new lab.server" steps
-
-5.  To put these features on the public server you have 2 options
-    -   copy the necessary data from the old server to the new one, and switch the ElasticIP to the new server
-    -   update the public version (Note: it isn't part of this system yet so this command won't work yet)
-
-            fix node:lab.dev.concord.org
-
-### Setup a new WISE server
-
-1.  Spin up an ec2 instance
-
-        ./script/create_ec2.rb -s staging -p wise_project -n "my wise server"
-
-2.  Install WISE server
-
-        fix node:$HOSTNAME_OF_SERVER role:wise4
-
-3.  Enjoy `thor wise *` commands.
-
-        this wise:list
-        thor wise:backup <instance_id>
-
-
 ### Setup a new Production portal Server ###
 
 0. Setup your environment, as per the direction at the top.
 0. Create a new aws config in `aws-config/<projectname>.json`
 0. run `bundle exec ./script/create_ec2.rb --stage production --project <project name>`
-0. Create a new elastic IP address using the AWS web console, and associate that address with this new instance ID (reported from script).
-0. Again, using the AWS web console, create a DNS entry for your host using Route 53.
+0. Using the AWS web console, create a DNS entry for your host using Route 53.
 0. `echo '{"id": "<projectname>"}' >> data_bags/sites/<projectname>.json`
 0. Create the S3 Bins for your project `./script/create_s3_bucket.rb --stage production --project <projectname>`
-0. Using the information from the output of the S3 bucket creation script, create a new databag for your site in `data_bags/sites/<sitename>.json`
-0. Add `db_username` and `db_password` to `data_bags/sites/<sitename>.json`
+0. Using the information from the output of the S3 bucket creation script, create a new databag for your site in `data_bags/sites/<projectname>.json`
+0. Add `db_username` and `db_password` to `data_bags/sites/<projectname>.json`
 0. Create a Roles for your project in `roles/<projectname>.json`, `roles/<projectname>-production.json` and `roles/<projectname>-staging.json`. The roles should include a reference to the rails portal role. See `roles/interactions-portal.json` for example. eg `"role[rails-portal-server]"`.
 0. Create the databases for your project `./script/create_db.rb --stage production --project <projectname>`
 0. make sure you specify the correct ssh_id and pem file in your
