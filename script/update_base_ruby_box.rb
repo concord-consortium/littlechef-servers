@@ -9,29 +9,41 @@ require 'trollop'
 require 'json'
 
 require_relative 'lib/mocks'
+require_relative 'lib/aws_config'
 
 # Fog.mock!
 # mock_aws(ec2_instance_name: "RitesProduction")
 
 ec2 = ::Fog::Compute[:aws]
 
+config = aws_config_defaults
+
 start = Time.now
 puts "*** creating new server"
 server = ec2.servers.create({
   key_name: 'genigames',
   # the latest version can be looked up here:
-  # http://alestic.com/
+  # http://cloud-images.ubuntu.com/locator/ec2/
   # ideally this could be automatically pulled from here:
   # https://help.ubuntu.com/community/UEC/Images#Machine_Consumable_Ubuntu_Cloud_Guest_images_Availability_Data
-  image_id: 'ami-9c78c0f5',
+  # This is 12.04, amd64, hvm:ebs
+  image_id: 'ami-f905f692',
+
   # because we are building ruby lets make this big so it is fast
   # it is likely that building is a single threaded thing so what matter is the single core
   # performance
-  flavor_id: 'm2.xlarge',
+  flavor_id: 'c4.large',
+
+  # Need to put it in a VPC
+  subnet_id: config['subnet_id'],
+
   # this doesn't mater perhaps we can leave it blank, it does need to be
   # in the east though so we get the right ami and the saved image is in the right place
   # :availability_zone => config['availability_zone'],
-  groups: 'default', # should use a default here
+
+  # needs an explicity security group id because it is in a VPC
+  # this is just using an existing security group that has ssh enabled
+  security_group_ids: ['sg-53f1a237'],
   tags: {
     "Name"     => "base-ruby-box",
     "Contacts" => 'Scott',  # <- should set this based on the current user running this script

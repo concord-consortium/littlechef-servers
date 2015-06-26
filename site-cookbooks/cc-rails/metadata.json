@@ -3,6 +3,11 @@
   "platforms": {
     "ubuntu": ">= 10.0.0"
   },
+  "dependencies": {
+  	"apache2": "> 0.0.0",
+  	"git": "> 0.0.0",
+  	"passenger_apache2": "> 0.0.0"
+  },
   "recipes": {
     "cc-rails": "setup a generic rails server"
   }

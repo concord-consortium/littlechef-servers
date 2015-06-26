@@ -21,8 +21,9 @@ Trollop::die :project, "is required" unless options[:project]
 
 config = aws_config(options[:project])
 
-find_or_create_ec2_security_group(
+security_group = find_or_create_ec2_security_group(
   name:        options[:project],
+  vpc_id:      config['vpc_id'],
   description: "#{options[:project]} security group"
 )
 
@@ -31,7 +32,8 @@ create_ec2_instance(
   image_id:          config['ec2_image_id'],
   flavor_id:         config['ec2_flavor_id'],
   availability_zone: config['availability_zone'],
-  groups:            options[:project],
+  subnet_id:         config['subnet_id'],
+  security_group_ids: [security_group.group_id],
   tags: {
     "Name"     => "#{options[:project]}-#{options[:stage]}",
     "Contacts" => options[:contact],

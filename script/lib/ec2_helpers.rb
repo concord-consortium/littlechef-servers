@@ -44,8 +44,9 @@ def find_or_create_ec2_security_group(options)
   # we also (unfortunately) seem to have unnamed security groups now?
   # can't find the security group with nil name in the AWS console...
   ec2_sec_group = ec2.security_groups.find do |sg| 
-    return false unless sg.name
-    return true if (sg.name.downcase == options[:name].downcase)
+      sg.name &&
+      (sg.name.downcase == options[:name].downcase) &&
+      (sg.vpc_id == options[:vpc_id])
   end
 
   unless ec2_sec_group
@@ -54,4 +55,6 @@ def find_or_create_ec2_security_group(options)
     ec2_sec_group.authorize_port_range(80..80)
     ec2_sec_group.authorize_port_range(443..443)
   end
+
+  ec2_sec_group
 end
