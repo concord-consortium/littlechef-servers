@@ -54,11 +54,12 @@ This repository uses a submodule for the data_bags folder. It is a private repos
    theme eg: `cp -r ./app/assets/themes/interactions ./app/assets/themes/newthemename` and `cp -r ./themes/interactions ./themes/newthemename`.  You will also have to modify app.scss to add a new `.project-header h1` background image for your project.
 0. Deploy: `bundle exec cap projectname-production deploy`
 0. Setup the default project: `bundle exec cap projectname-production setup:init_database`
-0. Configure some districts. Check config/settings.yml, add or remove
-   states from the entry "states_and_provinces:" (all is valid)
-0. Run the cap task to setup districts (this will take a while if you use 'all' or have a lot of states): `bundle exec cap <site> setup:districts`
-0. TBD: You might consider using a mysql databse dump of just the
-   district data, using 'Sequel Pro' and the included
+0. OPTIONAL: Load in some NCES districts.
+  0. Check config/settings.yml, add or remove states from the entry "states_and_provinces:" (all is valid) 
+     NOTE: `config/settings.yml` is managed by chef and is usually specificed in the roles/<projectname>.json
+  0. Run the cap task to setup districts (this will take a while if you use 'all' or have a lot of states): `bundle exec cap <site> setup:districts`
+  0. TBD: You might consider using a mysql databse dump of just the
+     district data, using 'Sequel Pro' and the included
 0140425portal-districts-and-schools.sql.zip file (password protected) 
 0. Run the cap task `bundle exec cap <site> solr:hard_reindex` to get the solr
    materials listings to work.
