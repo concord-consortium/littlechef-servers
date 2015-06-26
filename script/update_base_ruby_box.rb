@@ -9,11 +9,14 @@ require 'trollop'
 require 'json'
 
 require_relative 'lib/mocks'
+require_relative 'lib/aws_config'
 
 # Fog.mock!
 # mock_aws(ec2_instance_name: "RitesProduction")
 
 ec2 = ::Fog::Compute[:aws]
+
+config = aws_config_defaults
 
 start = Time.now
 puts "*** creating new server"
@@ -32,13 +35,14 @@ server = ec2.servers.create({
   flavor_id: 'c4.large',
 
   # Need to put it in a VPC
-  subnet_id: 'subnet-7fb16326',
+  subnet_id: config['subnet_id'],
 
   # this doesn't mater perhaps we can leave it blank, it does need to be
   # in the east though so we get the right ami and the saved image is in the right place
   # :availability_zone => config['availability_zone'],
 
   # needs an explicity security group id because it is in a VPC
+  # this is just using an existing security group that has ssh enabled
   security_group_ids: ['sg-53f1a237'],
   tags: {
     "Name"     => "base-ruby-box",
