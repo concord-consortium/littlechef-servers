@@ -63,6 +63,8 @@ This repository uses a submodule for the data_bags folder. It is a private repos
 0140425portal-districts-and-schools.sql.zip file (password protected) 
 0. Run the cap task `bundle exec cap <site> solr:hard_reindex` to get the solr
    materials listings to work.
+0. Create a SSO client for LARA: ssh to server and run `RAILS_ENV=production bundle exec rake sso:add_client`
+0. Add the client_id and secret to `data_bags/sites/lara.json`, follow the pattern there
 0. This might be a good time to create a new staging server (maybe)
    using `./script/create_staging.rb --project <project-name>`
 
