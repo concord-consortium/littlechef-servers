@@ -21,7 +21,7 @@ Trollop::die :project, "is required" unless options[:project]
 
 config = aws_config(options[:project])
 
-security_group = find_or_create_ec2_security_group(
+security_group = find_or_create_web_app_security_group(
   name:        options[:project],
   vpc_id:      config['vpc_id'],
   description: "#{options[:project]} security group"

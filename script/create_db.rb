@@ -7,6 +7,7 @@ require 'trollop'
 require 'json'
 require_relative 'lib/chef'
 require_relative 'lib/aws_config'
+require_relative 'lib/ec2_helpers'
 
 rds = ::Fog::AWS[:rds]
 
@@ -22,24 +23,30 @@ proj_data_bag = JSON.load File.new("data_bags/sites/#{proj}.json")
 stage_role = load_chef_role "#{proj}-#{options[:stage]}"
 config = aws_config(proj)
 
+# get the ec2 security group
+ec2_security_group = find_or_create_web_app_security_group(
+  name:        options[:project],
+  vpc_id:      config['vpc_id'],
+  description: "#{options[:project]} security group"
+)
+
 # make sure the security_group exists
 puts "*** ensuring rds security group exists..."
-rds_sec_group = rds.security_groups.get(proj)
-unless rds_sec_group
-  rds_sec_group_opts = {
-    :id => proj,
-    :description => "#{proj} security group"
-  }
-  rds_sec_group = rds.security_groups.create(rds_sec_group_opts)
-  rds_sec_group.wait_for { ready? }
-  rds_sec_group.reload
+# names are not case sensitive, and they can have null names
+rds_sec_group_name = "#{options[:project].downcase}.db"
 
-  # this is might fail if the ec2 security group doesn't exist yet
-  rds_sec_group.authorize_ec2_security_group(proj)
-end
+# because we are in a vpc now we need to make a vpc security group in ec2
+# instead of using RDS security groups
+# more info: http://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Overview.RDSSecurityGroups.html
 
-# make sure seymour can connect to the database
-rds_sec_group.authorize_cidrip("63.138.119.209/32") rescue Fog::AWS::RDS::AuthorizationAlreadyExists
+rds_sec_group = find_or_create_security_group(
+  name:        rds_sec_group_name,
+  vpc_id:      config['vpc_id'],
+  description: "#{options[:project]} database security group"
+)
+rds_sec_group.authorize_port_range(3306..3306, :group => ec2_security_group.group_id) rescue Fog::AWS::RDS::AuthorizationAlreadyExists
+rds_sec_group.authorize_port_range(3306..3306, :cidr_ip => "63.138.119.208/32") rescue Fog::AWS::RDS::AuthorizationAlreadyExists
+rds_sec_group.authorize_port_range(3306..3306, :cidr_ip => "63.138.119.209/32") rescue Fog::AWS::RDS::AuthorizationAlreadyExists
 
 # create an RDS parameter group which increases the max packet size
 # this is probably only needed for our portal servers
@@ -66,13 +73,15 @@ rds_opts = {
   allocated_storage: config['db_allocated_storage'],
   backup_retention_period: 7,
   parameter_group_name: proj,
-  security_group_names: [proj],
+  db_subnet_group_name: "rds.vpc.subnet.group1",
+  vpc_security_groups: [rds_sec_group.group_id],
   db_name: 'portal'
 }
 
 puts "*** creating new rds server: #{rds_opts[:id]} (usually takes 10 minutes)"
 start = Time.now
 rds_server = rds.servers.create(rds_opts)
-rds_server.wait_for { ready? }
+# the default wait time of 10 minutes wasn't long enough
+rds_server.wait_for 15*60, { ready? }
 rds_server.reload
 puts "    finished in #{Time.now - start}s"

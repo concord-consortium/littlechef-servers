@@ -36,7 +36,7 @@ def create_ec2_instance(options)
   server
 end
 
-def find_or_create_ec2_security_group(options)
+def find_or_create_security_group(options)
   ec2 = ::Fog::Compute[:aws]
 
   puts "*** ensuring ec2 security group is set up: #{options[:name]}"
@@ -50,11 +50,18 @@ def find_or_create_ec2_security_group(options)
   end
 
   unless ec2_sec_group
+    puts "  security group didn't exist, making a new one..."
     ec2_sec_group = ec2.security_groups.create(options)
-    ec2_sec_group.authorize_port_range(22..22)
-    ec2_sec_group.authorize_port_range(80..80)
-    ec2_sec_group.authorize_port_range(443..443)
   end
+
+  ec2_sec_group
+end
+
+def find_or_create_web_app_security_group(options)
+  ec2_sec_group = find_or_create_security_group(options)
+  ec2_sec_group.authorize_port_range(22..22) rescue Fog::AWS::RDS::AuthorizationAlreadyExists
+  ec2_sec_group.authorize_port_range(80..80) rescue Fog::AWS::RDS::AuthorizationAlreadyExists
+  ec2_sec_group.authorize_port_range(443..443) rescue Fog::AWS::RDS::AuthorizationAlreadyExists
 
   ec2_sec_group
 end
