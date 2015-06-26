@@ -1,0 +1,39 @@
+{
+    "name": "learn-portal",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[rails-portal-server]"
+    ],
+    "default_attributes": {},
+    "override_attributes": {
+        "cc_rails": {
+            "site_id": "itsi"
+        },
+        "cc_rails_portal": {
+            "site_name": "ITSI Portal",
+            "portal_features": "",
+            "theme": "learn",
+            "email": "itsi-help@concord.org",
+            "states_and_provinces": "all",
+            "use_jnlps": false,
+            "admin_user": {
+                "first_name": "Scott",
+                "last_name": "Cytacki",
+                "login": "scytacki",
+                "email": "scytacki@concord.org"
+            },
+            "tiny_mce": {
+                "buttons1": [
+                    "bold,italic,underline",
+                    "sup,sub",
+                    "bullist,numlist",
+                    "link,image",
+                    "pastext, pasteword,selectall",
+                    "code"
+                ]
+            }
+        }
+    }
+}
+

@@ -1,0 +1,28 @@
+{
+    "name": "itsi-staging",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[itsi-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails": {
+            "server_name": "itsi-master-staging.concord.org",
+            "use_ssl": "true",
+            "only_use_ssl": "true",
+            "db_rds_instance_name": "itsi-master-staging"
+        },
+        "cc_rails_portal": {
+            "site_url": "https://itsi-master-staging.concord.org",
+            "s3_bucket": "itsi-staging"
+        },
+        "new_relic":{
+            "app_name": "ITSI Staging (master)"
+        },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "pjanik","zeus"]
+        }
+    }
+}
