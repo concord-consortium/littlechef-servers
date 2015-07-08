@@ -142,7 +142,7 @@ unless rds_param_group
   }
   rds_param_group = @aws_rds.parameter_groups.create(rds_param_group_opts)
 end
-rds_param_group.modify([{:name => "max_allowed_packet", :value => "16777216", :apply_method => "immediate"}])
+rds_param_group.modify([{:name => "max_allowed_packet", :value => "134217728", :apply_method => "immediate"}])
 
 # create RDS instance
 rds_id = cleanup(@options[:name], :rds_id)
