@@ -1,5 +1,5 @@
 # THIS FILE IS MANAGED VIA LITTLECHEF...
-# YOU MIGHT LOOSE CHANGES...
+# YOU MIGHT LOSE CHANGES...
 
 # ENV['PORTAL_FEATURES'] : enable / disable portal extension features. Here are some such features:
 #
@@ -28,3 +28,7 @@ ENV['CORS_RESOURCES']    ||= "<%= @cors_resources %>"
 <% else %>
 # ENV['CORS_RESOURCES']  ||= "*"
 <% end %>
+
+<%- @env_vars.each do |key, value| -%>
+  ENV['<%= key.upcase%>']              ||= '<%= value %>'
+<%- end -%>

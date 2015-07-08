@@ -97,9 +97,13 @@ template "#{appshared}/config/app_environment_variables.rb" do
   @cors_origins     = portal[:cors_origins]
   @cors_resources   = portal[:cors_resources]
 
+  env                = portal[:stage]
+  @vars              = (env ? site_item['env_vars'][env] : {}) || {}
+
   source "app_environment_variables.rb.erb"
   owner "deploy"
   variables(
+    :env_vars          => @vars,
     :portal_features   => @portal_features,
     :cors_origins      => @cors_origins,
     :cors_resources    => @cors_resources
