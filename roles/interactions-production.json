@@ -18,8 +18,7 @@
             "s3_bucket": "interactions-production"
         },
         "new_relic":{
-            "app_name": "Interactions",
-            "rpm_account_type": "standard_key"
+            "app_name": "Interactions"
         }
     }
 }

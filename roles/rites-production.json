@@ -23,7 +23,6 @@
             "min_instances": 6
         },
         "new_relic":{
-            "rpm_account_type": "standard_key",
             "app_name": "RITES production (aws)"
         }
     }

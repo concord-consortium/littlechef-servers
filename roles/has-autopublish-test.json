@@ -18,6 +18,7 @@
             "s3_bucket": "has-staging"
         },
         "new_relic":{
+            "rpm_account_type": "standard_key",
             "app_name": "HAS autopublish"
         }
     }
