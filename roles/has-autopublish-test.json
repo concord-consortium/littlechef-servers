@@ -1,0 +1,24 @@
+{
+    "name": "has-autopublish-test",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[has-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails": {
+            "server_name": "has-autopublish-test.concord.org",
+            "db_rds_instance_name": "has-auto-publish-test"
+        },
+        "cc_rails_portal": {
+            "site_url": "http://has-autopublish-test.concord.org",
+            "site_name": "HAS(autopublish)",
+            "s3_bucket": "has-staging"
+        },
+        "new_relic":{
+            "app_name": "HAS autopublish"
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+    "chef_environment": "_default", 
+    "ipaddress": "10.0.2.171", 
+    "name": "has-autopublish-test.concord.org", 
+    "run_list": [
+        "role[has-autopublish-test]"
+    ]
+}
