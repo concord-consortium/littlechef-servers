@@ -11,15 +11,11 @@
                 "internal_developers": [
                   "scytacki",
                   "sfentress",
-                  "rklancer",
-                  "sbannasch",
                   "npaessel",
-                  "pmorse",
-                  "tdyer",
                   "emcelroy",
                   "aunger"]
             },
-            "users": [ "internal_developers", "pjanik"]
+            "users": [ "internal_developers", "pjanik", "dmartin"]
         }
     }
 }
