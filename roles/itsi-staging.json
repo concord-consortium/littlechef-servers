@@ -23,7 +23,7 @@
             "app_name": "ITSI Staging (master)"
         },
         "deploy_user_keys": {
-            "users": [ "internal_developers", "pjanik","zeus"]
+            "users": [ "internal_developers", "pjanik","zeus","dmartin"]
         }
     }
 }
