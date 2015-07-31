@@ -12,7 +12,7 @@
             "server_name": "itsi-master-staging.concord.org",
             "use_ssl": "true",
             "only_use_ssl": "true",
-            "db_rds_instance_name": "itsi-master-staging2"
+            "db_rds_instance_name": "itsi-master-staging-b"
         },
         "cc_rails_portal": {
             "site_url": "https://itsi-master-staging.concord.org",
