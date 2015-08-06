@@ -10,6 +10,7 @@
     "override_attributes": {
         "cc_rails": {
             "server_name": "learn.concord.org",
+            "server_aliases": ["inquiryspace.portal.concord.org"],
             "use_ssl": "true",
             "only_use_ssl": "true",
             "db_rds_instance_name": "learn-production-vpc",
@@ -22,6 +23,7 @@
         },
         "new_relic":{
             "app_name": "learn"
-        }
+        },
+        "http_extra": "RewriteCond %{HTTP_HOST} ^inquiryspace.portal.concord.org$ [NC]\nRewriteRule ^(.*)$ https://learn.concord.org/inquiryspace [L]"
     }
 }
