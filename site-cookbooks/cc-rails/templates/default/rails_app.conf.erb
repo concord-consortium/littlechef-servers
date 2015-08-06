@@ -67,13 +67,14 @@
     <% end %>
   <% end %>
 
+  <% if @params[:extra_config] %>
+    <%= @params[:extra_config] %>
+  <% end %>
+
   <% if @params[:only_use_ssl]   %>
     RewriteEngine On
     RewriteCond %{HTTPS} !=on
     RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
   <% end %>
 
-  <% if @params[:extra_config] %>
-    <%= @params[:extra_config] %>
-  <% end %>
 </VirtualHost>
