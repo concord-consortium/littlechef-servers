@@ -1,0 +1,29 @@
+{
+    "name": "itsi-production",
+    "chef_type": "role",
+    "json_class": "Chef::Role",
+    "run_list": [
+        "role[itsi-portal]"
+    ],
+    "default_attributes": {
+    },
+    "override_attributes": {
+        "cc_rails": {
+            "server_name": "itsi-master-production.concord.org",
+            "use_ssl": "true",
+            "only_use_ssl": "true",
+            "db_rds_instance_name": "itsi-master-production"
+        },
+        "cc_rails_portal": {
+            "site_url": "https://itsi-master-production.concord.org",
+            "authoring_site_url": "//authoring.concord.org",
+            "s3_bucket": "itsi-production"
+        },
+        "new_relic":{
+            "app_name": "ITSI"
+        },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "pjanik","dmartin"]
+        }
+    }
+}

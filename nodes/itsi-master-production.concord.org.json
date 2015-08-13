@@ -1,0 +1,8 @@
+{
+    "chef_environment": "_default", 
+    "ipaddress": "10.0.2.52", 
+    "name": "itsi-master-production.concord.org", 
+    "run_list": [
+        "role[itsi-production]"
+    ]
+}
