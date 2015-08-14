@@ -69,8 +69,8 @@
 
   # TODO:  Update chef recipes to dynamically fetch these certs from somewhere.
   SSLEngine on
-  SSLCertificateFile /etc/apache2/ssl/star_concord_org.crt
-  SSLCertificateKeyFile /etc/apache2/ssl/star_concord_org.key
+  SSLCertificateFile <%= @params[:ssl_certification_file] || "/etc/apache2/ssl/star_concord_org.crt" %>
+  SSLCertificateKeyFile <%= @params[:ssl_certification_key_file] || "/etc/apache2/ssl/star_concord_org.key" %>
   SSLCertificateChainFile /etc/apache2/ssl/DigiCertCA.crt
 
   <% if @params[:extra_config] %>

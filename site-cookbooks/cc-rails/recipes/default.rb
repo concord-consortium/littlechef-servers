@@ -76,6 +76,8 @@ if cc_rails[:use_ssl]
     static_assets cc_rails[:static_assets]
     only_use_ssl cc_rails[:only_use_ssl]
     use_ssl cc_rails[:use_ssl]
+    ssl_certification_file cc_rails[:ssl_certification_file]
+    ssl_certification_key_file cc_rails[:ssl_certification_key_file]
     notifies :reload, resources(:service => "apache2"), :delayed
   end
 end
