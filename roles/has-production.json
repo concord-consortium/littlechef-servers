@@ -17,7 +17,8 @@
             "site_url": "http://has.portal.concord.org",
             "authoring_site_url": "//authoring.concord.org",
             "site_name": "HAS",
-            "s3_bucket": "has-staging"
+            "s3_bucket": "has-staging",
+            "stage": "production"
         },
         "new_relic":{
             "rpm_account_type": "standard_key",
