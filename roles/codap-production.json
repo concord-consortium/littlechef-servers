@@ -9,7 +9,8 @@
     },
     "override_attributes": {
         "cc_rails": {
-            "db_rds_instance_name": "codap-production"
+            "db_rds_instance_name": "codap-production",
+            "google_analytics_account": "UA-6899787-51"
         },
         "cc_rails_portal": {
             "site_url": "http://codap.portal.concord.org",

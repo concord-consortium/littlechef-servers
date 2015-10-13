@@ -10,7 +10,8 @@
     "override_attributes": {
         "cc_rails": {
             "server_name": "ngss-assessment.portal.concord.org",
-            "db_rds_instance_name": "ngss-assessment-production"
+            "db_rds_instance_name": "ngss-assessment-production",
+            "google_analytics_account": "UA-6899787-50"
         },
         "cc_rails_portal": {
             "site_url": "http://ngss-assessment.portal.concord.org",
