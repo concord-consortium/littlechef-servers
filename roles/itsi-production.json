@@ -13,8 +13,8 @@
             "use_ssl": "true",
             "only_use_ssl": "true",
             "db_rds_instance_name": "itsi-master-production",
-            "ssl_certification_file": "/etc/apache2/ssl/cc-wild-2013-plus-snas.crt",
-            "ssl_certification_key_file": "/etc/apache2/ssl/cc-wild-2013-plus-snas.key",
+            "ssl_certification_file": "/etc/apache2/ssl/cc-wild-2015-plus-snas.crt",
+            "ssl_certification_key_file": "/etc/apache2/ssl/cc-wild-2015-plus-snas.key",
             "google_analytics_account": "UA-6899787-2"
         },
         "cc_rails_portal": {
