@@ -24,6 +24,7 @@
             "stage": "production"
         },
         "new_relic":{
+            "rpm_account_type": "standard_key",
             "app_name": "ITSI"
         },
         "deploy_user_keys": {
