@@ -10,7 +10,7 @@
     "override_attributes": {
         "cc_rails": {
             "server_name": "interactions.portal.concord.org",
-            "db_rds_instance_name": "interactions-production1",
+            "db_rds_instance_name": "interactions-production2",
             "google_analytics_account": "UA-6899787-49"
         },
         "cc_rails_portal": {
