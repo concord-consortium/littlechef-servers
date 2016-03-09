@@ -21,7 +21,12 @@
             "authoring_site_url": "//authoring.concord.org",
             "s3_bucket": "nextgen-production"
         },
-        "new_relic":{
+        "rails": {
+            "max_pool_size": 8,
+            "min_instances": 3
+        },
+         "new_relic":{
+            "rpm_account_type": "standard_key",
             "app_name": "learn"
         },
         "http_extra": "RewriteCond %{HTTP_HOST} ^inquiryspace.portal.concord.org$ [NC]\nRewriteRule ^(.*)$ https://learn.concord.org/inquiryspace [L]"
