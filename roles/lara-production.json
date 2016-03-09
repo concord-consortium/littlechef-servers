@@ -8,7 +8,7 @@
     "default_attributes": {},
     "override_attributes": {
         "cc_rails": {
-            "db_rds_instance_name": "lara",
+            "db_rds_instance_name": "lara-vpc",
             "db_pool": 9,
             "server_name": "authoring.concord.org"
         },
