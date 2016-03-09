@@ -13,7 +13,7 @@
   PassengerMaxPoolSize <%= node[:rails][:max_pool_size] %>
   PassengerMinInstances <%= node[:rails][:min_instances] %>
   PassengerPoolIdleTime 600
-  PassengerMaxRequests 3000
+  PassengerMaxRequests <%= node[:rails][:max_requests] %>
   RackEnv '<%= node[:rails][:environment] %>'
   PassengerResolveSymlinksInDocumentRoot on
 
