@@ -10,6 +10,9 @@
         "cc_rails": {
             "site_id": "learn"
         },
+        "deploy_user_keys": {
+            "users": [ "internal_developers", "pjanik","dmartin"]
+        },
         "cc_rails_portal": {
             "site_name": "Learn Portal",
             "portal_features": "geniverse_remote_auth genigames_data geniverse_backend allow_cors",
