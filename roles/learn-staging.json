@@ -16,7 +16,8 @@
         },
         "cc_rails_portal": {
             "site_url": "https://learn.staging.concord.org",
-            "s3_bucket": "nextgen-staging"
+            "s3_bucket": "nextgen-staging",
+            "stage": "staging"
         },
         "new_relic":{
             "app_name": "learn Staging"
