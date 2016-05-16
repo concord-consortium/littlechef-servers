@@ -23,7 +23,7 @@
             "app_name": "ITSI Staging (master)"
         },
         "deploy_user_keys": {
-            "users": [ "internal_developers", "pjanik","zeus","dmartin"]
+            "users": [ "internal_developers", "pjanik","dmartin"]
         },
         "http_extra": "Redirect \"/activities\" \"/itsi\" \nRedirect \"/activities/\" \"/itsi\"\nRedirectMatch \"^/system/images/(.*)\" \"https://s3.amazonaws.com/itsi-production/images-2009/$1\""
     }
