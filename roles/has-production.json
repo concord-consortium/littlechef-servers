@@ -11,6 +11,7 @@
         "cc_rails": {
             "server_name": "has.portal.concord.org",
             "db_rds_instance_name": "has-production-a",
+            "elb_only_use_ssl": "true",
             "google_analytics_account": "UA-6899787-27"
         },
         "cc_rails_portal": {

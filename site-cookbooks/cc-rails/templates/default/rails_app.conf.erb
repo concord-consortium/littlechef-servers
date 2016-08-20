@@ -81,4 +81,15 @@
     RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
   <% end %>
 
+  <% if @params[:elb_only_use_ssl]   %>
+    # Handle https redirects when the portal is behind a Elastic Load Balancer
+    # this only does the redirect when the protocol is 'http'
+    # ELB healthcheck pings will not have this protocol set, so they
+    #   wont be redirected
+    RewriteEngine On
+    RewriteCond %{HTTP:X-Forwarded-Proto} http$
+    RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
+  <% end %>
+
+
 </VirtualHost>
