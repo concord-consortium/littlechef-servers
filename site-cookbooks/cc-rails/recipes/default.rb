@@ -59,6 +59,7 @@ web_app "portal" do
   static_assets cc_rails[:static_assets]
   only_use_ssl cc_rails[:only_use_ssl]
   elb_only_use_ssl cc_rails[:elb_only_use_ssl]
+  cloudfront cc_rails[:cloudfront]
   use_ssl cc_rails[:use_ssl]
   notifies :reload, resources(:service => "apache2"), :delayed
 end

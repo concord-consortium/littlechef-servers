@@ -9,5 +9,6 @@ default[:rails][:max_requests] = 3000
 default[:cc_rails][:static_assets] = true
 default[:cc_rails][:only_use_ssl] = false
 default[:cc_rails][:elb_only_use_ssl] = false
+default[:cc_rails][:cloudfront] = false
 default[:cc_rails][:use_ssl] = false
 default[:cc_rails][:google_analytics_account] = "UA-6899787-23"

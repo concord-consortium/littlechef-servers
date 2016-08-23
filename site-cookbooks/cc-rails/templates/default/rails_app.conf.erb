@@ -28,9 +28,11 @@
   # https://newrelic.com/docs/features/tracking-front-end-time
   RequestHeader set X-Queue-Start "%t"
 
-  # Map the Cloudfront to x-forwarded-proto header so rails handles redirects correctly
-  SetEnvIf Cloudfront-Forwarded-Proto (.*) forwarded_proto=$1
-  RequestHeader set X-Forwarded-Proto "%{forwarded_proto}e" env=forwarded_proto
+  <% if @params[:cloudfront]   %>
+    # Map the Cloudfront to x-forwarded-proto header so rails handles redirects correctly
+    SetEnvIf Cloudfront-Forwarded-Proto (.*) forwarded_proto=$1
+    RequestHeader set X-Forwarded-Proto "%{forwarded_proto}e" env=forwarded_proto
+  <% end %>
 
   # Handle maintenance mode
   # More Info: http://www.shiftcommathree.com/articles/make-your-rails-maintenance-page-respond-with-a-503

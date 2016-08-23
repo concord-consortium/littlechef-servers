@@ -11,6 +11,7 @@
         "cc_rails": {
             "server_name": "ngss-assessment.portal.concord.org",
             "db_rds_instance_name": "ngss-assessment-production",
+            "cloudfront": "true",
             "google_analytics_account": "UA-6899787-50"
         },
         "cc_rails_portal": {
