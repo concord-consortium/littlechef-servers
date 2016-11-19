@@ -19,6 +19,10 @@
             "s3_bucket": "nextgen-staging",
             "stage": "staging"
         },
+        "java":{
+            "jdk_version":"7",
+            "openjdk_packages": ["openjdk-7-jdk", "default-jre-headless"]
+        },
         "new_relic":{
             "app_name": "learn Staging"
         }

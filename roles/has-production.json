@@ -24,6 +24,10 @@
         "new_relic":{
             "rpm_account_type": "standard_key",
             "app_name": "HAS Production"
+        },
+        "java":{
+            "jdk_version":"7",
+            "openjdk_packages": ["openjdk-7-jdk", "default-jre-headless"]
         }
     }
 }

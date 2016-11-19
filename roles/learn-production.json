@@ -31,6 +31,10 @@
             "rpm_account_type": "standard_key",
             "app_name": "learn"
         },
+        "java":{
+            "jdk_version":"7",
+            "openjdk_packages": ["openjdk-7-jdk", "default-jre-headless"]
+        },
 
         "http_extra": "RewriteCond %{HTTP_HOST} ^inquiryspace.portal.concord.org$ [NC]\nRewriteRule ^(.*)$ https://learn.concord.org/inquiryspace [L]"
     }
