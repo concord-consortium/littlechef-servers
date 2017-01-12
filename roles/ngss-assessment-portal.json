@@ -11,7 +11,7 @@
             "site_id": "ngss-assessment"
         },
         "cc_rails_portal": {
-            "site_name": "ngss-assessment Portal",
+            "site_name": "NGSS Assessment Portal",
             "theme": "ngss-assessment",
             "email": "ngss-assessment-help@concord.org",
             "states_and_provinces": "all",
