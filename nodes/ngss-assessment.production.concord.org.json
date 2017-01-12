@@ -1,7 +1,7 @@
 {
     "chef_environment": "_default", 
     "ipaddress": "10.201.182.214", 
-    "name": "ngss-assessment.portal.concord.org", 
+    "name": "ngss-assessment.production.concord.org", 
     "run_list": [
         "role[ngss-assessment-production]"
     ]

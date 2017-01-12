@@ -22,6 +22,10 @@
         },
         "new_relic":{
             "app_name": "ngss-assessment"
+        },
+        "java":{
+            "jdk_version":"7",
+            "openjdk_packages": ["openjdk-7-jdk", "default-jre-headless"]
         }
     }
 }
