@@ -1,0 +1,9 @@
+version: '2'
+services:
+  littlechef:
+    volumes:
+      - [local path to key]:/root/.ssh/learn-staging.pem
+      - [local path to key]:/root/.ssh/learn.pem
+      - [local path to key]:/root/.ssh/has-production.pem
+      - [local path to key]:/root/.ssh/ngss-assessment-production.pem
+      - [local path to key]:/root/.ssh/itsi-portal.pem

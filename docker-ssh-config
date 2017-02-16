@@ -1,0 +1,19 @@
+Host learn.staging.concord.org
+  User ubuntu
+  IdentityFile ~/.ssh/learn-staging.pem
+
+Host learn.concord.org
+  User ubuntu
+  IdentityFile ~/.ssh/learn.pem
+
+Host has.production.concord.org
+  User ubuntu
+  IdentityFile ~/.ssh/has-production.pem
+
+Host ngss-assessment.production.concord.org
+  User ubuntu
+  IdentityFile ~/.ssh/ngss-assessment-production.pem
+
+Host itsi.portal.concord.org
+  User ubuntu
+  IdentityFile ~/.ssh/itsi-portal.pem

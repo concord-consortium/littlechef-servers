@@ -1,0 +1,19 @@
+# To use this compose setup, you need to add the ssh keys needed to connect to the servers
+# take a look at docker-ssh-config to see which keys you need
+# the keys can be added by creating a docker-compose.override.yml and adding a volume
+# for each key. There is a docker-compose.override.sample.yml you can use for a guide
+
+# to fix a server you can use this command
+# docker-compose run -rm littlechef fix node:[hostname]
+
+version: '2'
+services:
+  littlechef:
+    build: .
+    volumes:
+      - ./data_bags:/usr/src/app/data_bags
+      - ./environments:/usr/src/app/environments
+      - ./nodes:/usr/src/app/nodes
+      - ./roles:/usr/src/app/roles
+      - ./site-cookbooks:/usr/src/app/site-cookbooks
+      - ./docker-ssh-config:/root/.ssh/config
