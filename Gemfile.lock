@@ -18,7 +18,7 @@ GEM
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
     erubis (2.7.0)
-    excon (0.45.3)
+    excon (0.71.0)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
     fog (1.31.0)
